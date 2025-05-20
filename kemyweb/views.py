@@ -32,11 +32,14 @@ def dashboard(request):
 def merchant(request):
     return render(request, 'merchant/merchant.html')
 
-def merchant_invoice(request):
-    return render(request, 'merchant/merchant_invoice.html')
+def merchant_provider(request):
+    return render(request, 'merchant/merchant_provider.html')
 
-def merchant_payment(request):
-    return render(request, 'merchant/merchant_payment.html')
+def merchant_account(request):
+    return render(request, 'merchant/merchant_account.html')
 
 def user_management(request):
     return render(request, 'merchant/user_management.html')
+
+def provider(request):
+    return render(request, 'merchant/provider.html')

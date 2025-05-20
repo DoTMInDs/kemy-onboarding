@@ -4,7 +4,7 @@
 {% include "site/partials/dash_nav.html" %}
 <section class="w-[100%] bg-gray-200 h-screen fixed z-[-1] top-0 right-0 left-0 overflow-y-scroll">
     <div class="mr-[0.3rem] ml-[0.3rem] md:ml-[300px] transition-all duration-300 bg-white shadow-md rounded-lg p-6 mt-[80px]">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Merchant Payment History</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Merchant Acount </h2>
         <label for="table-search" class="sr-only">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none">
@@ -17,10 +17,13 @@
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Merchant #12345</h3>
                 <div class="flex justify-between items-center flex-wrap">
                     <div class="space-y-1">
-                        <p class="text-gray-600"><strong>Name:</strong> Awesome Merchant</p>
-                        <p class="text-gray-600"><strong>Phone:</strong> 0201234567</p>
-                        <p class="text-gray-600"><strong>Method:</strong> <span class="inline-block px-3 py-1 font-semibold text-green-900 leading-tight rounded-full bg-green-200 opacity-50">Mobile Money</span></p>
-                        <p class="text-gray-600"><strong>Provider:</strong> MTN MoMo</p>
+                        <p class="text-gray-600"><strong>Bank Name:</strong> CalBank</p>
+                        <p class="text-gray-600"><strong>Bank Account Name:</strong> Edward Luthur</p>
+                        <p class="text-gray-600"><strong>Bank Branch Name:</strong> Dansoman</p>
+                        <p class="text-gray-600"><strong>Bank Account Code:</strong> 421783</p>
+                        <p class="text-gray-600"><strong>Account Number:</strong> 2000 1235 1023 1452</p>
+                        <p class="text-gray-600"><strong>is_active:</strong> <span class="inline-block px-3 py-1 font-semibold text-green-900 leading-tight rounded-full bg-green-200 opacity-50">Yes</span></p>
+                        <p class="text-gray-600"><strong>Bank Routing Number:</strong> A21235E6</p>
                         <p class="text-gray-600"><strong>Date:</strong> 2025-05-19</p>
                     </div>
                     <div class="mt-4">
@@ -43,11 +46,14 @@
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Merchant ID #67890</h3>
                 <div class="flex justify-between items-center flex-wrap">
                     <div class="space-y-1">
-                        <p class="text-gray-600"><strong>Name:</strong> Another Business</p>
-                        <p class="text-gray-600"><strong>Phone:</strong> 0509876543</p>
-                        <p class="text-gray-600"><strong>Method:</strong> <span class="inline-block px-3 py-1 font-semibold text-blue-900 leading-tight rounded-full bg-blue-200 opacity-50">Credit Card</span></p>
-                        <p class="text-gray-600"><strong>Provider:</strong> Visa</p>
-                        <p class="text-gray-600"><strong>Date:</strong> 2025-05-18</p>
+                        <p class="text-gray-600"><strong>Bank Name:</strong> Fiderlity</p>
+                        <p class="text-gray-600"><strong>Bank Account Name:</strong> Authur Pendragon</p>
+                        <p class="text-gray-600"><strong>Bank Branch Name:</strong> Lakeside</p>
+                        <p class="text-gray-600"><strong>Bank Account Code:</strong> 421783</p>
+                        <p class="text-gray-600"><strong>Account Number:</strong>  1235 2000 1023 1452</p>
+                        <p class="text-gray-600"><strong>is_active:</strong> <span class="inline-block px-3 py-1 font-semibold text-green-900 leading-tight rounded-full bg-green-200 opacity-50">Yes</span></p>
+                        <p class="text-gray-600"><strong>Bank Routing Number:</strong> B5E62123</p>
+                        <p class="text-gray-600"><strong>Date:</strong> 2025-03-19</p>
                     </div>
                     <div class="mt-4">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-sm mr-2">
@@ -101,7 +107,7 @@
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
         </svg>
-        Merchant Payment
+        Merchant Account
     </button>
 </section>
 
@@ -113,7 +119,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900">
-                    Add a New Merchant Payment
+                    Add a New Merchant Account
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -125,43 +131,48 @@
             <!-- Modal body -->
             <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Merchant ID#</label>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="number" class="block mb-2 text-sm font-medium text-gray-900 ">Merchant ID#</label>
                         <input type="text" name="number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant ID" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant name" required="">
+                        <label for="bank_name" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Name</label>
+                        <input type="text" name="bank_name" id="bank_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank name" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter phone number" required="">
+                        <label for="bank_account_name" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Account Name</label>
+                        <input type="text" name="bank_account_name" id="bank_account_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank account name" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="PaymentMethodType" class="block mb-2 text-sm font-medium text-gray-900 ">Payment Method Type</label>
-                        <select id="PaymentMethodType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
-                            <option selected="">Select category</option>
-                            <option value="CC">Credit Card</option>
-                            <option value="MM">Mobile Money</option>
-                            <option value="cash">Cash</option>
+                        <label for="bank_branch_name" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Branch Name</label>
+                        <input type="text" name="bank_branch_name" id="bank_branch_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank branch name" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="bank_branch_code" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Branch Code</label>
+                        <input type="text" name="bank_branch_code" id="bank_branch_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank branch code" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="bank_account_number" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Account Number</label>
+                        <input type="tel" name="bank_account_number" id="bank_account_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank account number" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="bank_routing_number" class="block mb-2 text-sm font-medium text-gray-900 ">Bank Routing Number</label>
+                        <input type="tel" name="bank_routing_number" id="bank_routing_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter bank routing number" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="is_active" class="block mb-2 text-sm font-medium text-gray-900 ">Is Active</label>
+                        <select name="is_active" id="is_active" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                            <option selected="">Select if active</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                         </select>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="PaymentProvider" class="block mb-2 text-sm font-medium text-gray-900 ">Payment Provider</label>
-                        <select id="PaymentProvider" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
-                            <option selected="">Select category</option>
-                            <option value="MTN_MOMO">MTN MoMo</option>
-                            <option value="TELECEL_CASH">Telecel Cash</option>
-                            <option value="AIRTELTIGO_MONEY">AirtelTigo Money</option>
-                        </select>
-                    </div>
-                  
                 </div>
                 <button type="submit" class="text-[#FFFFFF] inline-flex gap-[0.5rem] items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
                     </svg>
-                    Add payment
+                    Add Account
                 </button>
             </form>
         </div>
