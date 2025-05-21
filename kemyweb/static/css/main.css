@@ -13,6 +13,7 @@ body{
 header{
     background-image: linear-gradient(rgba(59,83,98,0.25),rgba(59,83,98,0.9)),url(../images/bg-banner.jpg);
 }
+
 .loader {
     border: 3px solid #f3f3f3;
     border-top: 3px solid #E9322A;

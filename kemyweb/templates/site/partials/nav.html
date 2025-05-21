@@ -6,7 +6,7 @@
                 <path d="M21 18V20H3V18H21ZM6.596 3.90302L8.01 5.31801L4.828 8.50002L8.01 11.682L6.596 13.096L2 8.50002L6.596 3.90302ZM21 11V13H12V11H21ZM21 4.00002V6.00002H12V4.00002H21Z" fill="currentColor"/>
             </svg>
         </div>
-        <a href="#" class="flex gap-[0.5rem] items-center text-[#3b5362]">
+        <a href="{% url "home" %}" class="flex gap-[0.5rem] items-center text-[#3b5362]">
             <img src="{% static "images/rpl-logo-icon@4x.png" %}" alt="Logo" class="w-8 h-8">
             <h1 class="text-[#3b5362] text-2xl font-bold">Kemy</h1>
         </a>
@@ -44,7 +44,7 @@
             </div>
         </li>
         <li class="relative group">
-            <a href="#" class="text-[#3b5362] font-medium hover:text-slate-700 transition duration-300 flex gap-[0.5rem] items-center py-2">
+            <a href="" class="text-[#3b5362] font-medium hover:text-slate-700 transition duration-300 flex gap-[0.5rem] items-center py-2">
                 Industries
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:rotate-180 transition-transform duration-200">
                     <path d="M4 8L12 16L20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -52,8 +52,8 @@
             </a>
             <div class="absolute left-0 top-full pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0">
                 <div class="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100">
-                    <a href="#" class="block px-4 py-2 text-[#3b5362] hover:bg-gray-50">Healthcare</a>
-                    <a href="#" class="block px-4 py-2 text-[#3b5362] hover:bg-gray-50">Education</a>
+                    <a href="{% url "healthcare" %}" class="block px-4 py-2 text-[#3b5362] hover:bg-gray-50">Healthcare</a>
+                    <a href="{% url "education" %}" class="block px-4 py-2 text-[#3b5362] hover:bg-gray-50">Education</a>
                     <a href="#" class="block px-4 py-2 text-[#3b5362] hover:bg-gray-50">Retail</a>
                 </div>
             </div>
@@ -126,8 +126,8 @@
                </svg>
            </div>
            <ul id="industries-dropdown" class="hidden pl-4 pb-2">
-               <li class="py-2"><a href="#" class="text-[#3b5362] hover:text-slate-700">Healthcare</a></li>
-               <li class="py-2"><a href="#" class="text-[#3b5362] hover:text-slate-700">Education</a></li>
+               <li class="py-2"><a href="{% url "healthcare" %}" class="text-[#3b5362] hover:text-slate-700">Healthcare</a></li>
+               <li class="py-2"><a href="{% url "education" %}" class="text-[#3b5362] hover:text-slate-700">Education</a></li>
                <li class="py-2"><a href="#" class="text-[#3b5362] hover:text-slate-700">Retail</a></li>
            </ul>
        </li>

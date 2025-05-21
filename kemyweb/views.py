@@ -26,6 +26,12 @@ def home(request):
 def invoice(request):
     return render(request, 'site/invoice.html')
 
+def education(request):
+    return render(request, 'site/education.html')
+
+def healthcare(request):
+    return render(request, 'site/healthcare.html')
+
 def dashboard(request):
     return render(request, 'merchant/dashboard.html')
 

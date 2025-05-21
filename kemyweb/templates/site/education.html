@@ -1,0 +1,161 @@
+{% extends "site/base.html" %}
+{% load static %}
+{% block content %}
+    {% include "site/partials/nav.html" %}
+    <main class="w-[100%] lg:w-[60%] lg:px-[0.8rem] px-4 m-auto mt-[100px] mb-[2rem]">
+        <section class="flex-col md:flex-row gap-[2rem] flex justify-between items-start md:items-center w-full my-[8rem]">
+            <div class="md:max-w-[600px]">
+                <h1 class="font-bold text-3xl text-[#3b5362] mb-[1rem]">
+                    Solutions built for education, <br>
+                    by global education experts
+                </h1>
+                <p class="text-slate-500 font-medium mb-[1rem]">
+                    Whether you need global payment capabilities or an all-in-one software 
+                    solution to manage the entire student financial journey, 
+                    Flywire is the only partner that has you covered.
+                </p>
+                <div class="mt-[3rem]">
+                    <a href="#contact-us" class="text-[#FFFFFF] font-medium bg-[#E93223] border border-slate-200 border-opacity-30 hover:bg-red-500 px-6 py-3 rounded-full ">Get In touch</a>
+                </div>
+            </div>
+        </section>
+        <section class="flex flex-col md:flex-row-reverse h-full w-full gap-[2rem] items-center">
+            <div class="">
+                <video src="{% static "images/education-home-video-web_compressed.mp4" %}" loop autoplay class="w-[1950px]"></video>
+            </div>
+            <div class="text-lg font-medium text-slate-700">
+                From international and domestic payments to all-in-one Student 
+                Financial Software and agent offerings, Kemy offers a 
+                variety of solutions to help you drive enrollment, 
+                increase cash flow and improve efficiency 
+                while optimizing the student experience.
+            </div>
+        </section>
+       <section id="contact-us" class="mt-[3rem]">
+            <div class="">
+                <form id="contactForm" action="" method="post" class="mt-6">
+                    <div class="mb-4">
+                        <h1 class="text-xl text-center font-semibold text-[#3b5362] "> Experience the Difference:</h1>
+                        <p class="text-center text-slate-500">Contact us to talk about Your school's needs</p>
+                    </div>
+                    {% if messages %}
+                        <div class="mb-4">
+                            {% for message in messages %}
+                                <div class="p-3 rounded text-center {% if message.tags == 'error' %} text-red-500{% else %} text-green-500{% endif %}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="flex md:flex-row flex-col  gap-[1rem] items-center mb-4">
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 9C13.933 9 15.5 7.433 15.5 5.5C15.5 3.567 13.933 2 12 2C10.067 2 8.5 3.567 8.5 5.5C8.5 7.433 10.067 9 12 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 20.5C2 16.0815 6.0295 12.5 11 12.5M15.5 21L20.5 16L18.5 14L13.5 19V21H15.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <input type="text" name="business_name" id="business_name" placeholder="Legal business name"
+                                class="w-full px-4 py-2 border-transparent bg-transparent outline-transparent"
+                                required {% if form.business_name.value %}value="{{ form.business_name.value }}"{% endif %}>
+                        </div>
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.6666 3.99999C14.6666 3.26666 14.0666 2.66666 13.3333 2.66666H2.66659C1.93325 2.66666 1.33325 3.26666 1.33325 3.99999V12C1.33325 12.7333 1.93325 13.3333 2.66659 13.3333H13.3333C14.0666 13.3333 14.6666 12.7333 14.6666 12V3.99999ZM13.3333 3.99999L7.99992 7.33332L2.66659 3.99999H13.3333ZM13.3333 12H2.66659V5.33332L7.99992 8.66666L13.3333 5.33332V12Z" fill="#3B5362"/>
+                            </svg>
+                            <input type="email"  name="email" id="email" placeholder="finance@yourcompany.com"
+                                class="w-full px-4 py-2 border-transparent bg-transparent outline-transparent"
+                                required {% if form.email.value %}value="{{ form.email.value }}"{% endif %} >
+                        </div>
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.765 3.075C14.689 3.03112 14.6028 3.00801 14.515 3.00801C14.4272 3.00801 14.341 3.03112 14.265 3.075L10 5.19V3.5C9.99974 3.41477 9.9777 3.33102 9.93597 3.2567C9.89424 3.18238 9.8342 3.11997 9.76156 3.07538C9.68892 3.0308 9.60609 3.00552 9.52093 3.00195C9.43577 2.99838 9.35111 3.01665 9.275 3.055L5 5.19V1.5C5 1.36739 4.94732 1.24021 4.85355 1.14645C4.75979 1.05268 4.63261 1 4.5 1H1.5C1.36739 1 1.24021 1.05268 1.14645 1.14645C1.05268 1.24021 1 1.36739 1 1.5V14H15V3.5C15.0002 3.41503 14.9787 3.33141 14.9376 3.25705C14.8964 3.18269 14.8371 3.12004 14.765 3.075ZM11 13H9V9.5H11V13ZM14 13H12V9C12 8.86739 11.9473 8.74021 11.8536 8.64645C11.7598 8.55268 11.6326 8.5 11.5 8.5H8.5C8.36739 8.5 8.24021 8.55268 8.14645 8.64645C8.05268 8.74021 8 8.86739 8 9V13H2V2H4V6.81L9 4.31V6.81L14 4.31V13Z" fill="currentColor"/>
+                            </svg>
+                            <select name="industry" id="industry" 
+                                class="w-full px-4 py-2 border-transparent bg-transparent outline-transparent bg-[url('data:image/svg+xml;base64,PHN2Zy...')] bg-no-repeat bg-right-2" required >
+                                <option value="">Select industry</option>
+                                <option value="agriculture" {% if form.industry.value == 'agriculture' %}selected{% endif %}>Agriculture</option>
+                                <option value="banking" {% if form.industry.value == 'banking' %}selected{% endif %}>Banking & Finance</option>
+                                <option value="technology" {% if form.industry.value == 'technology' %}selected{% endif %}>Technology & IT Services</option>
+                                <option value="construction" {% if form.industry.value == 'construction' %}selected{% endif %}>Construction & Real Estate</option>
+                                <option value="education" {% if form.industry.value == 'education' %}selected{% endif %}>Education & Training</option>
+                                <option value="health" {% if form.industry.value == 'health' %}selected{% endif %}>Healthcare & Pharmaceuticals</option>
+                                <option value="hospitality" {% if form.industry.value == 'hospitality' %}selected{% endif %}>Hospitality & Tourism</option>
+                                <option value="manufacturing" {% if form.industry.value == 'manufacturing' %}selected{% endif %}>Manufacturing</option>
+                                <option value="mining" {% if form.industry.value == 'mining' %}selected{% endif %}>Mining & Natural Resources</option>
+                                <option value="retail" {% if form.industry.value == 'retail' %}selected{% endif %}>Retail & E-commerce</option>
+                                <option value="telecom" {% if form.industry.value == 'telecom' %}selected{% endif %}>Telecommunications</option>
+                                <option value="transport" {% if form.industry.value == 'transport' %}selected{% endif %}>Transportation & Logistics</option>
+                                <option value="utilities" {% if form.industry.value == 'utilities' %}selected{% endif %}>Utilities & Energy</option>
+                                <option value="other" {% if form.industry.value == 'other' %}selected{% endif %}>Other Services</option>
+                                <!-- Add other options -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex md:flex-row flex-col  gap-[1rem] items-center mb-4 w-full">
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8C7 10.7614 9.23858 13 12 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 21C20 18.8783 19.1571 16.8434 17.6569 15.3431C16.1566 13.8429 14.1217 13 12 13C9.87827 13 7.84344 13.8429 6.34315 15.3431C4.84285 16.8434 4 18.8783 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <input type="text" name="first_name" id="first_name" placeholder="Enter First Name..."  class="w-full px-4 py-2 bg-transparent outline-none border-transparent">
+                        </div>
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 9C13.933 9 15.5 7.433 15.5 5.5C15.5 3.567 13.933 2 12 2C10.067 2 8.5 3.567 8.5 5.5C8.5 7.433 10.067 9 12 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 20.5C2 16.0815 6.0295 12.5 11 12.5M15.5 21L20.5 16L18.5 14L13.5 19V21H15.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <input type="text" name="last_name" id="last_name" placeholder="Enter Last Name..."  class="w-full px-4 py-2 bg-transparent outline-none border-transparent">
+                        </div>
+                    </div>
+                    <div class="flex md:flex-row flex-col gap-[1rem] items-center mb-4 w-full">
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 6.50001C23.671 6.50001 23.341 6.57001 23.063 6.74501C21.5 7.73301 21.5 9.08001 21.5 10V10.5H17M9 13.5H24M16.5 13.5V24M12 23.5C11 23.5 10.25 22 10.25 22C9.5 20.5 9.5 19.5 9.5 18V16.5H1.5V16.25L3.422 8.75501C3.58738 8.10991 3.96272 7.53817 4.48886 7.1299C5.015 6.72162 5.66203 6.50002 6.328 6.50001H7.5L8.947 9.39401C9.11313 9.72648 9.36862 10.0061 9.6848 10.2014C10.001 10.3968 10.3653 10.5002 10.737 10.5H15M7.35 4.50001C7.35 4.50001 5.75 3.50001 5.75 2.25001C5.75 2.02046 5.79521 1.79316 5.88306 1.58108C5.9709 1.36901 6.09966 1.17631 6.26198 1.01399C6.42429 0.851675 6.61699 0.722918 6.82907 0.635073C7.04115 0.547227 7.26845 0.502014 7.498 0.502014C7.72755 0.502014 7.95485 0.547227 8.16693 0.635073C8.37901 0.722918 8.57171 0.851675 8.73402 1.01399C8.89634 1.17631 9.0251 1.36901 9.11294 1.58108C9.20079 1.79316 9.246 2.02046 9.246 2.25001C9.246 3.50001 7.65 4.50001 7.65 4.50001H7.35Z" stroke="black"/>
+                            </svg>
+                            <select name="product_category"  id="product_category" 
+                                class="w-full px-4 py-2 border-transparent bg-transparent outline-transparent" required>
+                                <option value="">Select product or service</option>
+                                <option value="airtime" {% if form.product_category.value == 'airtime' %}selected{% endif %}>Airtime - Internet</option>
+                                <option value="association" {% if form.product_category.value == 'association' %}selected{% endif %}>Association and Organization</option>
+                                <option value="church" {% if form.product_category.value == 'church' %}selected{% endif %}>Church</option>
+                                <option value="bank" {% if form.product_category.value == 'bank' %}selected{% endif %}>Bank Integration</option>
+                                <option value="goods" {% if form.product_category.value == 'goods' %}selected{% endif %}> Goods and Services</option>
+                                <option value="healthcare" {% if form.product_category.value == 'healthcare' %}selected{% endif %}>Healthcare</option>
+                                <option value="insurance" {% if form.product_category.value == 'insurance' %}selected{% endif %}>Insurance</option>
+                                <option value="investments" {% if form.product_category.value == 'investments' %}selected{% endif %}>Investments</option>
+                                <option value="schoolfees" {% if form.product_category.value == 'schoolfees' %}selected{% endif %}>School Fees</option>
+                                <option value="utility" {% if form.product_category.value == 'utility' %}selected{% endif %}>Utility</option>
+                            </select>
+                        </div>
+                        <div class="w-full flex gap-[0.5rem] px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.25 12C6.05109 12 5.86032 12.079 5.71967 12.2197C5.57902 12.3603 5.5 12.5511 5.5 12.75C5.5 12.9489 5.57902 13.1397 5.71967 13.2803C5.86032 13.421 6.05109 13.5 6.25 13.5H6.75C6.94891 13.5 7.13968 13.421 7.28033 13.2803C7.42098 13.1397 7.5 12.9489 7.5 12.75C7.5 12.5511 7.42098 12.3603 7.28033 12.2197C7.13968 12.079 6.94891 12 6.75 12H6.25ZM5.5 9.25C5.5 9.05109 5.57902 8.86032 5.71967 8.71967C5.86032 8.57902 6.05109 8.5 6.25 8.5H6.75C6.94891 8.5 7.13968 8.57902 7.28033 8.71967C7.42098 8.86032 7.5 9.05109 7.5 9.25C7.5 9.44891 7.42098 9.63968 7.28033 9.78033C7.13968 9.92098 6.94891 10 6.75 10H6.25C6.05109 10 5.86032 9.92098 5.71967 9.78033C5.57902 9.63968 5.5 9.44891 5.5 9.25ZM6.25 5C6.05109 5 5.86032 5.07902 5.71967 5.21967C5.57902 5.36032 5.5 5.55109 5.5 5.75C5.5 5.94891 5.57902 6.13968 5.71967 6.28033C5.86032 6.42098 6.05109 6.5 6.25 6.5H6.75C6.94891 6.5 7.13968 6.42098 7.28033 6.28033C7.42098 6.13968 7.5 5.94891 7.5 5.75C7.5 5.55109 7.42098 5.36032 7.28033 5.21967C7.13968 5.07902 6.94891 5 6.75 5H6.25ZM9 12.75C9 12.5511 9.07902 12.3603 9.21967 12.2197C9.36032 12.079 9.55109 12 9.75 12H10.25C10.4489 12 10.6397 12.079 10.7803 12.2197C10.921 12.3603 11 12.5511 11 12.75C11 12.9489 10.921 13.1397 10.7803 13.2803C10.6397 13.421 10.4489 13.5 10.25 13.5H9.75C9.55109 13.5 9.36032 13.421 9.21967 13.2803C9.07902 13.1397 9 12.9489 9 12.75ZM9.75 8.5C9.55109 8.5 9.36032 8.57902 9.21967 8.71967C9.07902 8.86032 9 9.05109 9 9.25C9 9.44891 9.07902 9.63968 9.21967 9.78033C9.36032 9.92098 9.55109 10 9.75 10H10.25C10.4489 10 10.6397 9.92098 10.7803 9.78033C10.921 9.63968 11 9.44891 11 9.25C11 9.05109 10.921 8.86032 10.7803 8.71967C10.6397 8.57902 10.4489 8.5 10.25 8.5H9.75ZM9 5.75C9 5.55109 9.07902 5.36032 9.21967 5.21967C9.36032 5.07902 9.55109 5 9.75 5H10.25C10.4489 5 10.6397 5.07902 10.7803 5.21967C10.921 5.36032 11 5.55109 11 5.75C11 5.94891 10.921 6.13968 10.7803 6.28033C10.6397 6.42098 10.4489 6.5 10.25 6.5H9.75C9.55109 6.5 9.36032 6.42098 9.21967 6.28033C9.07902 6.13968 9 5.94891 9 5.75ZM13.25 12C13.0511 12 12.8603 12.079 12.7197 12.2197C12.579 12.3603 12.5 12.5511 12.5 12.75C12.5 12.9489 12.579 13.1397 12.7197 13.2803C12.8603 13.421 13.0511 13.5 13.25 13.5H13.75C13.9489 13.5 14.1397 13.421 14.2803 13.2803C14.421 13.1397 14.5 12.9489 14.5 12.75C14.5 12.5511 14.421 12.3603 14.2803 12.2197C14.1397 12.079 13.9489 12 13.75 12H13.25ZM12.5 9.25C12.5 9.05109 12.579 8.86032 12.7197 8.71967C12.8603 8.57902 13.0511 8.5 13.25 8.5H13.75C13.9489 8.5 14.1397 8.57902 14.2803 8.71967C14.421 8.86032 14.5 9.05109 14.5 9.25C14.5 9.44891 14.421 9.63968 14.2803 9.78033C14.1397 9.92098 13.9489 10 13.75 10H13.25C13.0511 10 12.8603 9.92098 12.7197 9.78033C12.579 9.63968 12.5 9.44891 12.5 9.25ZM13.25 5C13.0511 5 12.8603 5.07902 12.7197 5.21967C12.579 5.36032 12.5 5.55109 12.5 5.75C12.5 5.94891 12.579 6.13968 12.7197 6.28033C12.8603 6.42098 13.0511 6.5 13.25 6.5H13.75C13.9489 6.5 14.1397 6.42098 14.2803 6.28033C14.421 6.13968 14.5 5.94891 14.5 5.75C14.5 5.55109 14.421 5.36032 14.2803 5.21967C14.1397 5.07902 13.9489 5 13.75 5H13.25Z" fill="currentColor"/>
+                                <path d="M2 20V3C2 2.46957 2.21071 1.96086 2.58579 1.58579C2.96086 1.21071 3.46957 1 4 1H16C16.5304 1 17.0391 1.21071 17.4142 1.58579C17.7893 1.96086 18 2.46957 18 3V20C18 20.1733 17.979 20.34 17.937 20.5H20C20.1326 20.5 20.2598 20.4473 20.3536 20.3536C20.4473 20.2598 20.5 20.1326 20.5 20V12C20.5 11.9224 20.4819 11.8458 20.4472 11.7764C20.4125 11.707 20.3621 11.6466 20.3 11.6L19.8 11.225C19.6409 11.1057 19.5357 10.928 19.5075 10.7311C19.4794 10.5342 19.5307 10.3341 19.65 10.175C19.7693 10.0159 19.947 9.91067 20.1439 9.88254C20.3408 9.85441 20.5409 9.90565 20.7 10.025L21.2 10.4C21.704 10.778 22 11.37 22 12V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22H16.438C16.3823 21.9986 16.3267 21.9926 16.272 21.982C16.1827 21.994 16.092 22 16 22H12.25C12.0511 22 11.8603 21.921 11.7197 21.7803C11.579 21.6397 11.5 21.4489 11.5 21.25V19H8.5V21.25C8.5 21.4489 8.42098 21.6397 8.28033 21.7803C8.13968 21.921 7.94891 22 7.75 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20ZM4 20.5H7V18.25C7 18.0511 7.07902 17.8603 7.21967 17.7197C7.36032 17.579 7.55109 17.5 7.75 17.5H12.25C12.4489 17.5 12.6397 17.579 12.7803 17.7197C12.921 17.8603 13 18.0511 13 18.25V20.5H16C16.1326 20.5 16.2598 20.4473 16.3536 20.3536C16.4473 20.2598 16.5 20.1326 16.5 20V3C16.5 2.86739 16.4473 2.74021 16.3536 2.64645C16.2598 2.55268 16.1326 2.5 16 2.5H4C3.86739 2.5 3.74021 2.55268 3.64645 2.64645C3.55268 2.74021 3.5 2.86739 3.5 3V20C3.5 20.1326 3.55268 20.2598 3.64645 20.3536C3.74021 20.4473 3.86739 20.5 4 20.5Z" fill="currentColor"/>
+                            </svg>
+                            <input type="text" name="organization" id="organization" placeholder="Enter Organization..." required class="w-full px-4 py-2 bg-transparent outline-none border-transparent">
+                        </div>
+                    </div>
+                    <div class="w-full flex gap-[0.5rem] mb-4 px-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 10C7.25 8.74022 7.75045 7.53204 8.64124 6.64124C9.53204 5.75045 10.7402 5.25 12 5.25C13.2598 5.25 14.468 5.75045 15.3588 6.64124C16.2496 7.53204 16.75 8.74022 16.75 10C16.75 11.2598 16.2496 12.468 15.3588 13.3588C14.468 14.2496 13.2598 14.75 12 14.75C10.7402 14.75 9.53204 14.2496 8.64124 13.3588C7.75045 12.468 7.25 11.2598 7.25 10ZM12 6.75C11.138 6.75 10.3114 7.09241 9.7019 7.7019C9.09241 8.3114 8.75 9.13805 8.75 10C8.75 10.862 9.09241 11.6886 9.7019 12.2981C10.3114 12.9076 11.138 13.25 12 13.25C12.862 13.25 13.6886 12.9076 14.2981 12.2981C14.9076 11.6886 15.25 10.862 15.25 10C15.25 9.13805 14.9076 8.3114 14.2981 7.7019C13.6886 7.09241 12.862 6.75 12 6.75Z" fill="black"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.52398 8.857C3.69535 6.78397 4.63979 4.85113 6.16988 3.442C7.69997 2.03288 9.70388 1.25046 11.784 1.25H12.216C14.2961 1.25046 16.3 2.03288 17.8301 3.442C19.3602 4.85113 20.3046 6.78397 20.476 8.857C20.6666 11.1663 19.9531 13.4595 18.486 15.253L13.693 21.114C13.4879 21.3648 13.2296 21.567 12.9368 21.7057C12.644 21.8445 12.324 21.9165 12 21.9165C11.676 21.9165 11.356 21.8445 11.0632 21.7057C10.7704 21.567 10.5121 21.3648 10.307 21.114L5.51398 15.253C4.04681 13.4595 3.33334 11.1663 3.52398 8.857ZM11.784 2.75C10.0806 2.75072 8.4397 3.39165 7.18679 4.54565C5.93387 5.69965 5.16046 7.28242 5.01998 8.98C4.86126 10.9019 5.45498 12.8103 6.67598 14.303L11.469 20.165C11.5334 20.2439 11.6146 20.3074 11.7066 20.351C11.7986 20.3947 11.8991 20.4173 12.001 20.4173C12.1028 20.4173 12.2034 20.3947 12.2954 20.351C12.3874 20.3074 12.4685 20.2439 12.533 20.165L17.326 14.303C18.5463 12.81 19.1393 10.9016 18.98 8.98C18.8395 7.28225 18.0659 5.69934 16.8128 4.54531C15.5597 3.39128 13.9185 2.75047 12.215 2.75H11.784Z" fill="black"/>
+                        </svg>
+                        <input type="text" name="physical_address" id="physical_address" placeholder="Enter Address..." required class="w-full px-4 py-2 bg-transparent outline-none border-transparent">
+                    </div>
+                    <div class="w-full flex gap-[0.5rem] mb-4 items-center border border-slate-200 rounded-lg focus:outline-none focus:ring focus:ring-[#3b5362] text-[#3b5362]">
+                        <textarea name="message" id="message" placeholder="Anything want us to know?.." cols="20" rows="3" class="w-full border-transparent bg-transparent outline-none p-4"></textarea>
+                    </div>
+
+                    <div class="flex justify-center items-center">
+                        <button type="submit" id="submitBtn" class="bg-[#3b5362] rounded-md py-4 px-8 flex flex-col gap-[0.5rem] items-center text-white font-medium">
+                            <span id="btnText">Contact Us</span>
+                            <div id="loader" class="loader hidden"></div>
+                        </button>
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+       </section>
+    </main>
+
+    {% include "site/partials/footer.html" %}
+{% endblock %}
