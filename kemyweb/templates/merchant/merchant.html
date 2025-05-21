@@ -131,6 +131,17 @@
                                     <path d="M6 3.5V2.25C5.99971 2.15143 6.01891 2.05377 6.0565 1.96265C6.09409 1.87152 6.14932 1.78873 6.21903 1.71903C6.28873 1.64933 6.37152 1.59409 6.46265 1.55651C6.55377 1.51892 6.65143 1.49971 6.75 1.5H9.25C9.34857 1.49971 9.44623 1.51892 9.53735 1.55651C9.62848 1.59409 9.71127 1.64933 9.78097 1.71903C9.85068 1.78873 9.90591 1.87152 9.9435 1.96265C9.98109 2.05377 10.0003 2.15143 10 2.25V3.5M8 5.5V12.5M5.75 5.5L6 12.5M10.25 5.5L10 12.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </a>
+                            <div type="button" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2" class="">
+                                <a data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" href="#" class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.5 4C10.5717 4 9.6815 4.36875 9.02513 5.02513C8.36875 5.6815 8 6.57174 8 7.5C8 8.42826 8.36875 9.3185 9.02513 9.97487C9.6815 10.6313 10.5717 11 11.5 11C12.4283 11 13.3185 10.6313 13.9749 9.97487C14.6313 9.3185 15 8.42826 15 7.5C15 6.57174 14.6313 5.6815 13.9749 5.02513C13.3185 4.36875 12.4283 4 11.5 4ZM6 7.5C6 6.04131 6.57946 4.64236 7.61091 3.61091C8.64236 2.57946 10.0413 2 11.5 2C12.9587 2 14.3576 2.57946 15.3891 3.61091C16.4205 4.64236 17 6.04131 17 7.5C17 8.95869 16.4205 10.3576 15.3891 11.3891C14.3576 12.4205 12.9587 13 11.5 13C10.0413 13 8.64236 12.4205 7.61091 11.3891C6.57946 10.3576 6 8.95869 6 7.5ZM19 13V17H23V19H19V23H17V19H13V17H17V13H19ZM8 16C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20H12.05V22H2V20C2 18.4087 2.63214 16.8826 3.75736 15.7574C4.88258 14.6321 6.4087 14 8 14H12V16H8Z" fill="currentColor"/>
+                                    </svg>
+                                </a>
+                                <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                                    Add merchant User
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -224,6 +235,46 @@
                         <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
                     </svg>
                     Add merchant
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+
+<!--Merchant User Modal-->
+<div id="crud-modal2" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
+    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm ">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    Add a New Merchant
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal2">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5">
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant name" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter phone number" required="">
+                    </div>
+                </div>
+                <button type="submit" class="text-[#FFFFFF] inline-flex gap-[0.5rem] items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
+                    </svg>
+                    Add merchant User
                 </button>
             </form>
         </div>

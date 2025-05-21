@@ -98,7 +98,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            #AM-1
+                            1
                         </td>
                         <td class="px-6 py-4">
                             0591231412
@@ -113,13 +113,13 @@
                             30-April-2025
                         </td>
                         <td class="flex items-center px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                            <button type="button" data-modal-target="crud-modal1" data-modal-toggle="crud-modal1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M19.09 14.441V18.881C19.0898 19.5093 18.8401 20.1117 18.3959 20.5559C17.9516 21.0001 17.3492 21.2498 16.721 21.25H5.12002C4.80777 21.2499 4.49863 21.1881 4.21035 21.0681C3.92208 20.9481 3.66035 20.7724 3.44021 20.5509C3.22007 20.3295 3.04586 20.0667 2.92758 19.7778C2.80931 19.4888 2.74931 19.1793 2.75102 18.867V7.27904C2.74916 6.96729 2.80919 6.65827 2.92764 6.36988C3.04608 6.0815 3.22059 5.8195 3.44103 5.59905C3.66148 5.37861 3.92348 5.2041 4.21186 5.08566C4.50025 4.96721 4.80927 4.90718 5.12102 4.90904H9.56002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M19.09 8.99503L15.005 4.90903M6.83502 15.803V13.638C6.83702 13.281 6.97902 12.938 7.23002 12.685L16.762 3.15303C16.8885 3.02513 17.0391 2.9236 17.2051 2.8543C17.3711 2.78501 17.5492 2.74933 17.729 2.74933C17.9089 2.74933 18.087 2.78501 18.253 2.8543C18.419 2.9236 18.5695 3.02513 18.696 3.15303L20.847 5.30403C20.9749 5.43051 21.0765 5.5811 21.1457 5.74709C21.215 5.91307 21.2507 6.09116 21.2507 6.27103C21.2507 6.4509 21.215 6.62898 21.1457 6.79497C21.0765 6.96096 20.9749 7.11155 20.847 7.23803L11.315 16.77C11.0616 17.0217 10.7192 17.1636 10.362 17.165H8.19702C8.01809 17.1653 7.84086 17.1302 7.6755 17.0619C7.51013 16.9935 7.35988 16.8932 7.23336 16.7667C7.10683 16.6402 7.00652 16.4899 6.93816 16.3246C6.86981 16.1592 6.83476 15.982 6.83502 15.803Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                            </a>
-                            <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline ms-3">
+                            </button>
+                            <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="font-medium cursor-pointer text-red-600 hover:underline ms-3">
                                 <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.5 3.5L4.125 13.5C4.15469 14.0778 4.575 14.5 5.125 14.5H10.875C11.4272 14.5 11.8397 14.0778 11.875 13.5L12.5 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M2.5 3.5H13.5H2.5Z" fill="currentColor"/>
@@ -127,6 +127,17 @@
                                     <path d="M6 3.5V2.25C5.99971 2.15143 6.01891 2.05377 6.0565 1.96265C6.09409 1.87152 6.14932 1.78873 6.21903 1.71903C6.28873 1.64933 6.37152 1.59409 6.46265 1.55651C6.55377 1.51892 6.65143 1.49971 6.75 1.5H9.25C9.34857 1.49971 9.44623 1.51892 9.53735 1.55651C9.62848 1.59409 9.71127 1.64933 9.78097 1.71903C9.85068 1.78873 9.90591 1.87152 9.9435 1.96265C9.98109 2.05377 10.0003 2.15143 10 2.25V3.5M8 5.5V12.5M5.75 5.5L6 12.5M10.25 5.5L10 12.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </a>
+                            <div class="">
+                                <a data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" href="#" class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.5 4C10.5717 4 9.6815 4.36875 9.02513 5.02513C8.36875 5.6815 8 6.57174 8 7.5C8 8.42826 8.36875 9.3185 9.02513 9.97487C9.6815 10.6313 10.5717 11 11.5 11C12.4283 11 13.3185 10.6313 13.9749 9.97487C14.6313 9.3185 15 8.42826 15 7.5C15 6.57174 14.6313 5.6815 13.9749 5.02513C13.3185 4.36875 12.4283 4 11.5 4ZM6 7.5C6 6.04131 6.57946 4.64236 7.61091 3.61091C8.64236 2.57946 10.0413 2 11.5 2C12.9587 2 14.3576 2.57946 15.3891 3.61091C16.4205 4.64236 17 6.04131 17 7.5C17 8.95869 16.4205 10.3576 15.3891 11.3891C14.3576 12.4205 12.9587 13 11.5 13C10.0413 13 8.64236 12.4205 7.61091 11.3891C6.57946 10.3576 6 8.95869 6 7.5ZM19 13V17H23V19H19V23H17V19H13V17H17V13H19ZM8 16C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20H12.05V22H2V20C2 18.4087 2.63214 16.8826 3.75736 15.7574C4.88258 14.6321 6.4087 14 8 14H12V16H8Z" fill="currentColor"/>
+                                    </svg>
+                                </a>
+                                <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                                    Add as Admin
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -252,7 +263,77 @@
     </div>
 </div> 
 
-<!--Modal-User-Delete-->
+<!--Modal Edit Meerchant-->
+<div id="crud-modal1" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
+    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    Edit User
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal1">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5">
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Phone Number</label>
+                        <div class="flex items-center gap-[0.5rem] text-[#3b5362] relative">
+                            <svg width="24" height="24" class="absolute left-[0.5rem]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.733 2.04299C6.95 0.832991 8.954 1.04799 9.973 2.40999L11.235 4.09399C12.065 5.20199 11.991 6.74999 11.006 7.72899L10.768 7.96699C10.741 8.0669 10.7383 8.17181 10.76 8.27299C10.823 8.68099 11.164 9.54499 12.592 10.965C14.02 12.385 14.89 12.725 15.304 12.789C15.4083 12.81 15.516 12.8069 15.619 12.78L16.027 12.374C16.903 11.504 18.247 11.341 19.331 11.93L21.241 12.97C22.878 13.858 23.291 16.082 21.951 17.415L20.53 18.827C20.082 19.272 19.48 19.643 18.746 19.712C16.936 19.881 12.719 19.665 8.286 15.258C4.149 11.144 3.355 7.55599 3.254 5.78799C3.204 4.89399 3.626 4.13799 4.164 3.60399L5.733 2.04299ZM8.773 3.30899C8.266 2.63199 7.322 2.57799 6.79 3.10699L5.22 4.66699C4.89 4.99499 4.732 5.35699 4.752 5.70299C4.832 7.10799 5.472 10.345 9.344 14.195C13.406 18.233 17.157 18.354 18.607 18.218C18.903 18.191 19.197 18.037 19.472 17.764L20.892 16.351C21.47 15.777 21.343 14.731 20.525 14.287L18.615 13.248C18.087 12.962 17.469 13.056 17.085 13.438L16.63 13.891L16.1 13.359C16.63 13.891 16.629 13.892 16.628 13.892L16.627 13.894L16.624 13.897L16.617 13.903L16.602 13.917C16.5598 13.9562 16.5143 13.9916 16.466 14.023C16.386 14.076 16.28 14.135 16.147 14.184C15.877 14.285 15.519 14.339 15.077 14.271C14.21 14.138 13.061 13.547 11.534 12.029C10.008 10.511 9.412 9.36899 9.278 8.50299C9.209 8.06099 9.264 7.70299 9.366 7.43299C9.42213 7.28106 9.50251 7.13922 9.604 7.01299L9.636 6.97799L9.65 6.96299L9.656 6.95699L9.659 6.95399L9.661 6.95199L9.949 6.66599C10.377 6.23899 10.437 5.53199 10.034 4.99299L8.773 3.30899Z" fill="currentColor"/>
+                            </svg>
+                            <input type="tel" name="phone" disabled id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full pl-[2.5rem] p-2.5 " placeholder="Enter phone number" required="">
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">First Name</label>
+                        <div class="flex items-center gap-[0.5rem] text-[#3b5362] relative">
+                            <svg width="24" height="24" class="absolute left-[0.5rem]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C10.7402 1.25 9.53204 1.75044 8.64124 2.64124C7.75044 3.53204 7.24999 4.74022 7.24999 6C7.24999 7.25978 7.75044 8.46796 8.64124 9.35876C9.53204 10.2496 10.7402 10.75 12 10.75C13.2598 10.75 14.468 10.2496 15.3588 9.35876C16.2495 8.46796 16.75 7.25978 16.75 6C16.75 4.74022 16.2495 3.53204 15.3588 2.64124C14.468 1.75044 13.2598 1.25 12 1.25ZM8.74999 6C8.74999 5.13805 9.0924 4.3114 9.7019 3.7019C10.3114 3.09241 11.138 2.75 12 2.75C12.8619 2.75 13.6886 3.09241 14.2981 3.7019C14.9076 4.3114 15.25 5.13805 15.25 6C15.25 6.86195 14.9076 7.6886 14.2981 8.2981C13.6886 8.90759 12.8619 9.25 12 9.25C11.138 9.25 10.3114 8.90759 9.7019 8.2981C9.0924 7.6886 8.74999 6.86195 8.74999 6ZM12 12.25C9.687 12.25 7.55499 12.776 5.97599 13.664C4.41999 14.54 3.24999 15.866 3.24999 17.5V17.602C3.24899 18.764 3.24799 20.222 4.52699 21.264C5.15599 21.776 6.03699 22.141 7.22699 22.381C8.41899 22.623 9.974 22.75 12 22.75C14.026 22.75 15.58 22.623 16.774 22.381C17.964 22.141 18.844 21.776 19.474 21.264C20.753 20.222 20.751 18.764 20.75 17.602V17.5C20.75 15.866 19.58 14.54 18.025 13.664C16.445 12.776 14.314 12.25 12 12.25ZM4.74999 17.5C4.74999 16.649 5.37199 15.725 6.71099 14.972C8.02699 14.232 9.895 13.75 12.001 13.75C14.105 13.75 15.973 14.232 17.289 14.972C18.629 15.725 19.25 16.649 19.25 17.5C19.25 18.808 19.21 19.544 18.526 20.1C18.156 20.402 17.536 20.697 16.476 20.911C15.419 21.125 13.974 21.25 12 21.25C10.026 21.25 8.58 21.125 7.52399 20.911C6.46399 20.697 5.84399 20.402 5.47399 20.101C4.78999 19.544 4.74999 18.808 4.74999 17.5Z" fill="currentColor"/>
+                            </svg>
+                            <input type="text" name="first_name" disabled id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full pl-[2.5rem] p-2.5 " placeholder="Enter first name" required="">
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Last Name</label>
+                        <div class="flex items-center gap-[0.5rem] text-[#3b5362] relative">
+                            <svg width="24" height="24" class="absolute left-[0.5rem]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C10.7402 1.25 9.53204 1.75044 8.64124 2.64124C7.75044 3.53204 7.24999 4.74022 7.24999 6C7.24999 7.25978 7.75044 8.46796 8.64124 9.35876C9.53204 10.2496 10.7402 10.75 12 10.75C13.2598 10.75 14.468 10.2496 15.3588 9.35876C16.2495 8.46796 16.75 7.25978 16.75 6C16.75 4.74022 16.2495 3.53204 15.3588 2.64124C14.468 1.75044 13.2598 1.25 12 1.25ZM8.74999 6C8.74999 5.13805 9.0924 4.3114 9.7019 3.7019C10.3114 3.09241 11.138 2.75 12 2.75C12.8619 2.75 13.6886 3.09241 14.2981 3.7019C14.9076 4.3114 15.25 5.13805 15.25 6C15.25 6.86195 14.9076 7.6886 14.2981 8.2981C13.6886 8.90759 12.8619 9.25 12 9.25C11.138 9.25 10.3114 8.90759 9.7019 8.2981C9.0924 7.6886 8.74999 6.86195 8.74999 6ZM12 12.25C9.687 12.25 7.55499 12.776 5.97599 13.664C4.41999 14.54 3.24999 15.866 3.24999 17.5V17.602C3.24899 18.764 3.24799 20.222 4.52699 21.264C5.15599 21.776 6.03699 22.141 7.22699 22.381C8.41899 22.623 9.974 22.75 12 22.75C14.026 22.75 15.58 22.623 16.774 22.381C17.964 22.141 18.844 21.776 19.474 21.264C20.753 20.222 20.751 18.764 20.75 17.602V17.5C20.75 15.866 19.58 14.54 18.025 13.664C16.445 12.776 14.314 12.25 12 12.25ZM4.74999 17.5C4.74999 16.649 5.37199 15.725 6.71099 14.972C8.02699 14.232 9.895 13.75 12.001 13.75C14.105 13.75 15.973 14.232 17.289 14.972C18.629 15.725 19.25 16.649 19.25 17.5C19.25 18.808 19.21 19.544 18.526 20.1C18.156 20.402 17.536 20.697 16.476 20.911C15.419 21.125 13.974 21.25 12 21.25C10.026 21.25 8.58 21.125 7.52399 20.911C6.46399 20.697 5.84399 20.402 5.47399 20.101C4.78999 19.544 4.74999 18.808 4.74999 17.5Z" fill="currentColor"/>
+                            </svg>
+                            <input type="text" name="last_name" disabled id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full pl-[2.5rem] p-2.5 " placeholder="Enter last name" required="">
+                        </div>
+                    </div>
+                    <label for="role" class="col-span-2 block mb-2 text-sm font-medium text-gray-900 ">Role</label>
+                    <div class="col-span-1">
+                        <div class="flex items-center ps-4 border border-gray-200 rounded-lg">
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="p-2.5 text-blue-600 bg-gray-100 border-gray-300 rounded-lg focus:ring-blue-500 focus:ring-2 ">
+                            <label for="bordered-checkbox-1" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 ">Super User</label>
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <div class="flex items-center ps-4 border border-gray-200 rounded-lg">
+                            <input checked id="is_merchant" type="checkbox" value="" name="is_merchant" class="p-2.5 text-blue-600 bg-gray-100 border-gray-300 rounded-lg focus:ring-blue-500 focus:ring-2 ">
+                            <label for="is_merchant" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 ">Merchant</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="text-[#FFFFFF] inline-flex items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    Update User
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+
+<!--delete-User-modal-->
 <div id="popup-modal" tabindex="-1" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full ">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow-sm">
