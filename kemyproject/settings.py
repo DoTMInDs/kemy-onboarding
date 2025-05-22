@@ -30,6 +30,8 @@ DEBUG = bool(os.environ.get("DEBUG", False))
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
+AUTH_GRPC_SERVER=os.environ.get('AUTH_GRPC_SERVER')
+INVOICE_GRPC_SERVER=os.environ.get('INVOICE_GRPC_SERVER')
 
 # Application definition
 
