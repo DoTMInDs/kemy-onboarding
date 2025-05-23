@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.apps import apps
 from google.protobuf.empty_pb2 import Empty
@@ -9,7 +8,7 @@ auth_channel = apps.get_app_config('account').auth_channel
 auth_stub=auth_pb2_grpc.AuthStub(auth_channel)
 
 # Create your views here.
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         try:
             # Call auth service
@@ -32,6 +31,7 @@ def login(request):
             return redirect(next_url)
             
         except Exception as e:
+            print('login failed')
             messages.error(request, f"Login failed: {str(e)}")
-            return render(request, 'login.html')
-    return render(request, 'account/registration/login.html')
+            return render(request, 'account/login.html')
+    return render(request, 'account/login.html')
