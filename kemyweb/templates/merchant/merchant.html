@@ -51,13 +51,27 @@
                     </ul>
                 </div>
             </div>
-            <label for="table-search" class="sr-only">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-500 " aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+            <form method="get" class="relative w-full sm:w-80">
+                <div class="flex items-center max-w-sm mx-auto">   
+                    <label for="simple-search" class="sr-only">Search</label>
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <input type="search" name="phone" value="{{ phone_search }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2"
+                            placeholder="Search by mobile number" required>
+                    </div>
+                    <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                        <span class="sr-only">Search</span>
+                    </button>
                 </div>
-                <input type="text" id="table-search" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search for items">
-            </div>
+            </form>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 ">
@@ -127,63 +141,80 @@
                         <td class="px-6 py-4">
                             {{ m.create_time|date:"d-M-Y H:i" }}
                         </td>
-                        <td class="flex items-center px-6 py-4">
-                            <a type="button" data-modal-target="edit-merchant-modal-{{m.id}}" data-modal-toggle="edit-merchant-modal-{{m.id}}" class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19.09 14.441V18.881C19.0898 19.5093 18.8401 20.1117 18.3959 20.5559C17.9516 21.0001 17.3492 21.2498 16.721 21.25H5.12002C4.80777 21.2499 4.49863 21.1881 4.21035 21.0681C3.92208 20.9481 3.66035 20.7724 3.44021 20.5509C3.22007 20.3295 3.04586 20.0667 2.92758 19.7778C2.80931 19.4888 2.74931 19.1793 2.75102 18.867V7.27904C2.74916 6.96729 2.80919 6.65827 2.92764 6.36988C3.04608 6.0815 3.22059 5.8195 3.44103 5.59905C3.66148 5.37861 3.92348 5.2041 4.21186 5.08566C4.50025 4.96721 4.80927 4.90718 5.12102 4.90904H9.56002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M19.09 8.99503L15.005 4.90903M6.83502 15.803V13.638C6.83702 13.281 6.97902 12.938 7.23002 12.685L16.762 3.15303C16.8885 3.02513 17.0391 2.9236 17.2051 2.8543C17.3711 2.78501 17.5492 2.74933 17.729 2.74933C17.9089 2.74933 18.087 2.78501 18.253 2.8543C18.419 2.9236 18.5695 3.02513 18.696 3.15303L20.847 5.30403C20.9749 5.43051 21.0765 5.5811 21.1457 5.74709C21.215 5.91307 21.2507 6.09116 21.2507 6.27103C21.2507 6.4509 21.215 6.62898 21.1457 6.79497C21.0765 6.96096 20.9749 7.11155 20.847 7.23803L11.315 16.77C11.0616 17.0217 10.7192 17.1636 10.362 17.165H8.19702C8.01809 17.1653 7.84086 17.1302 7.6755 17.0619C7.51013 16.9935 7.35988 16.8932 7.23336 16.7667C7.10683 16.6402 7.00652 16.4899 6.93816 16.3246C6.86981 16.1592 6.83476 15.982 6.83502 15.803Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                            <a data-modal-target="delete-modal-{{m.id}}" data-modal-toggle="delete-modal-{{m.id}}" type="button" 
-                                class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 4C8.93913 4 7.92172 4.42143 7.17157 5.17157C6.42143 5.92172 6 6.93913 6 8C6 9.06087 6.42143 10.0783 7.17157 10.8284C7.92172 11.5786 8.93913 12 10 12C11.0609 12 12.0783 11.5786 12.8284 10.8284C13.5786 10.0783 14 9.06087 14 8C14 6.93913 13.5786 5.92172 12.8284 5.17157C12.0783 4.42143 11.0609 4 10 4ZM10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6ZM10 13C7.33 13 2 14.33 2 17V20H11.5C11.2483 19.394 11.0899 18.7534 11.03 18.1H3.9V17C3.9 16.36 7.03 14.9 10 14.9C10.5 14.9 11 14.95 11.5 15.03C11.7566 14.3985 12.1109 13.8114 12.55 13.29C11.61 13.1 10.71 13 10 13ZM17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13ZM17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5ZM14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z" fill="currentColor"/>
-                                </svg>
-                            </a>
-                            <div type="button" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2" class="">
-                                <a data-tooltip-target="tooltip-light-{{m.id}}" data-tooltip-style="light" type="button" href="#" class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M11.5 4C10.5717 4 9.6815 4.36875 9.02513 5.02513C8.36875 5.6815 8 6.57174 8 7.5C8 8.42826 8.36875 9.3185 9.02513 9.97487C9.6815 10.6313 10.5717 11 11.5 11C12.4283 11 13.3185 10.6313 13.9749 9.97487C14.6313 9.3185 15 8.42826 15 7.5C15 6.57174 14.6313 5.6815 13.9749 5.02513C13.3185 4.36875 12.4283 4 11.5 4ZM6 7.5C6 6.04131 6.57946 4.64236 7.61091 3.61091C8.64236 2.57946 10.0413 2 11.5 2C12.9587 2 14.3576 2.57946 15.3891 3.61091C16.4205 4.64236 17 6.04131 17 7.5C17 8.95869 16.4205 10.3576 15.3891 11.3891C14.3576 12.4205 12.9587 13 11.5 13C10.0413 13 8.64236 12.4205 7.61091 11.3891C6.57946 10.3576 6 8.95869 6 7.5ZM19 13V17H23V19H19V23H17V19H13V17H17V13H19ZM8 16C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20H12.05V22H2V20C2 18.4087 2.63214 16.8826 3.75736 15.7574C4.88258 14.6321 6.4087 14 8 14H12V16H8Z" fill="currentColor"/>
+                        <td >
+                            <div class="flex  items-center">
+                                <a type="button" data-modal-target="edit-merchant-modal-{{m.id}}" data-modal-toggle="edit-merchant-modal-{{m.id}}" class="font-medium cursor-pointer text-white bg-blue-600 w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:bg-blue-500 ms-3">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19.09 14.441V18.881C19.0898 19.5093 18.8401 20.1117 18.3959 20.5559C17.9516 21.0001 17.3492 21.2498 16.721 21.25H5.12002C4.80777 21.2499 4.49863 21.1881 4.21035 21.0681C3.92208 20.9481 3.66035 20.7724 3.44021 20.5509C3.22007 20.3295 3.04586 20.0667 2.92758 19.7778C2.80931 19.4888 2.74931 19.1793 2.75102 18.867V7.27904C2.74916 6.96729 2.80919 6.65827 2.92764 6.36988C3.04608 6.0815 3.22059 5.8195 3.44103 5.59905C3.66148 5.37861 3.92348 5.2041 4.21186 5.08566C4.50025 4.96721 4.80927 4.90718 5.12102 4.90904H9.56002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M19.09 8.99503L15.005 4.90903M6.83502 15.803V13.638C6.83702 13.281 6.97902 12.938 7.23002 12.685L16.762 3.15303C16.8885 3.02513 17.0391 2.9236 17.2051 2.8543C17.3711 2.78501 17.5492 2.74933 17.729 2.74933C17.9089 2.74933 18.087 2.78501 18.253 2.8543C18.419 2.9236 18.5695 3.02513 18.696 3.15303L20.847 5.30403C20.9749 5.43051 21.0765 5.5811 21.1457 5.74709C21.215 5.91307 21.2507 6.09116 21.2507 6.27103C21.2507 6.4509 21.215 6.62898 21.1457 6.79497C21.0765 6.96096 20.9749 7.11155 20.847 7.23803L11.315 16.77C11.0616 17.0217 10.7192 17.1636 10.362 17.165H8.19702C8.01809 17.1653 7.84086 17.1302 7.6755 17.0619C7.51013 16.9935 7.35988 16.8932 7.23336 16.7667C7.10683 16.6402 7.00652 16.4899 6.93816 16.3246C6.86981 16.1592 6.83476 15.982 6.83502 15.803Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
-                                <div id="tooltip-light-{{m.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
-                                    Add merchant User
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
+                                <a href="{% url "merchant_detail" merchant_id=m.id %}" class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 5.27L3.28 4L20 20.72L18.73 22L15.65 18.92C14.5 19.3 13.28 19.5 12 19.5C7 19.5 2.73 16.39 1 12C1.69 10.24 2.79 8.69 4.19 7.46L2 5.27ZM12 9C12.7956 9 13.5587 9.31607 14.1213 9.87868C14.6839 10.4413 15 11.2044 15 12C15.0005 12.3406 14.943 12.6787 14.83 13L11 9.17C11.3213 9.05698 11.6594 8.99949 12 9ZM12 4.5C17 4.5 21.27 7.61 23 12C22.1834 14.0729 20.7966 15.8723 19 17.19L17.58 15.76C18.9629 14.8034 20.0783 13.5091 20.82 12C20.0117 10.3499 18.7565 8.95963 17.1974 7.98735C15.6382 7.01508 13.8375 6.49976 12 6.5C10.91 6.5 9.84 6.68 8.84 7L7.3 5.47C8.74 4.85 10.33 4.5 12 4.5ZM3.18 12C3.98835 13.6501 5.24345 15.0404 6.80264 16.0126C8.36182 16.9849 10.1625 17.5002 12 17.5C12.69 17.5 13.37 17.43 14 17.29L11.72 15C11.0242 14.9254 10.3748 14.6149 9.87997 14.12C9.38512 13.6252 9.07458 12.9758 9 12.28L5.6 8.87C4.61 9.72 3.78 10.78 3.18 12Z" fill="currentColor"/>
+                                    </svg>
+                                </a>
                             </div>
+                            
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-        <nav class="flex justify-between flex-wrap items-center flex-col md:flex-row pt-4" aria-label="Table navigation">
-            <div class="text-sm font-normal text-gray-500 mb-4 ">Showing 
-                <span class="font-semibold text-gray-900 ">1-10</span> of 
-                <span class="font-semibold text-gray-900 ">1000</span>
+        <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
+            <div class="text-sm font-normal text-gray-500">
+                Showing 
+                <span class="font-semibold text-gray-900">{{ merchants.start_index }}-{{ merchants.end_index }}</span> of 
+                <span class="font-semibold text-gray-900">{{ merchants.paginator.count }}</span>
             </div>
             <ul class="inline-flex -space-x-px text-sm h-8">
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ">Previous</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">1</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">2</a>
-                </li>
-                <li>
-                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-gray-50 border border-gray-300 bg-slate-600 hover:bg-blue-100 hover:text-blue-700 ">3</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">4</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">5</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 ">Next</a>
-                </li>
+                {% if merchants.has_previous %}
+                    <li>
+                        <a href="?page={{ merchants.previous_page_number }}" 
+                           class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                            Previous
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300 bg-white border border-gray-200 rounded-s-lg cursor-not-allowed">
+                            Previous
+                        </span>
+                    </li>
+                {% endif %}
+                
+                {% for num in merchants.paginator.page_range %}
+                    {% if merchants.number == num %}
+                        <li>
+                            <span class="flex items-center justify-center px-3 h-8 text-gray-50 border border-gray-300 bg-slate-600 hover:bg-blue-100 hover:text-blue-700">
+                                {{ num }}
+                            </span>
+                        </li>
+                    {% elif num > merchants.number|add:'-3' and num < merchants.number|add:'3' %}
+                        <li>
+                            <a href="?page={{ num }}" 
+                               class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if merchants.has_next %}
+                    <li>
+                        <a href="?page={{ merchants.next_page_number }}" 
+                           class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                            Next
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-300 bg-white border border-gray-200 rounded-e-lg cursor-not-allowed">
+                            Next
+                        </span>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </div>
@@ -256,86 +287,6 @@
     </div>
 </div> 
 
-<!--Merchant User Modal-->
-<div id="crud-modal2" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
-    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow-sm ">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">
-                    Add a New Merchant
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal2">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <form class="p-4 md:p-5">
-                <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter phone number" required="">
-                    </div>
-                </div>
-                <button type="submit" class="text-[#FFFFFF] inline-flex gap-[0.5rem] items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
-                    </svg>
-                    Add merchant User
-                </button>
-            </form>
-        </div>
-    </div>
-</div> 
-
-<!--Merchant User Modal-->
-<div id="crud-modal2" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
-    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow-sm ">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">
-                    Add a New Merchant
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal2">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <form class="p-4 md:p-5">
-                <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant name" required="">
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter phone number" required="">
-                    </div>
-                </div>
-                <button type="submit" class="text-[#FFFFFF] inline-flex gap-[0.5rem] items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
-                    </svg>
-                    Add merchant User
-                </button>
-            </form>
-        </div>
-    </div>
-</div> 
-
 <!--Modal Edit Merchant-->
 {% for m in merchants %}
 <div id="edit-merchant-modal-{{m.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
@@ -359,7 +310,7 @@
                 {% csrf_token %}
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <label for="name-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                        <label for="name-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Merchant Name</label>
                         <input type="text" name="name" id="name-{{m.id}}" value="{{m.name}}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
                                placeholder="Enter merchant name" required>

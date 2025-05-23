@@ -3,6 +3,7 @@ from account.forms import BusinessContactForm
 from django.contrib import messages
 from django.apps import apps
 from google.protobuf.empty_pb2 import Empty
+from django.core.paginator import Paginator
 from v1.auth import auth_pb2_grpc,auth_pb2
 from v1.invoice import invoice_pb2_grpc,invoice_pb2,common_pb2
 import grpc
@@ -10,6 +11,7 @@ from django.core.files.storage import default_storage
 from django.conf import settings
 import os
 import uuid
+
 
 auth_channel = apps.get_app_config('kemyweb').auth_channel
 auth_stub=auth_pb2_grpc.AuthStub(auth_channel)
@@ -27,6 +29,7 @@ def refresh_token(request):
             auth_pb2.GetNewAccessTokenRequest(refresh_token=refresh_token)
         )
         request.session['access_token'] = response.access_token
+        request.session['auth_token'] = response.access_token
         return True
     except grpc.RpcError:
         return False
@@ -117,8 +120,14 @@ def merchant(request):
         
         # Get list of merchants
         response = invoice_stub.ListMerchants(Empty(), metadata=metadata)
+        merchant_list = list(response.merchants)  # Convert to list for pagination
+        
+        # Pagination
+        paginator = Paginator(merchant_list, 10)  # Show 10 merchants per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         return render(request, 'merchant/merchant.html', {
-            'merchants': response.merchants
+            'merchants': page_obj
         })
     except grpc.RpcError as e:
         if e.code() == grpc.StatusCode.UNAUTHENTICATED:
@@ -126,6 +135,100 @@ def merchant(request):
             return redirect('login')
         messages.error(request, "Failed to load merchants")
         return render(request, 'merchant/merchant.html', {'merchants': []})
+
+def merchant_detail(request, merchant_id):
+    if 'auth_token' not in request.session:
+        return redirect(f"/login?next={request.path}")
+    metadata = [('authorization', f"Bearer {request.session['auth_token']}")]
+    
+    try:
+        # Get merchant details
+        merchant_response = invoice_stub.GetMerchant(invoice_pb2.GetMerchantRequest(id=merchant_id), metadata=metadata)
+      
+        # Initialize variables
+        user = None
+        error = None
+        phone_search = request.GET.get('phone', '').strip()
+        
+        if phone_search:
+            try:
+                # Use GetUserByMobile from your proto file
+                user = auth_stub.GetUserByMobile(
+                    auth_pb2.GetUserByMobileRequest(mobile=phone_search),
+                    metadata=metadata
+                )
+            except grpc.RpcError as e:
+                error = f"Error searching user: {e.details()}"
+                
+        if request.method == 'POST' and 'add_user' in request.POST:
+            try:
+                create_request = invoice_pb2.CreateMerchantUserRequest(
+                    merchant_user=common_pb2.MerchantUser(
+                        merchant_id=merchant_id,
+                        user_id=int(request.POST.get('user_id')),
+                    )
+                )
+                print("POST data:", request.POST)  
+                print("Creating merchant user:", create_request)  
+                invoice_stub.CreateMerchantUser(create_request, metadata=metadata)
+                messages.success(request, 'User added successfully!')
+                return redirect('merchant_detail', merchant_id=merchant_id)
+            except grpc.RpcError as e:
+                messages.error(request, f"Failed to add user: {e.details()}")
+         # Get current merchant users
+        merchant_users_response = invoice_stub.ListMerchantUsers(
+            invoice_pb2.ListMerchantUsersRequest(merchant_id=merchant_id),
+            metadata=metadata
+        )
+        # Get user details for each merchant user
+        merchant_users_data = []
+        for mu in merchant_users_response.merchant_users:
+            try:
+                # Get user details from auth service
+                user_response = auth_stub.GetUser(
+                    auth_pb2.GetUserRequest(user_id=mu.user_id),
+                    metadata=metadata
+                )
+                merchant_users_data.append({
+                    'merchant_user_id': mu.id,  # From MerchantUser
+                    'merchant_id': mu.merchant_id,  # From MerchantUser
+                    'user_id': mu.user_id,  # From MerchantUser
+                    'first_name': user_response.first_name,
+                    'last_name': user_response.last_name,
+                    'mobile': user_response.mobile,
+                    'is_verified': user_response.is_verified,
+                    'is_admin': user_response.is_admin,
+                    'is_super_user': user_response.is_super_user
+                })
+            except grpc.RpcError as e:
+                merchant_users_data.append({
+                    'merchant_user_id': mu.id,
+                    'merchant_id': mu.merchant_id,
+                    'user_id': mu.user_id,
+                    'first_name': 'Unknown',
+                    'last_name': 'User',
+                    'mobile': 'N/A',
+                    'is_admin': False,
+                    'is_super_user': False
+                })
+        page_number = request.GET.get('page', 1)
+        paginator = Paginator(merchant_users_data, 3)  # Show 10 users per page
+        page_obj = paginator.get_page(page_number)
+        context = {
+            'merchant': merchant_response.merchant,
+            'merchant_users': page_obj,
+            'searched_user': user,
+            'phone_search': phone_search,
+            'error': error
+        }
+        return render(request, 'merchant/merchant_detail.html', context)
+    except grpc.RpcError as e:
+        if e.code() == grpc.StatusCode.UNAUTHENTICATED:
+            del request.session['auth_token']
+            return redirect('login')
+        messages.error(request, f"Failed to load merchant details: {e.details()}")
+        return redirect('dashboard')
+
 
 def edit_merchant(request, merchant_id):
     if 'auth_token' not in request.session:
@@ -202,22 +305,61 @@ def merchant_account(request):
     return render(request, 'merchant/merchant_account.html')
 
 def user_management(request):
-    response = auth_stub.ListUsers(Empty())
+    user_response = auth_stub.ListUsers(Empty())
+    user_list = list(user_response.users)
+    
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(user_list, 10)  # Show 10 users per page
+    page_obj = paginator.get_page(page_number)
     context = {
-        'users': response.users  
+        'users': page_obj  
     }
     return render(request, 'merchant/user_management.html', context)
 
 def edit_user_management(request, pk):
-    if request.method == 'POST':
-        response = auth_stub.ListUsers(Empty(),pk=pk)
-        if response.is_valid():
-            response.save()
-            return redirect('user_management')
-    context = {
-        'users': response.users
-    }
-    return render(request, 'merchant/edit_user_management.html',context)
+    if 'auth_token' not in request.session:
+        return redirect(f"/login?next={request.path}")
+    
+    metadata = [('authorization', f'Bearer {request.session["auth_token"]}')]
+    
+    try:
+        # Get the user details
+        user = auth_stub.GetUser(
+            auth_pb2.GetUserRequest(user_id=pk),
+            metadata=metadata
+        )
+        
+        if request.method == 'POST':
+            try:
+                # Create update request
+                update_request = auth_pb2.UpdateUserRequest(
+                    user_id=pk,
+                    first_name=request.POST.get('first_name', user.first_name),
+                    last_name=request.POST.get('last_name', user.last_name),
+                    is_admin=request.POST.get('is_admin') == 'on',
+                    is_super_user=request.POST.get('is_super_user') == 'on'
+                )
+                
+                # Call the gRPC service to update user
+                updated_user = auth_stub.UpdateUser(update_request, metadata=metadata)
+                messages.success(request, 'User updated successfully!')
+                return redirect('user_management')
+                
+            except grpc.RpcError as e:
+                messages.error(request, f"Failed to update user: {e.details()}")
+        
+        context = {
+            'user': user,
+            'pk': pk
+        }
+        return render(request, 'merchant/edit_user_management.html', context)
+        
+    except grpc.RpcError as e:
+        if e.code() == grpc.StatusCode.UNAUTHENTICATED:
+            del request.session['auth_token']
+            return redirect('login')
+        messages.error(request, f"Failed to load user details: {e.details()}")
+        return redirect('user_management')
 
 def delete_user_management(request, pk):
     if request.method == 'POST':

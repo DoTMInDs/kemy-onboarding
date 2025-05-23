@@ -22,6 +22,7 @@ def login(request):
             # Store tokens in session
             request.session['auth_token'] = response.access_token
             request.session['refresh_token'] = response.refresh_token
+            request.session['access_token'] = response.access_token
             
             # Verify session is saved
             print("Token stored:", request.session.get('auth_token'))  # Debug print
