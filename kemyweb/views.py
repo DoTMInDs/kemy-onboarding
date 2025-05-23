@@ -85,6 +85,38 @@ def merchant(request):
         return redirect(f"/login?next={request.path}")
     try:
         metadata = [('authorization', f'Bearer {request.session["auth_token"]}')]
+        search_query = request.GET.get('search', '').strip()
+        
+        # Get list of merchants
+        # Convert to list for pagination
+        response = invoice_stub.ListMerchants(Empty(), metadata=metadata)
+        merchant_list = list(response.merchants) 
+        
+        if search_query:
+            try:
+                # Try searching by ID first
+                try:
+                    merchant_id = int(search_query)
+                    merchant = invoice_stub.GetMerchant(
+                        invoice_pb2.GetMerchantRequest(id=merchant_id),
+                        metadata=metadata
+                    )
+                    merchant_list = [merchant.merchant]
+                except ValueError:
+                    # If not a number, search by name or contact info
+                    merchant_list = [
+                        m for m in merchant_list 
+                        if (search_query.lower() in m.name.lower()) or 
+                           (search_query in m.contact_info)
+                    ]
+            except grpc.RpcError as e:
+                if e.code() == grpc.StatusCode.NOT_FOUND:
+                    messages.info(request, "No merchant found with that ID")
+                else:
+                    messages.error(request, f"Search error: {e.details()}")
+                merchant_list = []
+        
+        
         if request.method == 'POST':
             # Create merchant request with correct field names from proto
             update_request = invoice_pb2.CreateMerchantRequest(
@@ -118,16 +150,14 @@ def merchant(request):
             except grpc.RpcError as e:
                 messages.error(request, f"Failed to create merchant: {e.details()}")
         
-        # Get list of merchants
-        response = invoice_stub.ListMerchants(Empty(), metadata=metadata)
-        merchant_list = list(response.merchants)  # Convert to list for pagination
-        
         # Pagination
         paginator = Paginator(merchant_list, 10)  # Show 10 merchants per page
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request, 'merchant/merchant.html', {
-            'merchants': page_obj
+            'merchants': page_obj,
+            'search_query': search_query,
+            'id_search': search_query,
         })
     except grpc.RpcError as e:
         if e.code() == grpc.StatusCode.UNAUTHENTICATED:
@@ -305,16 +335,59 @@ def merchant_account(request):
     return render(request, 'merchant/merchant_account.html')
 
 def user_management(request):
-    user_response = auth_stub.ListUsers(Empty())
-    user_list = list(user_response.users)
+    if 'auth_token' not in request.session:
+        return redirect(f"/login?next={request.path}")
     
-    page_number = request.GET.get('page', 1)
-    paginator = Paginator(user_list, 10)  # Show 10 users per page
-    page_obj = paginator.get_page(page_number)
-    context = {
-        'users': page_obj  
-    }
-    return render(request, 'merchant/user_management.html', context)
+    metadata = [('authorization', f'Bearer {request.session["auth_token"]}')]
+    mobile_search = request.GET.get('mobile', '').strip()
+    
+    # user_response = auth_stub.ListUsers(Empty())
+    # user_list = list(user_response.users)
+    
+    # page_number = request.GET.get('page', 1)
+    # paginator = Paginator(user_list, 10)  # Show 10 users per page
+    # page_obj = paginator.get_page(page_number)
+    # context = {
+    #     'users': page_obj  
+    # }
+    # return render(request, 'merchant/user_management.html', context)
+    try:
+        if mobile_search:
+            # Search by mobile number
+            try:
+                user = auth_stub.GetUserByMobile(
+                    auth_pb2.GetUserByMobileRequest(mobile=mobile_search),
+                    metadata=metadata
+                )
+                user_list = [user]  # Wrap single user in a list
+            except grpc.RpcError as e:
+                if e.code() == grpc.StatusCode.NOT_FOUND:
+                    messages.info(request, f"No user found with mobile number {mobile_search}")
+                else:
+                    messages.error(request, f"Search error: {e.details()}")
+                user_list = []
+        else:
+            # Get all users if no search query
+            user_response = auth_stub.ListUsers(Empty(), metadata=metadata)
+            user_list = list(user_response.users)
+        
+        # Pagination
+        paginator = Paginator(user_list, 10)
+        page_number = request.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
+        
+        context = {
+            'users': page_obj,
+            'mobile_search': mobile_search
+        }
+        return render(request, 'merchant/user_management.html', context)
+        
+    except grpc.RpcError as e:
+        if e.code() == grpc.StatusCode.UNAUTHENTICATED:
+            del request.session['auth_token']
+            return redirect('login')
+        messages.error(request, f"Failed to load users: {e.details()}")
+        return render(request, 'merchant/user_management.html', {'users': []})
 
 def edit_user_management(request, pk):
     if 'auth_token' not in request.session:
