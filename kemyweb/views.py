@@ -127,21 +127,13 @@ def merchant(request):
                     category=common_pb2.Category.Value(request.POST.get('category').upper())
                 )
             )
-            # Handle file upload if exists
             if 'logo' in request.FILES:
-                logo_file = request.FILES['logo']
-                # Generate unique filename
-                file_ext = os.path.splitext(logo_file.name)[1]
-                filename = f"merchant_logos/{uuid.uuid4()}{file_ext}"
-                # Save file to storage
-                file_path = default_storage.save(filename, logo_file)
-                # Get URL (this depends on your storage backend)
-                if hasattr(default_storage, 'url'):
-                    logo_url = default_storage.url(file_path)
-                else:
-                    # For local development
-                    logo_url = f"{settings.MEDIA_URL}{file_path}"
-                merchant.logo_url = logo_url
+                    logo_file = request.FILES['logo']
+                    file_ext = os.path.splitext(logo_file.name)[1]
+                    filename = f"merchant_logos/{uuid.uuid4()}{file_ext}"
+                    file_path = default_storage.save(filename, logo_file)
+                    logo_url = default_storage.url(file_path) if hasattr(default_storage, 'url') else f"{settings.MEDIA_URL}{file_path}"
+                    update_request.merchant.logo_url = logo_url
             try:
                 # Call gRPC service to create merchant
                 response = invoice_stub.CreateMerchant(update_request, metadata=metadata)

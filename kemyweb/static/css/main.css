@@ -50,6 +50,14 @@ header{
     margin: 20px;
 
 }
+.rotate-180 {
+    transform: rotate(180deg);
+}
+ .nav-items a.active {
+    background-color: #e2e8f0; /* Example: light gray background */
+    color: #1a202c; /* Example: dark text color */
+    font-weight: bold;
+  }
 .error {
     @apply bg-red-50 text-red-800 border border-red-200;
 }

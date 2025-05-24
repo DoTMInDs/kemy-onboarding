@@ -27,7 +27,7 @@ def login_view(request):
             print("Token stored:", request.session.get('auth_token'))  # Debug print
             
             # Redirect to merchant page
-            next_url = request.GET.get('next', 'merchant')
+            next_url = request.GET.get('next', 'dashboard')
             return redirect(next_url)
             
         except Exception as e:
