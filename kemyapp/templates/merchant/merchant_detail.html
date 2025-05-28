@@ -1,0 +1,265 @@
+{% extends "merchant/base.html" %}
+{% load static %}
+{% block content %}
+{% include "site/partials/dash_nav.html" %}
+<!-- Message Display Section -->
+{% if messages %}
+<div class="flex justify-center fixed top-0 left-0 right-0 w-full z-[9999]" role="alert">
+    {% for message in messages %}
+    <div id="toast-success" class="flex items-center w-full max-w-lg p-4 mb-4 rounded-lg shadow-lg
+        {% if 'unavailable' in message|lower %}bg-yellow-100 text-yellow-800
+        {% elif message.tags == 'error' %}bg-red-100 text-red-800
+        {% else %}bg-blue-100 text-blue-800{% endif %}" role="alert">
+        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 {% if message.tags == 'error' %}text-red-700{% else %} text-green-500 {% endif %} bg-green-100 rounded-lg ">
+            {% if message.tags == 'error' %}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.905 16.52 13.0007 16.2827 13 16C12.9993 15.7173 12.9033 15.48 12.712 15.288C12.5207 15.096 12.2833 15 12 15C11.7167 15 11.4793 15.096 11.288 15.288C11.0967 15.48 11.0007 15.7173 11 16C10.9993 
+                16.2827 11.0953 16.5203 11.288 16.713C11.4807 16.9057 11.718 17.0013 12 17ZM11 13H13V7H11V13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88334 20.6867 5.825 19.9743 4.925 19.075C4.025 18.1757 3.31267 17.1173 2.788 15.9C2.26333 14.6827 2.00067 
+                13.3827 2 12C1.99933 10.6173 2.262 9.31733 2.788 8.1C3.314 6.88267 4.02633 5.82433 4.925 4.925C5.82367 4.02567 6.882 3.31333 8.1 2.788C9.318 2.26267 10.618 2 12 2C13.382 2 14.682 2.26267 15.9 2.788C17.118 3.31333 18.1763 4.02567 19.075 4.925C19.9737 
+                5.82433 20.6863 6.88267 21.213 8.1C21.7397 9.31733 22.002 10.6173 22 12C21.998 13.3827 21.7353 14.6827 21.212 15.9C20.6887 17.1173 19.9763 18.1757 19.075 19.075C18.1737 19.9743 17.1153 20.687 15.9 21.213C14.6847 21.739 13.3847 22.0013 12 22Z" fill="currentColor"/>
+            </svg>
+            {% else %}
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            {% endif %}
+            <span class="sr-only">Check icon</span>
+        </div>
+        <div class="ms-3 text-sm font-normal">{{ message }}</div>
+        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 " data-dismiss-target="#toast-success" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<section class="w-[100%] bg-gray-200 h-screen fixed z-[-1] top-0 right-0 left-0 overflow-y-scroll">
+    <!-- Back Button -->
+    <div class="mr-[0.3rem] ml-[0.3rem] md:ml-[260px] transition-all duration-300 bg-white border border-slate-600 border-opacity-20 rounded-[15px] p-4 mt-[90px]">
+        <div class="">
+            <a href="{% url 'merchant' %}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Merchant
+            </a>
+        </div>
+        <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Merchant Users</h3>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Search Users</h3>
+                <div class="flex gap-[1rem] items-center">
+                    <div type="button" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2" class="">
+                        <a data-tooltip-target="tooltip-light-{{m.id}}" data-tooltip-style="light" type="button" href="#" class="font-medium cursor-pointer text-white bg-[#E9332A] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 4C8.93913 4 7.92172 4.42143 7.17157 5.17157C6.42143 5.92172 6 6.93913 6 8C6 9.06087 6.42143 10.0783 7.17157 10.8284C7.92172 11.5786 8.93913 12 10 12C11.0609 12 12.0783 11.5786 12.8284 10.8284C13.5786 10.0783 14 9.06087 14 8C14 6.93913 13.5786 5.92172 12.8284 5.17157C12.0783 4.42143 11.0609 4 10 4ZM10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6ZM10 13C7.33 13 2 14.33 2 17V20H11.5C11.2483 19.394 11.0899 18.7534 11.03 18.1H3.9V17C3.9 16.36 7.03 14.9 10 14.9C10.5 14.9 11 14.95 11.5 15.03C11.7566 14.3985 12.1109 13.8114 12.55 13.29C11.61 13.1 10.71 13 10 13ZM17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13ZM17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5ZM14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <div id="tooltip-light-{{m.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                            Disable merchant
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </div>
+                    <form method="get" class="relative w-full sm:w-80 ">
+                        <div class="flex items-center max-w-sm mx-auto">   
+                            <label for="simple-search" class="sr-only">Search</label>
+                            <div class="relative w-full">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <input type="search" name="phone" value="{{ phone_search }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2"
+                                    placeholder="Search by mobile number" required>
+                            </div>
+                            <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-[#3b5362] rounded-lg border border-blue-700 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                                <span class="sr-only">Search</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                <!-- Merchant Details Card -->
+            <div class="mt-6 bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-start mb-6">
+                    <!-- Merchant Logo/Initial -->
+                    <div class="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden mr-4">
+                        {% if merchant.logo_url %}
+                            <img src="{{ merchant.logo_url }}" alt="Merchant Logo" class="w-full h-full object-cover">
+                        {% else %}
+                            <span class="text-2xl font-bold text-gray-600">{{ merchant.name|first|upper }} </span>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Merchant Info -->
+                    <div class="flex-1">
+                        <h1 class="text-2xl font-bold text-gray-800">{{ merchant.name }} </h1>
+                        <div class="flex items-center mt-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                                {% if merchant.category == 1 %}School
+                                {% elif merchant.category == 2 %}Hotel
+                                {% elif merchant.category == 3 %}General
+                                {% else %}Unknown
+                                {% endif %}
+                            </span>
+                            <span class="ml-2 text-sm text-gray-500">Merchant ID: {{ merchant.id }}  </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Merchant Details Grid -->
+                {% if merchant_users %}
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {% for user in merchant_users %}
+                        <div class="shadow-md">
+                            <div class="flex flex-col items-center pb-10">
+                                <div class="w-[80px] h-[80px] rounded-full bg-gray-200 flex items-center justify-center">
+                                    <span class="text-gray-500 text-lg font-semibold">{{ user.first_name|first|upper }} {{ user.last_name|first|upper }}</span>
+                                </div>
+                                <h5 class="mb-1 text-xl font-medium text-gray-900 ">{{ user.first_name }} {{ user.last_name }}</h5>
+                                <span class="text-sm text-gray-500 ">{{ user.mobile }}</span>
+                                <span class="text-sm text-gray-500 ">Merchant User ID: {{ user.merchant_user_id }} </span>
+                                <span class="flex gap-[0.5rem] items-center">
+                                    <span class="text-sm text-gray-500 bg-green-200 rounded-lg px-3 py-1 flex gap-[0.5rem] items-center mt-[1rem]">
+                                        {% if user.is_verified %}
+                                        <svg width="18" height="18" class="text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C6.063 1.25 1.25 6.063 1.25 12C1.25 17.937 6.063 22.75 12 22.75C17.937 22.75 22.75 17.937 22.75 12C22.75 6.063 17.937 1.25 12 1.25ZM7.53 11.97C7.38783 11.8375 7.19978 11.7654 7.00548 11.7688C6.81118 11.7723 6.62579 11.851 6.48838 11.9884C6.35097 12.1258 6.27225 12.3112 6.26883 12.5055C6.2654 12.6998 6.33752 12.8878 6.47 13.03L9.47 16.03C9.61063 16.1705 9.80125 16.2493 10 16.2493C10.1988 16.2493 10.3894 16.1705 10.53 16.03L17.53 9.03C17.6625 8.88782 17.7346 8.69978 17.7312 8.50548C17.7277 8.31118 17.649 8.12579 17.5116 7.98838C17.3742 7.85097 17.1888 7.77225 16.9945 7.76883C16.8002 7.7654 16.6122 7.83752 16.47 7.97L10 14.44L7.53 11.97Z" fill="currentColor"/>
+                                        </svg>
+                                        Verified
+                                        {% endif %}
+                                    </span>
+                                    {% if user.is_admin %}
+                                    <span class="text-sm text-gray-500 bg-red-200 rounded-lg px-3 py-1 flex gap-[0.5rem] items-center mt-[1rem]">
+                                        <svg width="18" height="18" class="text-red-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 14V22H4C4 19.8783 4.84285 17.8434 6.34315 16.3431C7.84344 14.8429 9.87827 14 12 14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM21 17H22V22H14V17H15V16C15 15.2044 15.3161 14.4413 15.8787 13.8787C16.4413 13.3161 17.2044 13 18 13C18.7956 13 19.5587 13.3161 20.1213 13.8787C20.6839 14.4413 21 15.2044 21 16V17ZM19 17V16C19 15.7348 18.8946 15.4804 18.7071 15.2929C18.5196 15.1054 18.2652 15 18 15C17.7348 15 17.4804 15.1054 17.2929 15.2929C17.1054 15.4804 17 15.7348 17 16V17H19Z" fill="currentColor"/>
+                                        </svg>
+                                        Admin
+                                    </span>
+                                    {% elif user.is_super_user %}
+                                    <span class="text-sm text-gray-500 bg-red-200 rounded-lg px-3 py-1 flex gap-[0.5rem] items-center mt-[1rem]">
+                                        <svg width="18" height="18" class="text-red-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 14V22H4C4 19.8783 4.84285 17.8434 6.34315 16.3431C7.84344 14.8429 9.87827 14 12 14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM21 17H22V22H14V17H15V16C15 15.2044 15.3161 14.4413 15.8787 13.8787C16.4413 13.3161 17.2044 13 18 13C18.7956 13 19.5587 13.3161 20.1213 13.8787C20.6839 14.4413 21 15.2044 21 16V17ZM19 17V16C19 15.7348 18.8946 15.4804 18.7071 15.2929C18.5196 15.1054 18.2652 15 18 15C17.7348 15 17.4804 15.1054 17.2929 15.2929C17.1054 15.4804 17 15.7348 17 16V17H19Z" fill="currentColor"/>
+                                        </svg>
+                                        Super User
+                                    </span>
+                                    {% else %}
+                                    <span class="text-sm bg-gray-100 text-gray-800 rounded-lg px-3 py-1 flex gap-[0.5rem] items-center mt-[1rem]">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        Regular User
+                                    </span>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <nav class="flex justify-between flex-wrap items-center flex-col md:flex-row pt-4" aria-label="Table navigation">
+                    <div class="text-sm font-normal text-gray-500 mb-4">
+                        Showing 
+                        <span class="font-semibold text-gray-900">{{ merchant_users.start_index }}-{{ merchant_users.end_index }}</span> of 
+                        <span class="font-semibold text-gray-900">{{ merchant_users.paginator.count }}</span>
+                    </div>
+                    <ul class="inline-flex -space-x-px text-sm h-8">
+                        {% if merchant_users.has_previous %}
+                            <li>
+                                <a href="?page={{ merchant_users.previous_page_number }}{% if phone_search %}&phone={{ phone_search }}{% endif %}" 
+                                   class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                                    Previous
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <span class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300 bg-white border border-gray-200 rounded-s-lg cursor-not-allowed">
+                                    Previous
+                                </span>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in merchant_users.paginator.page_range %}
+                            {% if merchant_users.number == num %}
+                                <li>
+                                    <span class="flex items-center justify-center px-3 h-8 text-gray-50 border border-gray-300 bg-slate-600 hover:bg-blue-100 hover:text-blue-700">
+                                        {{ num }}
+                                    </span>
+                                </li>
+                            {% elif num > merchant_users.number|add:'-3' and num < merchant_users.number|add:'3' %}
+                                <li>
+                                    <a href="?page={{ num }}{% if phone_search %}&phone={{ phone_search }}{% endif %}" 
+                                       class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                        {{ num }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if merchant_users.has_next %}
+                            <li>
+                                <a href="?page={{ merchant_users.next_page_number }}{% if phone_search %}&phone={{ phone_search }}{% endif %}" 
+                                   class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                                    Next
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-300 bg-white border border-gray-200 rounded-e-lg cursor-not-allowed">
+                                    Next
+                                </span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- User Search Section -->
+            <div class="mt-6 bg-white rounded-lg shadow-md p-6">
+               
+                {% if searched_user %}
+                    <!-- User Results Table -->
+                    <div class="mt-4 bg-white overflow-hidden">
+                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm ">
+                            <h1 class="text-lg font-semibold text-[#3b5362] text-center my-4">Add User to <span class="text-blue-600">{{ merchant.name }}</span> </h1>
+                            <form method="post" action="" class="flex flex-col items-center pb-10">
+                                <input type="hidden" name="user_id" value="{{ searched_user.id }}">
+                                <input type="hidden" name="add_user" value="true">
+                                <div class="w-[80px] h-[80px] rounded-full bg-gray-200 flex items-center justify-center">
+                                    <span class="text-gray-500 text-lg font-semibold">{{ searched_user.first_name|first|upper }} {{ searched_user.last_name|first|upper }}</span>
+                                </div>
+                                <h5 class="mb-1 text-xl font-medium text-gray-900 ">{{ searched_user.first_name }} {{ searched_user.last_name }}</h5>
+                                <span class="text-sm text-gray-500 ">{{ searched_user.mobile }}</span>
+                                <div class="flex mt-4 md:mt-6">
+                                    <a href="{% url 'merchant_detail' merchant_id=merchant.id %}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-400 hover:text-white bg-gray-100 rounded-lg hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 ">Cancel</a>
+                                    <button type="submit" class="py-2 px-4 ms-2 text-sm font-medium text-white focus:outline-none bg-[#3b5362] rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Add to {{ merchant.name }} </button>
+                                </div>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script>
+    // Auto-dismiss messages after 5 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+        const alerts = document.querySelectorAll('[role="alert"]');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        });
+    });
+</script>
+{% endblock content %}

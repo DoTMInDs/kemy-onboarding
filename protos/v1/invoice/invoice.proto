@@ -1,0 +1,441 @@
+syntax = "proto3";
+
+package invoice.v1;
+
+option go_package = "go/invoice";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "v1/invoice/common.proto";
+import "v1/invoice/templating.proto";
+
+
+
+message GetPaymentRequest {
+  string transaction_id = 1;
+}
+
+
+message ListPaymentsRequest {
+  int64 invoice_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListPaymentsByNumberRequest {
+  string invoice_number = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message GetPaymentResponse {
+  InvoicePayment payment = 1;
+}
+
+message ListPaymentsResponse {
+  repeated InvoicePayment payments = 1;
+  string next_page_token = 2;
+}
+
+message GetInvoiceRequest {
+  string number = 1;
+}
+message GetInvoiceByMobileRequest {
+  string invoice_number = 1;
+  string mobile = 2;
+}
+message GetInvoiceResponse {
+  Invoice invoice = 1;
+}
+message GetInvoiceForUserRequest {
+  string number = 1;
+}
+
+message GetInvoiceForUserResponse {
+  Invoice invoice = 1;
+}
+message FinalizeInvoiceRequest {
+  string number = 1;
+}
+
+message FinalizeInvoiceResponse {
+  Invoice invoice = 1;
+}
+
+message CreateInvoiceRequest {
+  bool finalize = 1;
+  string customer_mobile = 2;
+  int32 merchant_id = 3;
+  string reference_id = 4;
+  string description = 5;
+  google.protobuf.Timestamp due_date = 6;
+  Money tax_amount = 7;
+  string currency = 8;
+  repeated InvoiceLineItem line_items = 9;
+  map<string, string> custom_fields = 10;
+}
+
+message CreateInvoiceResponse {
+  Invoice invoice = 1;
+}
+message CancelInvoiceRequest {
+  string number = 1;
+  string reason = 2;
+}
+
+message CancelInvoiceResponse {
+  bool success = 1;
+}
+
+message UpdateInvoiceRequest {
+  Invoice invoice = 1;
+}
+
+message UpdateInvoiceResponse {
+  Invoice invoice = 1;
+}
+
+message DeleteInvoiceRequest {
+  string number = 1;
+}
+
+message DeleteInvoiceResponse {
+  bool success = 1;
+}
+message ListCustomerInvoicesRequest {
+  int32 customer_id = 1;
+  InvoiceStatus status = 2;
+}
+
+message ListCustomerInvoicesByCustomFieldRequest {
+  string key = 1;
+  string value = 2;
+}
+message ListCustomerInvoicesByUserRequest {
+  InvoiceStatus status = 1;
+}
+
+message ListInvoicesResponse {
+  repeated Invoice invoices = 1;
+}
+message ListBillableEntityInvoicesRequest {
+  int32 billable_entity_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  InvoiceStatus status = 4;
+}
+
+message ListBillableEntityInvoicesResponse {
+  repeated Invoice invoices = 1;
+  string next_page_token = 2;
+}
+message ListMerchantRecentInvoicesRequest {
+  int32 merchant_id = 1;
+  InvoiceStatus status = 2;
+  int32 limit = 3;
+}
+message ListMerchantInvoicesRequest {
+  int32 merchant_id = 1;
+  InvoiceFilters filters = 2;
+  int32 page_size = 3;
+  string page_token = 4;
+}
+
+message ListMerchantInvoicesResponse {
+  repeated Invoice invoices = 1;
+  string next_page_token = 2;
+}
+message GetPaymentMethodRequest {
+  int32 id = 1;
+}
+
+message GetPaymentMethodResponse {
+  PaymentMethod payment_method = 1;
+}
+
+message CreatePaymentMethodRequest {
+  PaymentMethod payment_method = 1;
+}
+
+message CreatePaymentMethodResponse {
+  PaymentMethod payment_method = 1;
+}
+
+message UpdatePaymentMethodRequest {
+  PaymentMethod payment_method = 1;
+}
+
+message UpdatePaymentMethodResponse {
+  PaymentMethod payment_method = 1;
+}
+
+message DeletePaymentMethodRequest {
+  int32 id = 1;
+}
+
+message DeletePaymentMethodResponse {
+  bool success = 1;
+}
+
+message ListPaymentMethodsRequest {
+  int64 user_id = 1;
+}
+
+message ListPaymentMethodsResponse {
+  repeated PaymentMethod payment_methods = 1;
+}
+
+message GetMerchantRequest {
+  int32 id = 1;
+}
+
+message GetMerchantResponse {
+  Merchant merchant = 1;
+}
+
+message CreateMerchantRequest {
+  Merchant merchant = 1;
+}
+
+message CreateMerchantResponse {
+  Merchant merchant = 1;
+}
+
+message UpdateMerchantRequest {
+  Merchant merchant = 1;
+}
+
+message UpdateMerchantResponse {
+  Merchant merchant = 1;
+}
+
+message DeleteMerchantRequest {
+  int32 id = 1;
+}
+
+message DeleteMerchantResponse {
+  bool success = 1;
+}
+
+message GetMerchantUserRequest {
+  int32 id = 1;
+}
+
+message GetMerchantUserResponse {
+  MerchantUser merchant_user = 1;
+}
+message ListMerchantUsersRequest {
+  int32 merchant_id = 1;
+}
+message ListMerchantUsersResponse {
+  repeated MerchantUser merchant_users = 1;
+}
+message CreateMerchantUserRequest {
+  MerchantUser merchant_user = 1;
+}
+
+message CreateMerchantUserResponse {
+  MerchantUser merchant_user = 1;
+}
+
+message DeleteMerchantUserRequest {
+  int32 id = 1;
+}
+
+message DeleteMerchantUserResponse {
+  bool success = 1;
+}
+
+message GetCustomerRequest {
+  oneof customer_identifier {
+    int32 customer_id = 1;
+    string customer_mobile = 3;
+  }
+  int32 merchant_id = 2;
+}
+
+message GetCustomerResponse {
+  Customer customer = 1;
+}
+message RegisterUserForCustomerRequest {
+  string mobile = 1;
+}
+
+message RegisterUserForCustomerResponse {
+  bool success = 1;
+}
+
+message CreateCustomerRequest {
+  int32 merchant_id = 1;
+  int64 user_id = 2;
+  string national_id_no = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string email = 6;
+  string mobile = 7;
+}
+
+message CreateCustomerResponse {
+  Customer customer = 1;
+}
+
+message UpdateCustomerRequest {
+  int32 merchant_id = 1;
+  string national_id_no = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string mobile = 6;
+}
+
+message UpdateCustomerResponse {
+  Customer customer = 1;
+}
+
+message DeleteCustomerRequest {
+  string id = 1;
+  int32 merchant_id = 2;
+}
+
+message DeleteCustomerResponse {
+  bool success = 1;
+}
+message PayInvoiceRequest {
+  int32 payment_method_id = 1;
+  string invoice_number = 2;
+  Money amount = 3;
+  string transaction_id = 4;
+}
+message PayInvoiceResponse {
+  bool success = 1;
+}
+message InvoiceEventRequest {
+  int64 user_id = 1;
+}
+message InvoiceEventResponse {
+  string event_type = 1;
+  string invoice_number = 2;
+  string message = 3;
+}
+
+message RecordCashPaymentRequest {
+  string invoice_number = 1;
+  string transaction_id = 2;
+  Money amount = 3;
+  google.protobuf.Timestamp paid_time = 5;
+}
+message RecordCashPaymentResponse {
+  bool success = 1;
+  string message = 2;// Optional message for errors or additional information
+}
+message ListMerchantCustomersRequest {
+  int32 merchant_id = 1;// Required - ID of the merchant to list customers for
+  int32 page_size = 2;// Optional - Number of customers to return per page
+  string page_token = 3;// Optional - Token for pagination (returned in previous response)
+}
+
+message ListMerchantCustomersResponse {
+  repeated Customer customers = 1;// List of customer records
+  string next_page_token = 2;// Token for retrieving the next page
+}
+message ListMerchantsResponse {
+  repeated Merchant merchants = 1;
+}
+message GetCustomerOverdueInvoicesForUserRequest {
+  int64 user_id = 1;
+}
+
+message GetCustomerOverdueInvoicesForUserResponse {
+  int32 overdue_invoice_count = 1;
+  repeated Invoice invoices = 2;
+}
+// Invoice Service
+service InvoiceService {
+  rpc GetInvoice(GetInvoiceRequest) returns (GetInvoiceResponse);
+  rpc GetInvoiceByMobile(GetInvoiceByMobileRequest) returns (GetInvoiceResponse);
+  rpc GetInvoiceForUser(GetInvoiceForUserRequest) returns (GetInvoiceForUserResponse);
+  rpc CreateInvoice(CreateInvoiceRequest) returns (CreateInvoiceResponse);
+  rpc UpdateInvoice(UpdateInvoiceRequest) returns (UpdateInvoiceResponse);
+  rpc ListCustomerInvoices(ListCustomerInvoicesRequest) returns (ListInvoicesResponse);
+  rpc ListCustomerInvoicesByUser(ListCustomerInvoicesByUserRequest) returns (ListInvoicesResponse);
+  rpc ListCustomerInvoicesByCustomField(ListCustomerInvoicesByCustomFieldRequest) returns (ListInvoicesResponse);
+  rpc ListMerchantInvoices(ListMerchantInvoicesRequest) returns (ListMerchantInvoicesResponse);
+  rpc ListMerchantRecentInvoices(ListMerchantRecentInvoicesRequest) returns (ListInvoicesResponse);
+  rpc FinalizeInvoice(FinalizeInvoiceRequest) returns (FinalizeInvoiceResponse);
+  rpc CancelInvoice(CancelInvoiceRequest) returns (CancelInvoiceResponse);
+  rpc DeleteInvoice(DeleteInvoiceRequest) returns (DeleteInvoiceResponse);
+  rpc PayInvoice(PayInvoiceRequest) returns (PayInvoiceResponse);
+  rpc RecordCashPayment(RecordCashPaymentRequest) returns (RecordCashPaymentResponse);
+  rpc StreamInvoiceEvents(stream InvoiceEventRequest) returns (stream InvoiceEventResponse);
+  rpc ListMerchantCustomers(ListMerchantCustomersRequest) returns (ListMerchantCustomersResponse);
+  rpc GetCustomerOverdueInvoicesForUser(GetCustomerOverdueInvoicesForUserRequest) returns (GetCustomerOverdueInvoicesForUserResponse);
+
+  // Invoice Payments
+  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
+  rpc ListPaymentsByInvoice(ListPaymentsRequest) returns (ListPaymentsResponse);
+  rpc ListPaymentsByInvoiceNumber(ListPaymentsByNumberRequest) returns (ListPaymentsResponse);
+
+
+  // PaymentMethod 
+  rpc GetPaymentMethod(GetPaymentMethodRequest) returns (GetPaymentMethodResponse);
+  rpc CreatePaymentMethod(CreatePaymentMethodRequest) returns (CreatePaymentMethodResponse);
+  rpc UpdatePaymentMethod(UpdatePaymentMethodRequest) returns (UpdatePaymentMethodResponse);
+  rpc DeletePaymentMethod(DeletePaymentMethodRequest) returns (DeletePaymentMethodResponse);
+  rpc ListPaymentMethods(ListPaymentMethodsRequest) returns (ListPaymentMethodsResponse);
+
+  // Merchant 
+  rpc GetMerchant(GetMerchantRequest) returns (GetMerchantResponse);
+  rpc CreateMerchant(CreateMerchantRequest) returns (CreateMerchantResponse);
+  rpc ListMerchants(google.protobuf.Empty) returns (ListMerchantsResponse);
+  rpc UpdateMerchant(UpdateMerchantRequest) returns (UpdateMerchantResponse);
+  //rpc DeleteMerchant(DeleteMerchantRequest) returns (DeleteMerchantResponse);
+
+  // MerchantUser 
+  rpc GetMerchantUser(GetMerchantUserRequest) returns (GetMerchantUserResponse);
+  rpc CreateMerchantUser(CreateMerchantUserRequest) returns (CreateMerchantUserResponse);
+  rpc ListMerchantUsers(ListMerchantUsersRequest) returns (ListMerchantUsersResponse);
+  //rpc DeleteMerchantUser(DeleteMerchantUserRequest) returns (DeleteMerchantUserResponse);
+
+  // Customer 
+  rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse);
+  rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+  rpc UpdateCustomer(UpdateCustomerRequest) returns (UpdateCustomerResponse);
+  rpc RegisterUserForCustomer(RegisterUserForCustomerRequest) returns (RegisterUserForCustomerResponse);
+  //rpc DeleteCustomer(DeleteCustomerRequest) returns (DeleteCustomerResponse);
+  // BillableEntityManager methods
+  rpc CreateBillableEntity(CreateBillableEntityRequest) returns (BillableEntityResponse);
+  rpc GetBillableEntity(GetBillableEntityRequest) returns (BillableEntityResponse);
+  rpc GetBillableEntitiesForMerchant(GetBillableEntitiesForMerchantRequest) returns (BillableEntitiesResponse);
+  rpc GetBillableEntitiesForGroup(GetBillableEntitiesForGroupRequest) returns (BillableEntitiesResponse);
+  rpc UpdateBillableEntity(UpdateBillableEntityRequest) returns (BillableEntityResponse);
+  rpc DeleteBillableEntity(DeleteBillableEntityRequest) returns (google.protobuf.Empty);
+
+  // GroupManger methods
+  rpc CreateGroup(CreateGroupRequest) returns (GroupResponse);
+  rpc GetGroup(GetGroupRequest) returns (GroupResponse);
+  rpc GetGroupsForMerchant(GetGroupsForMerchantRequest) returns (GroupsResponse);
+  rpc UpdateGroup(UpdateGroupRequest) returns (GroupResponse);
+  rpc DeleteGroup(DeleteGroupRequest) returns (google.protobuf.Empty);
+  rpc AddBillableEntityToGroup(AddBillableEntityToGroupRequest) returns (google.protobuf.Empty);
+  rpc RemoveBillableEntityFromGroup(RemoveBillableEntityFromGroupRequest) returns (google.protobuf.Empty);
+
+  // TemplateManager methods
+  rpc CreateTemplate(CreateTemplateRequest) returns (TemplateResponse);
+  rpc GetTemplate(GetTemplateRequest) returns (TemplateResponse);
+  rpc GetTemplatesForMerchant(GetTemplatesForMerchantRequest) returns (TemplatesResponse);
+  rpc UpdateTemplate(UpdateTemplateRequest) returns (TemplateResponse);
+  rpc DeleteTemplate(DeleteTemplateRequest) returns (google.protobuf.Empty);
+  rpc CreateTemplateItem(CreateTemplateItemRequest) returns (TemplateItemResponse);
+  rpc RemoveTemplateItem(RemoveTemplateItemRequest) returns (google.protobuf.Empty);
+  rpc UpdateTemplateItem(UpdateTemplateItemRequest) returns (TemplateItemResponse);
+  rpc GetTemplateItems(GetTemplateItemsRequest) returns (TemplateItemsResponse);
+
+  // InvoiceGenerator methods
+  rpc GenerateInvoicesForGroup(GenerateInvoicesForGroupRequest) returns (GenerateInvoicesForGroupResponse);
+  rpc CancelInvoices(CancelInvoicesRequest) returns (google.protobuf.Empty);
+  rpc ApplyTemplateToGroup(ApplyTemplateToGroupRequest) returns (google.protobuf.Empty);
+  rpc FinalizeDraftInvoices(FinalizeDraftInvoicesRequest) returns (FinalizeDraftInvoicesResponse);
+  rpc ListAssignmentsByGroup(ListAssignmentsByGroupRequest) returns (ListAssignmentsResponse);
+  rpc ListAssignmentsByTemplate(ListAssignmentsByTemplateRequest) returns (ListAssignmentsResponse);
+  rpc ListBillableEntityInvoices(ListBillableEntityInvoicesRequest) returns (ListBillableEntityInvoicesResponse);
+}

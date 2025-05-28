@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+
+import "google/protobuf/empty.proto";
+
+package payment.v1;
+
+option go_package = "go/payment";
+
+import "v1/payment/common.proto";
+
+service PaymentService {
+  // Provider Management
+  rpc RegisterProvider (RegisterProviderRequest) returns (Provider) {}
+  rpc GetProvider (GetProviderRequest) returns (Provider) {}
+  rpc ListProviders (ListProvidersRequest) returns (ListProvidersResponse) {}
+  rpc UpdateProvider (UpdateProviderRequest) returns (google.protobuf.Empty) {}
+  rpc UpdateProviderStatus (UpdateProviderStatusRequest) returns (google.protobuf.Empty) {}
+
+  // Merchant Account Management
+  rpc OnboardMerchant (MerchantAccount) returns (google.protobuf.Empty) {}
+  rpc UpdateMerchant (MerchantAccount) returns (google.protobuf.Empty) {}
+  rpc SetMerchantActiveStatus (SetMerchantActiveStatusRequest) returns (google.protobuf.Empty) {}
+  rpc AddProviderAccountToMerchant (MerchantProviderAccount) returns (google.protobuf.Empty) {}
+  rpc UpdateMerchantProviderAccount (MerchantProviderAccount) returns (google.protobuf.Empty) {}
+  rpc RemoveProviderAccountFromMerchant (RemoveProviderAccountRequest) returns (google.protobuf.Empty) {}
+  rpc GetMerchantProviderAccounts (GetMerchantProviderAccountsRequest) returns (GetMerchantProviderAccountsResponse) {}
+  rpc GetMerchantAccounts (GetMerchantAccountsRequest) returns (GetMerchantAccountsResponse) {}
+
+  // Transaction Processing
+  rpc GetInvoiceForPayment (GetInvoiceForPaymentRequest) returns (MerchantInvoicePaymentDetails) {}
+  rpc GetTransaction (GetTransactionRequest) returns (Transaction) {}
+  rpc GetTransactionByReference (GetTransactionByReferenceRequest) returns (Transaction) {}
+  rpc GetTransactionsByInvoice (GetTransactionsByInvoiceRequest) returns (GetTransactionsByInvoiceResponse) {}
+  rpc UpdateTransaction (Transaction) returns (google.protobuf.Empty) {}
+  rpc FindTransactions (TransactionFilter) returns (FindTransactionsResponse) {}
+}
+
+
+
+// Request/Response Messages
+message RegisterProviderRequest {
+  Provider provider = 1;
+}
+
+message GetProviderRequest {
+  string provider_id = 1;
+}
+
+message ListProvidersRequest {
+  bool active_only = 1;
+}
+
+message ListProvidersResponse {
+  repeated Provider providers = 1;
+}
+
+message UpdateProviderRequest {
+  Provider provider = 1;
+}
+
+message UpdateProviderStatusRequest {
+  string provider_id = 1;
+  bool active = 2;
+}
+
+message SetMerchantActiveStatusRequest {
+  int32 merchant_id = 1;
+  bool active = 2;
+}
+
+message RemoveProviderAccountRequest {
+  int32 merchant_id = 1;
+  string provider_id = 2;
+}
+
+message GetMerchantProviderAccountsRequest {
+  int32 merchant_id = 1;
+}
+
+message GetMerchantProviderAccountsResponse {
+  repeated MerchantProviderAccount accounts = 1;
+}
+
+message GetMerchantAccountsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message GetMerchantAccountsResponse {
+  repeated MerchantAccount accounts = 1;
+  string next_page_token = 2;
+}
+
+message ProcessMobileMoneyPaymentRequest {
+  string provider = 1;
+  Money amount = 2;
+  string phone_number = 3;
+  int32 merchant_id = 4;
+}
+
+message GetInvoiceForPaymentRequest {
+  string invoice_number = 1;
+}
+
+message GetTransactionRequest {
+  string transaction_id = 1;
+}
+
+message GetTransactionByReferenceRequest {
+  string reference = 1;
+}
+
+message GetTransactionsByInvoiceRequest {
+  string invoice_id = 1;
+}
+
+message GetTransactionsByInvoiceResponse {
+  repeated Transaction transactions = 1;
+}
+
+message FindTransactionsResponse {
+  repeated Transaction transactions = 1;
+}

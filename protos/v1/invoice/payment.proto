@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package invoice.v1;
+
+option go_package = "go/invoice";
+
+import "v1/invoice/common.proto";
+
+message PaymentRequest {
+  string invoice_number = 1;
+  int32 merchant_id = 2;
+  string transaction_id = 3;
+  Provider provider = 4;
+  string account_no = 5;
+  Money amount = 6;
+  string customer_name = 7;
+}
+message PaymentResponse {
+  string invoice_number = 1;
+  string transaction_id = 3;
+  PaymentStatus status = 4;
+  string external_ref = 5;
+  Money amount = 6;
+}

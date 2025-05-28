@@ -1,0 +1,438 @@
+{% extends "merchant/base.html" %}
+{% load static %}
+{% block content %}
+{% include "site/partials/dash_nav.html" %}
+<!-- Message Display Section -->
+{% if messages %}
+<div class="flex justify-center fixed top-0 left-0 right-0 w-full z-[9999]" role="alert">
+    {% for message in messages %}
+    <div id="toast-success" class="flex items-center w-full max-w-lg p-4 mb-4 rounded-lg shadow-lg
+        {% if 'unavailable' in message|lower %}bg-yellow-100 text-yellow-800
+        {% elif message.tags == 'error' %}bg-red-100 text-red-800
+        {% else %}bg-blue-100 text-blue-800{% endif %}" role="alert">
+        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 {% if message.tags == 'error' %}text-red-700{% else %} text-green-500 {% endif %} bg-green-100 rounded-lg ">
+            {% if message.tags == 'error' %}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.905 16.52 13.0007 16.2827 13 16C12.9993 15.7173 12.9033 15.48 12.712 15.288C12.5207 15.096 12.2833 15 12 15C11.7167 15 11.4793 15.096 11.288 15.288C11.0967 15.48 11.0007 15.7173 11 16C10.9993 
+                16.2827 11.0953 16.5203 11.288 16.713C11.4807 16.9057 11.718 17.0013 12 17ZM11 13H13V7H11V13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88334 20.6867 5.825 19.9743 4.925 19.075C4.025 18.1757 3.31267 17.1173 2.788 15.9C2.26333 14.6827 2.00067 
+                13.3827 2 12C1.99933 10.6173 2.262 9.31733 2.788 8.1C3.314 6.88267 4.02633 5.82433 4.925 4.925C5.82367 4.02567 6.882 3.31333 8.1 2.788C9.318 2.26267 10.618 2 12 2C13.382 2 14.682 2.26267 15.9 2.788C17.118 3.31333 18.1763 4.02567 19.075 4.925C19.9737 
+                5.82433 20.6863 6.88267 21.213 8.1C21.7397 9.31733 22.002 10.6173 22 12C21.998 13.3827 21.7353 14.6827 21.212 15.9C20.6887 17.1173 19.9763 18.1757 19.075 19.075C18.1737 19.9743 17.1153 20.687 15.9 21.213C14.6847 21.739 13.3847 22.0013 12 22Z" fill="currentColor"/>
+            </svg>
+            {% else %}
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            {% endif %}
+            <span class="sr-only">Check icon</span>
+        </div>
+        <div class="ms-3 text-sm font-normal">{{ message }}</div>
+        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 " data-dismiss-target="#toast-success" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<section class="w-[100%] bg-gray-200 h-screen fixed z-[-1] top-0 right-0 left-0 overflow-y-scroll">
+    <div class="mr-[0.3rem] ml-[0.3rem] md:ml-[260px] transition-all duration-300 bg-white border border-slate-600 border-opacity-20 rounded-[15px] p-4 mt-[90px]">
+        <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Merchant</h2>
+            <div class="flex gap-[0.5rem] items-center">
+                <a href="{% url "merchant" %}" class="font-medium cursor-pointer text-white bg-[#E9322A] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:bg-red-500 ms-3">
+                    <button data-tooltip-target="merchant-filter-{{m.id}}" data-tooltip-style="light" type="button">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.57001 3H21.43L14.5 12.817V21H9.50001V12.817L2.57001 3ZM6.43001 5L11.5 12.183V19H12.5V12.183L17.57 5H6.43001ZM17.88 13.465L20 15.586L22.122 13.465L23.536 14.879L21.415 17L23.536 19.122L22.122 20.536L20 18.414L17.88 20.536L16.465 19.121L18.586 17.001L16.465 14.879L17.88 13.465Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div id="merchant-filter-{{m.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                        Filter
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </a>
+                <form method="get" class="relative w-full sm:w-80">
+                    <div class="flex items-center max-w-sm mx-auto">   
+                        <label for="simple-search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <input type="search" name="search" value="{{ search_query }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2"
+                                placeholder="Search by ID, name or contact number" required>
+                        </div>
+                        <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-[#3b5362] rounded-lg border border-blue-700 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                            <span class="sr-only">Search</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            {% if mobile_search and users|length == 0 %}
+            <div class="p-4 text-center text-gray-500">
+                No users found with mobile number "{{ mobile_search }}"
+            </div>
+            {% endif %}
+            <table class="w-full text-sm text-left text-gray-500 ">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                    <tr class="whitespace-nowrap">
+                        <th scope="col" class="p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2 ">
+                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Merchant Id
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Merchant Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Address
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Category
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Date-Added
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    {% for m in merchants %}
+                    <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-{{ m.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2 ">
+                                <label for="checkbox-table-search-{{ m.id }}" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{m.id}}
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
+                            {% if m.logo_url %}
+                                <img class="w-10 h-10 rounded-full object-cover" src="{{ m.logo_url }}" alt="{{ m.name }} logo">
+                            {% else %}
+                                <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <span class="text-gray-500 text-xs">{{ m.name|first|upper }}</span>
+                                </div>
+                            {% endif %}
+                            <div class="ps-3">
+                                <div class="text-base font-semibold">{{m.name}}</div>
+                                <div class="font-normal text-gray-500">{{m.contact_info}}</div>
+                            </div>  
+                        </th>
+                        <td class="px-6 py-4">
+                            {{m.address}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {% if m.category == 1 %}School
+                            {% elif m.category == 2 %}Hotel
+                            {% elif m.category == 3 %}General
+                            {% else %}Unknown
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ m.create_time|date:"d-M-Y H:i" }}
+                        </td>
+                        <td >
+                            <div class="flex  items-center">
+                                <a type="button" data-modal-target="edit-merchant-modal-{{m.id}}" data-modal-toggle="edit-merchant-modal-{{m.id}}" class="font-medium cursor-pointer text-slate-600 bg-slate-300 w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:bg-slate-200 ms-3">
+                                    <button data-tooltip-target="tooltip-light-{{m.id}}" data-tooltip-style="light" type="button">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.09 14.441V18.881C19.0898 19.5093 18.8401 20.1117 18.3959 20.5559C17.9516 21.0001 17.3492 21.2498 16.721 21.25H5.12002C4.80777 21.2499 4.49863 21.1881 4.21035 21.0681C3.92208 20.9481 3.66035 20.7724 3.44021 20.5509C3.22007 20.3295 3.04586 20.0667 2.92758 19.7778C2.80931 19.4888 2.74931 19.1793 2.75102 18.867V7.27904C2.74916 6.96729 2.80919 6.65827 2.92764 6.36988C3.04608 6.0815 3.22059 5.8195 3.44103 5.59905C3.66148 5.37861 3.92348 5.2041 4.21186 5.08566C4.50025 4.96721 4.80927 4.90718 5.12102 4.90904H9.56002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.09 8.99503L15.005 4.90903M6.83502 15.803V13.638C6.83702 13.281 6.97902 12.938 7.23002 12.685L16.762 3.15303C16.8885 3.02513 17.0391 2.9236 17.2051 2.8543C17.3711 2.78501 17.5492 2.74933 17.729 2.74933C17.9089 2.74933 18.087 2.78501 18.253 2.8543C18.419 2.9236 18.5695 3.02513 18.696 3.15303L20.847 5.30403C20.9749 5.43051 21.0765 5.5811 21.1457 5.74709C21.215 5.91307 21.2507 6.09116 21.2507 6.27103C21.2507 6.4509 21.215 6.62898 21.1457 6.79497C21.0765 6.96096 20.9749 7.11155 20.847 7.23803L11.315 16.77C11.0616 17.0217 10.7192 17.1636 10.362 17.165H8.19702C8.01809 17.1653 7.84086 17.1302 7.6755 17.0619C7.51013 16.9935 7.35988 16.8932 7.23336 16.7667C7.10683 16.6402 7.00652 16.4899 6.93816 16.3246C6.86981 16.1592 6.83476 15.982 6.83502 15.803Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <div id="tooltip-light-{{m.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                                        Edit
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </a>
+                                <a href="{% url "merchant_detail" merchant_id=m.id %}" class="font-medium cursor-pointer text-white bg-[#3b5362] w-[32px] h-[32px] flex justify-center items-center rounded-lg hover:underline ms-3">
+                                    <button data-tooltip-target="merchant-detail-{{m.id}}" data-tooltip-style="light" type="button">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 5.27L3.28 4L20 20.72L18.73 22L15.65 18.92C14.5 19.3 13.28 19.5 12 19.5C7 19.5 2.73 16.39 1 12C1.69 10.24 2.79 8.69 4.19 7.46L2 5.27ZM12 9C12.7956 9 13.5587 9.31607 14.1213 9.87868C14.6839 10.4413 15 11.2044 15 12C15.0005 12.3406 14.943 12.6787 14.83 13L11 9.17C11.3213 9.05698 11.6594 8.99949 12 9ZM12 4.5C17 4.5 21.27 7.61 23 12C22.1834 14.0729 20.7966 15.8723 19 17.19L17.58 15.76C18.9629 14.8034 20.0783 13.5091 20.82 12C20.0117 10.3499 18.7565 8.95963 17.1974 7.98735C15.6382 7.01508 13.8375 6.49976 12 6.5C10.91 6.5 9.84 6.68 8.84 7L7.3 5.47C8.74 4.85 10.33 4.5 12 4.5ZM3.18 12C3.98835 13.6501 5.24345 15.0404 6.80264 16.0126C8.36182 16.9849 10.1625 17.5002 12 17.5C12.69 17.5 13.37 17.43 14 17.29L11.72 15C11.0242 14.9254 10.3748 14.6149 9.87997 14.12C9.38512 13.6252 9.07458 12.9758 9 12.28L5.6 8.87C4.61 9.72 3.78 10.78 3.18 12Z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <div id="merchant-detail-{{m.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 tooltip">
+                                        View
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="px-6 py-4 text-center text-gray-500">
+                            No merchants found {% if search_query %}matching your search{% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
+            <ul class="inline-flex -space-x-px text-sm h-8">
+                {% if merchants.has_previous %}
+                    <li>
+                        <a href="?page={{ merchants.previous_page_number }}" 
+                           class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                            Previous
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300 bg-white border border-gray-200 rounded-s-lg cursor-not-allowed">
+                            Previous
+                        </span>
+                    </li>
+                {% endif %}
+                
+                {% for num in merchants.paginator.page_range %}
+                    {% if merchants.number == num %}
+                        <li>
+                            <span class="flex items-center justify-center px-3 h-8 text-gray-50 border border-gray-300 bg-slate-600 hover:bg-blue-100 hover:text-blue-700">
+                                {{ num }}
+                            </span>
+                        </li>
+                    {% elif num > merchants.number|add:'-3' and num < merchants.number|add:'3' %}
+                        <li>
+                            <a href="?page={{ num }}" 
+                               class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if merchants.has_next %}
+                    <li>
+                        <a href="?page={{ merchants.next_page_number }}" 
+                           class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                            Next
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-300 bg-white border border-gray-200 rounded-e-lg cursor-not-allowed">
+                            Next
+                        </span>
+                    </li>
+                {% endif %}
+            </ul>
+            <div class="text-sm font-normal text-gray-500">
+                Showing 
+                <span class="font-semibold text-gray-900">{{ merchants.start_index }}-{{ merchants.end_index }}</span> of 
+                <span class="font-semibold text-gray-900">{{ merchants.paginator.count }}</span>
+            </div>
+        </nav>
+    </div>
+    <button type="button" data-modal-target="add-merchant-modal" data-modal-toggle="add-merchant-modal"
+        class="fixed right-[40px] bottom-[50px] bg-[#3b5362] rounded-[8px] py-[0.8rem] px-[2.2rem] text-white flex gap-[0.5rem] justify-center items-center cursor-pointer shadow-xl ">
+        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
+        </svg>
+        Merchant
+    </button>
+</section>
+
+<!--Modal Add Merchant-->
+<div id="add-merchant-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
+    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm ">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    Add a New Merchant
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="add-merchant-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form id="add-merchant-form" method="post" action="{% url 'merchant' %}" enctype="multipart/form-data" class="p-4 md:p-5">
+                {% csrf_token %}
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant name" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="contact_info" class="block mb-2 text-sm font-medium text-gray-900 ">Contact Number</label>
+                        <input type="tel" name="contact_info" id="contact_info" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter phone number" required>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="logo" class="block mb-2 text-sm font-medium text-gray-900 ">Merchant Logo</label>
+                        <input type="file" name="logo" id="logo" accept="image/*" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">
+                        <p class="mt-1 text-xs text-gray-500">PNG, JPG, JPEG (Max. 5MB)</p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
+                        <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" required>
+                            <option selected disabled value="">Select category</option>
+                            <option value="school">School</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900 ">Address</label>
+                        <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Enter merchant address" required>
+                    </div>
+                   
+                </div>
+                <button type="submit" class="text-white inline-flex gap-2 items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 1.75C8.19891 1.75 8.38968 1.82902 8.53033 1.96967C8.67098 2.11032 8.75 2.30109 8.75 2.5V7.25H13.5C13.6989 7.25 13.8897 7.32902 14.0303 7.46967C14.171 7.61032 14.25 7.80109 14.25 8C14.25 8.19891 14.171 8.38968 14.0303 8.53033C13.8897 8.67098 13.6989 8.75 13.5 8.75H8.75V13.5C8.75 13.6989 8.67098 13.8897 8.53033 14.0303C8.38968 14.171 8.19891 14.25 8 14.25C7.80109 14.25 7.61032 14.171 7.46967 14.0303C7.32902 13.8897 7.25 13.6989 7.25 13.5V8.75H2.5C2.30109 8.75 2.11032 8.67098 1.96967 8.53033C1.82902 8.38968 1.75 8.19891 1.75 8C1.75 7.80109 1.82902 7.61032 1.96967 7.46967C2.11032 7.32902 2.30109 7.25 2.5 7.25H7.25V2.5C7.25 2.30109 7.32902 2.11032 7.46967 1.96967C7.61032 1.82902 7.80109 1.75 8 1.75Z" fill="currentColor"/>
+                    </svg>
+                    Create Merchant
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+
+<!--Modal Edit Merchant-->
+{% for m in merchants %}
+<div id="edit-merchant-modal-{{m.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
+    <div class="relative p-4 w-full md:w-[45%] m-auto max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    Edit Merchant
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="edit-merchant-modal-{{m.id}}">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form method="post" action="{% url 'edit_merchant' m.id %}" enctype="multipart/form-data" class="p-4 md:p-5">
+                {% csrf_token %}
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="name-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Merchant Name</label>
+                        <input type="text" name="name" id="name-{{m.id}}" value="{{m.name}}"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
+                               placeholder="Enter merchant name" required>
+                    </div>
+                    
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="contact_info-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Contact Number</label>
+                        <input type="tel" name="contact_info" id="contact_info-{{m.id}}" value="{{m.contact_info}}"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
+                               placeholder="Enter phone number" required>
+                    </div>
+                    
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="logo-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Merchant Logo</label>
+                        <input type="file" name="logo" id="logo-{{m.id}}" accept="image/*"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                        {% if m.logo_url %}
+                        <p class="mt-1 text-xs text-gray-500">Current: <a href="{{m.logo_url}}" target="_blank" class="text-blue-600">View Logo</a></p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="category-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                        <select name="category" id="category-{{m.id}}" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" required>
+                            <option value="SCHOOL" {% if m.category == 'SCHOOL' %}selected{% endif %}>School</option>
+                            <option value="HOTEL" {% if m.category == 'HOTEL' %}selected{% endif %}>Hotel</option>
+                            <option value="GENERAL" {% if m.category == 'GENERAL' %}selected{% endif %}>General</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="address-{{m.id}}" class="block mb-2 text-sm font-medium text-gray-900">Address</label>
+                        <input type="text" name="address" id="address-{{m.id}}" value="{{m.address}}"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
+                               placeholder="Enter merchant address" required>
+                    </div>
+                </div>
+                <button type="submit" class="text-white inline-flex gap-2 items-center bg-[#3b5363] hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.75 16.002C3.353 20.098 7.338 23 12 23C18.075 23 23 18.075 23 12M22.25 7.998C20.649 3.901 16.663 1 12 1C5.925 1 1 5.925 1 12M9 16H1V24M23 0V8H15" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Update Merchant
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!--Modal-User-Delete-->
+{% for m in merchants %}
+<div id="delete-modal-{{m.id}}" tabindex="-1" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] h-screen w-full bg-gray-500 bg-opacity-50">
+    <div class="relative p-4 w-full max-w-md max-h-full m-auto">
+        <div class="relative bg-white rounded-lg shadow-sm">
+            <button type="button" 
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" 
+                    data-modal-hide="delete-modal-{{m.id}}">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-4 md:p-5 text-center">
+                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+                <h3 class="mb-5 text-lg font-normal text-gray-500">Are you sure you want to delete "{{m.name}}"?</h3>
+                <form method="post" action="{% url 'delete_merchant' m.id %}">
+                    {% csrf_token %}
+                    
+                    <button type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        Yes, I'm sure
+                    </button>
+                    <button type="button" 
+                            data-modal-hide="delete-modal-{{m.id}}" 
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                        No, cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+<script>
+    // Auto-dismiss messages after 5 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+        const alerts = document.querySelectorAll('[role="alert"]');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        });
+    });
+</script>
+{% endblock content %}

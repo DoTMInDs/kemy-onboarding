@@ -1,0 +1,187 @@
+{% extends "merchant/base.html" %}
+{% load static %}
+{% block content %}
+    {% if messages %}
+        <div class="flex justify-center fixed top-0 left-0 right-0 w-full z-[9999]" role="alert">
+            {% for message in messages %}
+            <div id="toast-success" class="flex items-center w-full max-w-lg p-4 mb-4 rounded-lg shadow-lg
+                {% if 'unavailable' in message|lower %}bg-yellow-100 text-yellow-800
+                {% elif message.tags == 'error' %}bg-red-100 text-red-800
+                {% else %}bg-blue-100 text-blue-800{% endif %}" role="alert">
+                <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 {% if message.tags == 'error' %}text-red-700{% else %} text-green-500 {% endif %} bg-green-100 rounded-lg ">
+                    {% if message.tags == 'error' %}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.905 16.52 13.0007 16.2827 13 16C12.9993 15.7173 12.9033 15.48 12.712 15.288C12.5207 15.096 12.2833 15 12 15C11.7167 15 11.4793 15.096 11.288 15.288C11.0967 15.48 11.0007 15.7173 11 16C10.9993 
+                        16.2827 11.0953 16.5203 11.288 16.713C11.4807 16.9057 11.718 17.0013 12 17ZM11 13H13V7H11V13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88334 20.6867 5.825 19.9743 4.925 19.075C4.025 18.1757 3.31267 17.1173 2.788 15.9C2.26333 14.6827 2.00067 
+                        13.3827 2 12C1.99933 10.6173 2.262 9.31733 2.788 8.1C3.314 6.88267 4.02633 5.82433 4.925 4.925C5.82367 4.02567 6.882 3.31333 8.1 2.788C9.318 2.26267 10.618 2 12 2C13.382 2 14.682 2.26267 15.9 2.788C17.118 3.31333 18.1763 4.02567 19.075 4.925C19.9737 
+                        5.82433 20.6863 6.88267 21.213 8.1C21.7397 9.31733 22.002 10.6173 22 12C21.998 13.3827 21.7353 14.6827 21.212 15.9C20.6887 17.1173 19.9763 18.1757 19.075 19.075C18.1737 19.9743 17.1153 20.687 15.9 21.213C14.6847 21.739 13.3847 22.0013 12 22Z" fill="currentColor"/>
+                    </svg>
+                    {% else %}
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                    </svg>
+                    {% endif %}
+                    <span class="sr-only">Check icon</span>
+                </div>
+                <div class="ms-3 text-sm font-normal">{{ message }}</div>
+                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 " data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+<main class="flex md:flex-row flex-col gap-[3rem] md:px-0 px-[3rem]">
+    <aside class="flex justify-center mt-[3rem] items-center w-full h-[100%] basis-[40%]">
+        <div class="fixed top-[50%] left-[60%] w-full space-y-24 translate-x-[-50%] translate-y-[-50%] md:block hidden">
+            <div class="flex gap-[0.5rem] items-center">
+                <a href="" class="flex items-center gap-2">
+                    <img src="{% static "images/rpl-logo-icon@4x.png" %}" alt="" class="w-10 h-10">
+                    <h1 class="text-[2rem] text-[#3b5362] font-bold">Kemy</h1>
+                </a>
+            </div>
+            <div class="max-w-full md:max-w-md md:px-0 px-[3rem] ">
+                <h1 class="text-2xl font-semibold mb-[1rem]">Welcome to the Kemy Onboarding Portal!</h1>
+                <div class="">
+                    <p class="text-sm text-[#3b5362] mb-[0.5rem]">
+                       This section is for Administrators and Business Owners to
+                        complete the onboarding process for Kemy Business accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="block md:hidden space-y-10">
+            <div class="flex gap-[0.5rem] items-center">
+                <a href="" class=" flex items-center gap-2">
+                    <img src="{% static "images/rpl-logo-icon@4x.png" %}" alt="" class="w-10 h-10">
+                    <h1 class="text-[2rem] text-[#3b5362] font-bold">Kemy</h1>
+                </a>
+            </div>
+            <div class="max-w-full md:max-w-md ">
+                <h1 class="text-2xl font-semibold mb-[1rem] max-w-md">Welcome to the Kemy Onboarding Portal!</h1>
+                <div class="">
+                    <p class="text-sm text-[#3b5362] mb-[0.5rem]">
+                       This section is for Administrators and Business Owners to
+                        complete the onboarding process for Kemy Business accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section class="basis-[60%] md:px-32 lg:px-48 border-t md:border-l w-[100%]  border-slate-200 z-[999] bg-white">
+        <div class="md:block hidden">
+            <img src="{% static "images/login-art.svg" %}" alt="" class="w-full h-[200px]">
+        </div>
+        <div class="md:mt-0 mt-[2rem] h-[100%] w-full flex justify-center items-center flex-col">
+            <h1 class="text-xl text-[#3b5362] font-semibold mb-[1rem]">Login </h1>
+            <form action="#" method="POST" class="w-full max-w-md space-y-6">
+                {% csrf_token %}
+                
+                <!-- Mobile Input -->
+                <div>
+                    <label for="mobile" class="block text-sm font-medium text-[#3b5362] mb-2">Mobile Number</label>
+                    <div class="flex items-center gap-3 ">
+                        <svg width="18" height="18" class="absolute ml-[1rem]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 1.25C10.7403 1.25 9.5321 1.75044 8.6413 2.64124C7.7505 3.53204 7.25006 4.74022 7.25006 6C7.25006 7.25978 7.7505 8.46796 8.6413 9.35876C9.5321 10.2496 10.7403 10.75 12.0001 10.75C13.2598 10.75 14.468 10.2496 15.3588 9.35876C16.2496 8.46796 16.7501 7.25978 16.7501 6C16.7501 4.74022 16.2496 3.53204 15.3588 2.64124C14.468 1.75044 13.2598 1.25 12.0001 1.25ZM8.75006 6C8.75006 5.13805 9.09247 4.3114 9.70196 3.7019C10.3115 3.09241 11.1381 2.75 12.0001 2.75C12.862 2.75 13.6887 3.09241 14.2982 3.7019C14.9076 4.3114 15.2501 5.13805 15.2501 6C15.2501 6.86195 14.9076 7.6886 14.2982 8.2981C13.6887 8.90759 12.862 9.25 12.0001 9.25C11.1381 9.25 10.3115 8.90759 9.70196 8.2981C9.09247 7.6886 8.75006 6.86195 8.75006 6ZM12.0001 12.25C9.68706 12.25 7.55506 12.776 5.97606 13.664C4.42006 14.54 3.25006 15.866 3.25006 17.5V17.602C3.24906 18.764 3.24806 20.222 4.52706 21.264C5.15606 21.776 6.03706 22.141 7.22706 22.381C8.41906 22.623 9.97406 22.75 12.0001 22.75C14.0261 22.75 15.5801 22.623 16.7741 22.381C17.9641 22.141 18.8441 21.776 19.4741 21.264C20.7531 20.222 20.7511 18.764 20.7501 17.602V17.5C20.7501 15.866 19.5801 14.54 18.0251 13.664C16.4451 12.776 14.3141 12.25 12.0001 12.25Z" fill="#3b5362"/>
+                        </svg>
+                        <input type="tel" id="mobile" name="mobile" required 
+                               class="w-full bg-transparent outline-none pl-[3rem] px-4 py-3 border border-slate-200 rounded-lg focus-within:rounded focus-within:ring-1 focus-within:ring-[#3b5362] placeholder-[#9CA3AF]"
+                               placeholder="Enter your mobile number">
+                    </div>
+                </div>
+                
+                <!-- Password Input with Toggle -->
+                <div>
+                    <label for="pin" class="block text-sm font-medium text-[#3b5362] mb-2">PIN</label>
+                    <div class="flex items-center gap-3 relative">
+                        <svg width="18" height="18" class="absolute ml-[1rem]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.00008 11.3333C7.64646 11.3333 7.30732 11.1928 7.05727 10.9428C6.80722 10.6927 6.66675 10.3536 6.66675 9.99999C6.66675 9.25999 7.26008 8.66666 8.00008 8.66666C8.3537 8.66666 8.69284 8.80713 8.94289 9.05718C9.19294 9.30723 9.33342 9.64637 9.33342 9.99999C9.33342 10.3536 9.19294 10.6927 8.94289 10.9428C8.69284 11.1928 8.3537 11.3333 8.00008 11.3333ZM12.0001 13.3333V6.66666H4.00008V13.3333H12.0001ZM12.0001 5.33332C12.3537 5.33332 12.6928 5.4738 12.9429 5.72385C13.1929 5.9739 13.3334 6.31303 13.3334 6.66666V13.3333C13.3334 13.6869 13.1929 14.0261 12.9429 14.2761C12.6928 14.5262 12.3537 14.6667 12.0001 14.6667H4.00008C3.64646 14.6667 3.30732 14.5262 3.05727 14.2761C2.80722 14.0261 2.66675 13.6869 2.66675 13.3333V6.66666C2.66675 5.92666 3.26008 5.33332 4.00008 5.33332H4.66675V3.99999C4.66675 3.11593 5.01794 2.26809 5.64306 1.64297C6.26818 1.01785 7.11603 0.666656 8.00008 0.666656C8.43782 0.666656 8.87127 0.752876 9.27569 0.920391C9.68011 1.08791 10.0476 1.33344 10.3571 1.64297C10.6666 1.9525 10.9122 2.31996 11.0797 2.72438C11.2472 3.1288 11.3334 3.56225 11.3334 3.99999V5.33332H12.0001Z" fill="#3B5362"/>
+                        </svg>
+                        <input type="password" id="pin" name="pin" required 
+                               class="w-full bg-transparent outline-none pl-[3rem] px-4 py-3 border border-slate-200 rounded-lg focus-within:rounded focus-within:ring-1 focus-within:ring-[#3b5362] placeholder-[#9CA3AF]"
+                               placeholder="Enter your PIN">
+                        <button type="button" onclick="togglePassword()" class="text-[#3b5362] absolute right-0 mr-[1rem]">
+                            <svg id="eye-open" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03007 1.97C2.88789 1.83752 2.69985 1.7654 2.50555 1.76882C2.31124 1.77225 2.12586 1.85096 1.98845 1.98838C1.85103 2.12579 1.77232 2.31118 1.76889 2.50548C1.76546 2.69978 1.83759 2.88782 1.97007 3.03L2.80007 3.86C1.80823 4.67177 1.02049 5.70473 0.500068 6.876L0.240068 7.461C0.164681 7.63087 0.125732 7.81465 0.125732 8.0005C0.125732 8.18635 0.164681 8.37013 0.240068 8.54L0.500068 9.125C0.961013 10.1612 1.63165 11.0907 2.46969 11.8549C3.30774 12.619 4.29502 13.2012 5.36927 13.5648C6.44353 13.9284 7.58147 14.0655 8.71135 13.9674C9.84122 13.8694 10.9385 13.5383 11.9341 12.995L12.9701 14.03C13.0387 14.1037 13.1215 14.1628 13.2135 14.2038C13.3055 14.2448 13.4048 14.2668 13.5055 14.2686C13.6062 14.2704 13.7063 14.2518 13.7997 14.2141C13.8931 14.1764 13.9779 14.1203 14.0491 14.049C14.1203 13.9778 14.1765 13.893 14.2142 13.7996C14.2519 13.7062 14.2704 13.6062 14.2687 13.5055C14.2669 13.4048 14.2448 13.3055 14.2038 13.2135C14.1629 13.1215 14.1038 13.0387 14.0301 12.97L3.03007 1.97ZM10.8181 11.878L9.52407 10.585C8.95104 10.9236 8.28166 11.0621 7.62131 10.9785C6.96096 10.895 6.34714 10.5942 5.87648 10.1236C5.40582 9.65293 5.10505 9.03911 5.02152 8.37876C4.93799 7.71841 5.07643 7.04903 5.41507 6.476L3.86607 4.927C3.00108 5.60354 2.31564 6.48232 1.87007 7.486L1.64107 8L1.87107 8.515C2.23257 9.3276 2.75201 10.0602 3.39919 10.6703C4.04637 11.2803 4.80837 11.7557 5.64089 12.0686C6.47341 12.3815 7.35983 12.5258 8.24861 12.4931C9.1374 12.4604 10.0108 12.2513 10.8181 11.878ZM6.55007 7.611C6.482 7.86558 6.48211 8.13358 6.55038 8.3881C6.61865 8.64263 6.75268 8.87471 6.93902 9.06105C7.12536 9.24738 7.35744 9.38142 7.61196 9.44969C7.86649 9.51796 8.13449 9.51807 8.38907 9.45L6.55007 7.611ZM8.20807 5.007L10.9921 7.791C10.9417 7.06925 10.6323 6.39 10.1207 5.87841C9.60906 5.36681 8.92982 5.05734 8.20807 5.007ZM14.1281 8.515C13.8899 9.0516 13.5823 9.55457 13.2131 10.011L14.2781 11.077C14.7752 10.4871 15.1866 9.82991 15.5001 9.125L15.7601 8.54C15.8356 8.36999 15.8746 8.18603 15.8746 8C15.8746 7.81397 15.8356 7.63001 15.7601 7.46L15.5001 6.876C14.6833 5.04015 13.2217 3.56755 11.392 2.73711C9.56232 1.90667 7.49161 1.77605 5.57207 2.37L6.81007 3.61C8.28806 3.34388 9.81261 3.58126 11.1397 4.28416C12.4668 4.98706 13.5198 6.11483 14.1301 7.487L14.3581 8.001L14.1281 8.515Z" fill="#3B5362"/>
+                            </svg>
+                            <svg id="eye-closed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="hidden">
+                                <path d="M7.15996 2.23999C7.39996 2.15999 7.65996 2.09999 7.93996 2.05999C8.43996 1.99999 8.97996 1.99999 9.57996 1.99999H10.12C12.42 1.99999 13.57 2.91999 14.22 3.89999C14.41 4.17999 14.41 4.54999 14.22 4.82999C14.14 4.94999 14.05 5.06999 13.96 5.18999" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.22002 3.31006C9.82002 3.44006 10.36 3.74006 10.78 4.17006C11.2 4.60006 11.51 5.15006 11.65 5.76006" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.47 8.01001C13.42 8.32001 13.35 8.63001 13.25 8.94001C13.02 9.71001 12.62 10.42 12.07 11.02C11.31 11.84 10.3 12.46 9.10002 12.73C8.55002 12.84 8.00002 12.87 7.47002 12.83" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4.82996 3.18994C3.26996 4.44994 2.28996 6.23994 2.08996 8.49994C2.05996 8.80994 2.05996 9.12994 2.08996 9.43994C2.17996 10.61 2.55996 11.67 3.12996 12.56C3.77996 13.57 4.87996 14.5 7.11996 14.5H8.87996C10.23 14.5 11.29 14.11 12.09 13.5" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2.02002 1.77002L14.19 13.94" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.52002 10.07C6.12002 9.68003 5.87002 9.13003 5.87002 8.50003C5.87002 7.10003 6.98002 5.99003 8.37002 5.99003C9.01002 5.99003 9.57002 6.24003 9.96002 6.64003" stroke="#3B5362" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full py-3 mt-6 text-white bg-[#3b5362] rounded-lg hover:bg-slate-600 transition-colors duration-300 font-medium flex items-center justify-center">
+                    <!-- Loading spinner (hidden by default) -->
+                    <svg id="login-spinner" class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <!-- Login text (always visible) -->
+                    <span id="login-text">Login</span>
+                </button>
+                
+                <div class="text-center text-sm text-[#6B7280]">
+                    <a href="#" class="text-[#3b5362] hover:underline">Forgot your PIN?</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+    function togglePassword() {
+        const pinInput = document.getElementById('pin');
+        const eyeOpen = document.getElementById('eye-open');
+        const eyeClosed = document.getElementById('eye-closed');
+        
+        if (pinInput.type === 'password') {
+            pinInput.type = 'text';
+            eyeOpen.classList.add('hidden');
+            eyeClosed.classList.remove('hidden');
+        } else {
+            pinInput.type = 'password';
+            eyeOpen.classList.remove('hidden');
+            eyeClosed.classList.add('hidden');
+        }
+    }
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const button = this.querySelector('button[type="submit"]');
+        const spinner = document.getElementById('login-spinner');
+        
+        // Show spinner
+        spinner.classList.remove('hidden');
+        
+        // Disable button to prevent multiple submissions
+        button.disabled = true;
+    });
+    
+    // Reset button state if form submission fails
+    window.addEventListener('pageshow', function() {
+        const button = document.querySelector('button[type="submit"]');
+        const spinner = document.getElementById('login-spinner');
+        
+        button.disabled = false;
+        spinner.classList.add('hidden');
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const alerts = document.querySelectorAll('[role="alert"]');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        });
+    });
+</script>
+
+{% endblock %}

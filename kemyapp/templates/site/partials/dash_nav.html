@@ -1,0 +1,197 @@
+{% load static %}
+<nav class="flex w-full">
+    <section id="dashboard_SideBar" class="dashboard_SideBar group fixed flex flex-col h-[100%] bg-[#3b5362] left-0 p-[1rem] top-0 transition-all duration-300 z-50 w-[250px]">
+        <div class="nav-items space-y-4 h-full flex flex-col">
+            <!-- User Profile Section -->
+            <section class="flex justify-between items-center mb-[2rem] py-[1rem] px-[0.6rem] cursor-pointer border-b border-gray-500">
+                <a href="{% url "home" %}" class="no-underline flex gap-[1rem] items-center">
+                    <img src="{% static 'images/rpl-logo-icon@4x.png' %}" class="w-[40px] h-[40px] bg-slate-200 border border-white rounded-full object-center object-cover">
+                    <div>
+                        <h4 class="text-slate-50 text-nowrap font-semibold">Kemy</h4>
+                        <p class="text-gray-300 text-sm">Admin</p>
+                    </div>
+                </a>
+            </section>
+            
+            <!-- Main Menu Heading -->
+            <h5 class="text-gray-400 uppercase text-xs font-bold px-4 mb-2">MAIN MENU</h5>
+            
+            <!-- Navigation Links -->
+            <div class="flex-1 overflow-y-auto">
+                <a href="{% url "dashboard" %}" class="nav-link text-nowrap py-[0.8rem] px-[1rem] text-slate-200 text-[15px] font-medium flex gap-[1rem] items-center hover:bg-[#2c3e4e] transition duration-300 rounded-[8px] mb-1" data-url="dashboard">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3.19998C8.43573 3.56262 6.99694 4.33718 5.8329 5.44332C4.66886 6.54946 3.82197 7.94689 3.38005 9.49066C2.93814 11.0344 2.91731 12.6683 3.31971 14.2229C3.72212 15.7774 4.53311 17.196 5.66857 18.3314C6.80403 19.4669 8.2226 20.2779 9.77714 20.6803C11.3317 21.0827 12.9656 21.0619 14.5093 20.62C16.0531 20.178 17.4506 19.3311 18.5567 18.1671C19.6628 17.0031 20.4374 15.5643 20.8 14C20.8 13.7348 20.6947 13.4804 20.5071 13.2929C20.3196 13.1053 20.0652 13 19.8 13H13C12.4696 13 11.9609 12.7893 11.5858 12.4142C11.2107 12.0391 11 11.5304 11 11V3.99998C10.9876 3.88151 10.9518 3.76668 10.8946 3.66215C10.8375 3.55763 10.7602 3.46548 10.6672 3.39107C10.5741 3.31665 10.4673 3.26144 10.3527 3.22864C10.2382 3.19584 10.1183 3.1861 10 3.19998Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 3.5C16.2697 3.94708 17.423 4.6733 18.3748 5.62516C19.3267 6.57702 20.0529 7.73028 20.5 9H16C15.7348 9 15.4804 8.89464 15.2929 8.70711C15.1054 8.51957 15 8.26522 15 8V3.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>    
+                
+                <a href="{% url "user_management" %}" class="nav-link text-nowrap py-[0.8rem] px-[1rem] text-slate-200 text-[15px] font-medium flex gap-[1rem] items-center hover:bg-[#2c3e4e] transition duration-300 rounded-[8px] mb-1" data-url="user_management">
+                    <svg width="20" height="20" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0834 25.625H10.25C8.43771 25.625 6.69962 26.3449 5.41812 27.6264C4.13663 28.9079 3.41669 30.646 3.41669 32.4583V35.875M24.4377 28.2387L26.0145 27.5862M26.0145 23.6638L24.4377 23.0095M28.7889 20.8895L28.1346 19.3127M28.7889 30.3605L28.1346 31.939M32.7112 20.8895L33.3655 19.3127M33.3638 31.939L32.7112 30.3605M35.4855 23.6638L37.064 23.0095M35.4855 27.5862L37.064 28.2405" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30.75 30.75C33.5805 30.75 35.875 28.4555 35.875 25.625C35.875 22.7945 33.5805 20.5 30.75 20.5C27.9195 20.5 25.625 22.7945 25.625 25.625C25.625 28.4555 27.9195 30.75 30.75 30.75Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.375 18.7917C19.149 18.7917 22.2084 15.7323 22.2084 11.9583C22.2084 8.18439 19.149 5.125 15.375 5.125C11.6011 5.125 8.54169 8.18439 8.54169 11.9583C8.54169 15.7323 11.6011 18.7917 15.375 18.7917Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>User Management</span>
+                </a>
+                <a href="{% url "provider" %}" class="nav-link text-nowrap py-[0.8rem] px-[1rem] text-slate-200 text-[15px] font-medium flex gap-[1rem] items-center hover:bg-[#2c3e4e] transition duration-300 rounded-[8px] mb-1" data-url="provider">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5 15H6C4.114 15 3.172 15 2.586 14.414C2 13.828 2 12.886 2 11V7C2 5.114 2 4.172 2.586 3.586C3.172 3 4.114 3 6 3H18C19.886 3 20.828 3 21.414 3.586C22 4.172 22 5.114 22 7V12C22 12.932 22 13.398 21.848 13.765C21.7475 14.0078 21.6001 14.2284 21.4143 14.4143C21.2284 14.6001 21.0078 14.7475 20.765 14.848C20.398 15 19.932 15 19 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 17C13 16.2044 13.3161 15.4413 13.8787 14.8787C14.4413 14.3161 15.2044 14 16 14V12C16 11.2044 16.3161 10.4413 16.8787 9.87868C17.4413 9.31607 18.2044 9 19 9V14.5C19 16.835 19 18.002 18.528 18.886C18.1551 19.5837 17.5837 20.1551 16.886 20.528C16.002 21 14.835 21 12.5 21H12C10.136 21 9.204 21 8.47 20.695C7.98455 20.4942 7.5434 20.1997 7.17175 19.8284C6.80011 19.4571 6.50524 19.0163 6.304 18.531C6 17.796 6 16.864 6 15M14 9C14 9.53043 13.7893 10.0391 13.4142 10.4142C13.0391 10.7893 12.5304 11 12 11C11.4696 11 10.9609 10.7893 10.5858 10.4142C10.2107 10.0391 10 9.53043 10 9C10 8.46957 10.2107 7.96086 10.5858 7.58579C10.9609 7.21071 11.4696 7 12 7C12.5304 7 13.0391 7.21071 13.4142 7.58579C13.7893 7.96086 14 8.46957 14 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Providers</span>
+                </a>
+                <!-- Main Menu Heading -->
+                <h5 class="text-gray-400 uppercase text-xs font-bold px-4 mt-[2rem]">MERCHANT</h5>
+                
+                <!-- Merchant Dropdown -->
+                <div class="my-2">
+                    <button type="button" class="nav-dropdown-toggle w-full text-nowrap py-[0.8rem] px-[1rem] text-slate-200 text-[15px] font-medium flex items-center justify-between gap-[1rem] hover:bg-[#2c3e4e] transition duration-300 rounded-[8px]" aria-controls="merchant-dropdown" data-collapse-toggle="merchant-dropdown">
+                        <div class="flex items-center gap-[1rem]">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.774 18C21.524 18 22.119 17.529 22.654 16.87C23.75 15.52 21.951 14.44 21.265 13.913C20.568 13.376 19.789 13.071 19 13M18 11C18.6631 11 19.299 10.7366 19.7678 10.2678C20.2366 9.79893 20.5 9.16304 20.5 8.5C20.5 7.83696 20.2366 7.20107 19.7678 6.73223C19.299 6.26339 18.6631 6 18 6M3.22603 18C2.47603 18 1.88103 17.529 1.34603 16.87C0.250025 15.52 2.04903 14.44 2.73503 13.913C3.43203 13.376 4.21003 13.07 5.00003 13M5.50003 11C4.83698 11 4.2011 10.7366 3.73226 10.2678C3.26342 9.79893 3.00003 9.16304 3.00003 8.5C3.00003 7.83696 3.26342 7.20107 3.73226 6.73223C4.2011 6.26339 4.83698 6 5.50003 6M8.08402 15.111C7.06202 15.743 4.38303 17.033 6.01403 18.647C6.81303 19.436 7.70003 20 8.81703 20H15.185C16.302 20 17.189 19.436 17.986 18.647C19.618 17.033 16.939 15.743 15.917 15.111C14.7399 14.385 13.3841 14.0005 12.001 14.0005C10.618 14.0005 9.26219 14.385 8.08503 15.111M15.5 7.5C15.5 7.95963 15.4095 8.41475 15.2336 8.83939C15.0577 9.26403 14.7999 9.64987 14.4749 9.97487C14.1499 10.2999 13.7641 10.5577 13.3394 10.7336C12.9148 10.9095 12.4597 11 12 11C11.5404 11 11.0853 10.9095 10.6606 10.7336C10.236 10.5577 9.85016 10.2999 9.52515 9.97487C9.20015 9.64987 8.94234 9.26403 8.76645 8.83939C8.59056 8.41475 8.50003 7.95963 8.50003 7.5C8.50003 6.57174 8.86877 5.6815 9.52515 5.02513C10.1815 4.36875 11.0718 4 12 4C12.9283 4 13.8185 4.36875 14.4749 5.02513C15.1313 5.6815 15.5 6.57174 15.5 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Merchant</span>
+                        </div>
+                        <svg class="w-3 h-3 transition-transform" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <ul id="merchant-dropdown" class="hidden py-2 space-y-1 pl-[1.8rem]">
+                        <li>
+                            <a href="{% url "merchant" %}" class="nav-link flex gap-[1rem] items-center w-full p-2 text-slate-300 text-sm transition duration-300 rounded-lg hover:bg-[#2c3e4e]" data-url="merchant">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.5 4C10.5717 4 9.6815 4.36875 9.02513 5.02513C8.36875 5.6815 8 6.57174 8 7.5C8 8.42826 8.36875 9.3185 9.02513 9.97487C9.6815 10.6313 10.5717 11 11.5 11C12.4283 11 13.3185 10.6313 13.9749 9.97487C14.6313 9.3185 15 8.42826 15 7.5C15 6.57174 14.6313 5.6815 13.9749 5.02513C13.3185 4.36875 12.4283 4 11.5 4ZM6 7.5C6 6.04131 6.57946 4.64236 7.61091 3.61091C8.64236 2.57946 10.0413 2 11.5 2C12.9587 2 14.3576 2.57946 15.3891 3.61091C16.4205 4.64236 17 6.04131 17 7.5C17 8.95869 16.4205 10.3576 15.3891 11.3891C14.3576 12.4205 12.9587 13 11.5 13C10.0413 13 8.64236 12.4205 7.61091 11.3891C6.57946 10.3576 6 8.95869 6 7.5ZM19 13V17H23V19H19V23H17V19H13V17H17V13H19ZM8 16C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20H12.05V22H2V20C2 18.4087 2.63214 16.8826 3.75736 15.7574C4.88258 14.6321 6.4087 14 8 14H12V16H8Z" fill="currentColor"/>
+                                </svg>
+                                Merchant
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url "merchant_account" %}" class="nav-link flex gap-[1rem] items-center w-full p-2 text-slate-300 text-sm transition duration-300 rounded-lg hover:bg-[#2c3e4e]" data-url="merchant_account">
+                                <svg width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.02753 1.4375H13.594C14.869 1.4375 15.59 1.6225 16.437 2.4525L16.535 2.5505L23.004 9.125C23.78 9.92 24.026 10.507 24.0875 11.5425L24.0995 11.811L24.1045 12.1005L24.1055 22.8945C24.1055 25.283 22.946 26.513 20.6165 26.561L20.4725 26.5625H8.02753C5.66153 26.5625 4.44403 25.392 4.39603 23.04L4.39453 22.8945V5.117C4.39453 2.7285 5.56503 1.4875 7.88403 1.439L8.02753 1.4375ZM13.336 3.324H8.13303C6.95303 3.324 6.32303 3.95 6.28303 5.0415L6.28103 5.1525V22.8595C6.28103 23.9935 6.87403 24.6335 8.00603 24.6735L8.12103 24.676H20.379C21.5585 24.676 22.178 24.072 22.217 22.971L22.219 22.8595V12.336H15.539C14.1275 12.336 13.379 11.6505 13.3375 10.2575L13.336 10.1325V3.324ZM14.2525 19.301C16.874 19.301 18.5085 21.1025 18.5085 22.408C18.5085 22.834 18.249 23.061 17.531 23.08L17.4305 23.081H11.0745C10.275 23.081 9.99153 22.8535 9.99153 22.408C9.99153 21.103 11.6265 19.301 14.2525 19.301ZM14.2525 13.9825C15.3355 13.9825 16.2765 14.9085 16.2765 16.1585C16.2765 17.4235 15.3405 18.3955 14.2525 18.3955C13.1695 18.3955 12.2285 17.4235 12.2285 16.169C12.2285 14.929 13.1695 13.9825 14.2525 13.9825ZM15.1055 3.6875V9.91C15.1055 10.3515 15.2715 10.5435 15.672 10.5645L15.75 10.5665H21.855L15.1055 3.6875Z" fill="currentColor"/>
+                                </svg>
+                                Merchant Account 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url "merchant_provider" %}" class="nav-link flex gap-[1rem] items-center w-full p-2 text-slate-300 text-sm transition duration-300 rounded-lg hover:bg-[#2c3e4e]" data-url="merchant_provider">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 4C4.8 4 3 5.8 3 8C3 10.2 4.8 12 7 12C9.2 12 11 10.2 11 8C11 5.8 9.2 4 7 4ZM7 10C5.9 10 5 9.1 5 8C5 6.9 5.9 6 7 6C8.1 6 9 6.9 9 8C9 9.1 8.1 10 7 10ZM7 14C3.1 14 0 15.8 0 18V20H11V18H2C2 17.4 3.8 16 7 16C8.8 16 10.2 16.5 11 17V14.8C9.9 14.3 8.5 14 7 14ZM22 4H15C13.9 4 13 4.9 13 6V18C13 19.1 13.9 20 15 20H22C23.1 20 24 19.1 24 18V6C24 4.9 23.1 4 22 4ZM16 18H15V6H16V18ZM22 18H18V6H22V18Z" fill="currentColor"/>
+                                </svg>
+                                Merchant Provider
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+               
+            </div>
+
+            
+            
+            <!-- Bottom Section -->
+            <div class="mt-auto pt-4 border-t border-gray-500">
+                <a href="{% url 'logout' %}" class="nav-link text-nowrap py-[0.8rem] px-[1rem] text-slate-200 text-[15px] font-medium flex gap-[1rem] items-center hover:bg-[#2c3e4e] transition duration-300 rounded-[8px]" data-url="logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 12.1326 4.05268 12.2598 4.14645 12.3536C4.24021 12.4473 4.36739 12.5 4.5 12.5H13.293L10.646 15.146C10.5995 15.1924 10.5626 15.2475 10.5374 15.3082C10.5123 15.3689 10.4993 15.4339 10.4992 15.4996C10.4991 15.6323 10.5517 15.7596 10.6455 15.8535C10.7393 15.9474 10.8665 16.0002 10.9991 16.0003C11.1318 16.0004 11.2591 15.9478 11.353 15.854L14.853 12.354C14.9467 12.2602 14.9994 12.1331 14.9994 12.0005C14.9994 11.8679 14.9467 11.7408 14.853 11.647L11.353 8.147C11.2587 8.05592 11.1324 8.00552 11.0013 8.00666C10.8702 8.0078 10.7448 8.06039 10.6521 8.15309C10.5594 8.24579 10.5068 8.3712 10.5057 8.5023C10.5045 8.6334 10.5549 8.7597 10.646 8.854L13.293 11.5H4.5C4.36739 11.5 4.24021 11.5527 4.14645 11.6464C4.05268 11.7402 4 11.8674 4 12ZM17.5 2H6.5C5.83696 2 5.20107 2.26339 4.73223 2.73223C4.26339 3.20107 4 3.83696 4 4.5V8.5C4 8.63261 4.05268 8.75979 4.14645 8.85355C4.24021 8.94732 4.36739 9 4.5 9C4.63261 9 4.75979 8.94732 4.85355 8.85355C4.94732 8.75979 5 8.63261 5 8.5V4.5C5 4.10218 5.15804 3.72064 5.43934 3.43934C5.72064 3.15804 6.10218 3 6.5 3H17.5C17.8978 3 18.2794 3.15804 18.5607 3.43934C18.842 3.72064 19 4.10218 19 4.5V19.5C19 19.8978 18.842 20.2794 18.5607 20.5607C18.2794 20.842 17.8978 21 17.5 21H6.5C6.10218 21 5.72064 20.842 5.43934 20.5607C5.15804 20.2794 5 19.8978 5 19.5V15.5C5 15.3674 4.94732 15.2402 4.85355 15.1464C4.24021 15.0527 4.36739 15 4.5 15C4.36739 15 4.24021 15.0527 4.14645 15.1464C4.05268 15.2402 4 15.3674 4 15.5V19.5C4 20.163 4.26339 20.7989 4.73223 21.2678C5.20107 21.7366 5.83696 22 6.5 22H17.5C18.163 22 18.7989 21.7366 19.2678 21.2678C19.7366 20.7989 20 20.163 20 19.5V4.5C20 3.83696 19.7366 3.20107 19.2678 2.73223C18.7989 2.26339 18.163 2 17.5 2Z" fill="currentColor"/>
+                    </svg>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="w-[100%] fixed z-[30] top-0 right-0 left-0">
+        <div class="mr-[0.3rem] ml-[0.3rem] md:ml-[250px] transition-all duration-300 h-auto">
+            <div class="w-full flex justify-between items-center py-[1.5rem] px-[1rem] bg-white shadow-sm">
+                <div class="flex gap-[0.5rem] items-center ">
+                    <h4 class="text-slate-700 text-nowrap font-semibold">Kemy Merchant Onboarding System </h4>
+                </div>
+               <div class="flex gap-[0.5rem] items-center">
+                    <div class="user_wrapper hidden md:block">        
+                        <button type="button" class="flex items-center gap-[0.3rem] text-[#3b5362]" id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C10.7402 1.25 9.53204 1.75044 8.64124 2.64124C7.75044 3.53204 7.24999 4.74022 7.24999 6C7.24999 7.25978 7.75044 8.46796 8.64124 9.35876C9.53204 10.2496 10.7402 10.75 12 10.75C13.2598 10.75 14.468 10.2496 15.3588 9.35876C16.2496 8.46796 16.75 7.25978 16.75 6C16.75 4.74022 16.2496 3.53204 15.3588 2.64124C14.468 1.75044 13.2598 1.25 12 1.25ZM8.74999 6C8.74999 5.13805 9.0924 4.3114 9.7019 3.7019C10.3114 3.09241 11.138 2.75 12 2.75C12.8619 2.75 13.6886 3.09241 14.2981 3.7019C14.9076 4.3114 15.25 5.13805 15.25 6C15.25 6.86195 14.9076 7.6886 14.2981 8.2981C13.6886 8.90759 12.8619 9.25 12 9.25C11.138 9.25 10.3114 8.90759 9.7019 8.2981C9.0924 7.6886 8.74999 6.86195 8.74999 6ZM12 12.25C9.687 12.25 7.55499 12.776 5.97599 13.664C4.41999 14.54 3.24999 15.866 3.24999 17.5V17.602C3.24899 18.764 3.24799 20.222 4.52699 21.264C5.15599 21.776 6.03699 22.141 7.22699 22.381C8.419 22.623 9.974 22.75 12 22.75C14.026 22.75 15.58 22.623 16.774 22.381C17.964 22.141 18.844 21.776 19.474 21.264C20.753 20.222 20.751 18.764 20.75 17.602V17.5C20.75 15.866 19.58 14.54 18.025 13.664C16.445 12.776 14.314 12.25 12 12.25ZM4.74999 17.5C4.74999 16.649 5.37199 15.725 6.71099 14.972C8.02699 14.232 9.895 13.75 12.001 13.75C14.105 13.75 15.973 14.232 17.289 14.972C18.629 15.725 19.25 16.649 19.25 17.5C19.25 18.808 19.21 19.544 18.526 20.1C18.156 20.402 17.536 20.697 16.476 20.911C15.419 21.125 13.974 21.25 12 21.25C10.026 21.25 8.57999 21.125 7.52399 20.911C6.46399 20.697 5.84399 20.402 5.47399 20.101C4.78999 19.544 4.74999 18.808 4.74999 17.5Z" fill="currentColor"/>
+                            </svg>
+                            <p class="text-[#3b5362] capitalize">Hello! @Big Esse</p>
+                            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 border border-slate-200">
+                            <div class="flex items-center gap-1 px-2 py-2 w-full overflow-auto">
+                                <img class="w-[30px] h-[30px] rounded-[50%] object-cover object-center mr-[10px]" src=" {{ user.profilemodel.profile.url }} " alt="profile.img">
+                                <h2 class="text-[#FFFFFF]">Big Esse </h2>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                                <li>
+                                    <a href="" class="block px-4 py-2 hover:bg-gray-100 ">Manage profile</a>
+                                </li>
+                            </ul>
+                            <div class="py-2">
+                                <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="menuToggle()" role="button" aria-controls="dashboard_SideBar" aria-label="Toggle sidebar" aria-expanded="false"  tabindex="0" class="cursor-pointer md:hidden focus:bg-slate-200 transition-colors hover:bg-slate-100 w-[40px] h-[40px] flex justify-center items-center rounded-full p-[0.5rem] text-slate-700">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 18V20H3V18H21ZM6.596 3.90302L8.01 5.31801L4.828 8.50002L8.01 11.682L6.596 13.096L2 8.50002L6.596 3.90302ZM21 11V13H12V11H21ZM21 4.00002V6.00002H12V4.00002H21Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </section>
+</nav>
+
+  <script>
+    function menuToggle() {
+        const sidebar = document.getElementById('dashboard_SideBar');
+        sidebar.classList.toggle('translate-x-[-250px]');
+        sidebar.classList.toggle('md:translate-x-0');
+        
+        // Store the state in localStorage
+        const isHidden = sidebar.classList.contains('translate-x-[-250px]');
+        localStorage.setItem('sidebarHidden', isHidden);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll(".nav-link");
+        const merchantDropdown = document.getElementById("merchant-dropdown");
+        const toggleIcon = document.querySelector("#merchant-toggle svg.w-3");
+        
+        // Define what paths should trigger the dropdown to stay open
+        const merchantPaths = ["/merchant", "/merchant_account", "/merchant_provider"];
+    
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute("href");
+            if (currentPath === linkPath) {
+                link.classList.add("bg-[#2c3e4e]", "font-semibold", "text-white");
+            }
+        });
+
+        const isMerchantActive = merchantPaths.some(path => currentPath.startsWith(path));
+        if (isMerchantActive) {
+            merchantDropdown.classList.remove("hidden");
+            merchantDropdown.classList.add("block");
+
+            // Rotate the dropdown arrow icon
+            if (toggleIcon) {
+                toggleIcon.classList.add("rotate-180");
+            }
+        }
+
+        // OPTIONAL: click toggle behavior
+        document.getElementById("merchant-toggle").addEventListener("click", function () {
+            merchantDropdown.classList.toggle("hidden");
+            merchantDropdown.classList.toggle("block");
+            toggleIcon.classList.toggle("rotate-180");
+        });
+    });
+  </script>
+
+
+
+
