@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package auth.v1;
+package kemy.protobuf.auth;
 option go_package = "go/auth";
 
 import "google/protobuf/empty.proto";
@@ -55,6 +55,7 @@ message VerifyChallengeResponse {
 message ChallengeRequest {
   int64 user_id = 1;
   ChallengeType challenge_type = 2;
+  string mobile = 3;
 }
 message ChallengeResponse {
   string challenge = 1;

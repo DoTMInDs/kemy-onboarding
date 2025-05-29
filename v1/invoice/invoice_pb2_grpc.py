@@ -38,332 +38,332 @@ class InvoiceServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/GetInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceResponse.FromString,
                 _registered_method=True)
         self.GetInvoiceByMobile = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetInvoiceByMobile',
+                '/kemy.protobuf.invoice.InvoiceService/GetInvoiceByMobile',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceByMobileRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceResponse.FromString,
                 _registered_method=True)
         self.GetInvoiceForUser = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetInvoiceForUser',
+                '/kemy.protobuf.invoice.InvoiceService/GetInvoiceForUser',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceForUserRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetInvoiceForUserResponse.FromString,
                 _registered_method=True)
         self.CreateInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/CreateInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CreateInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CreateInvoiceResponse.FromString,
                 _registered_method=True)
         self.UpdateInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.UpdateInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.UpdateInvoiceResponse.FromString,
                 _registered_method=True)
         self.ListCustomerInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListCustomerInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoices',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
                 _registered_method=True)
         self.ListCustomerInvoicesByUser = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListCustomerInvoicesByUser',
+                '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoicesByUser',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesByUserRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
                 _registered_method=True)
         self.ListCustomerInvoicesByCustomField = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListCustomerInvoicesByCustomField',
+                '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoicesByCustomField',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesByCustomFieldRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
                 _registered_method=True)
         self.ListMerchantInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListMerchantInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/ListMerchantInvoices',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantInvoicesRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantInvoicesResponse.FromString,
                 _registered_method=True)
         self.ListMerchantRecentInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListMerchantRecentInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/ListMerchantRecentInvoices',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantRecentInvoicesRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
                 _registered_method=True)
         self.FinalizeInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/FinalizeInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/FinalizeInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.FinalizeInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.FinalizeInvoiceResponse.FromString,
                 _registered_method=True)
         self.CancelInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CancelInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/CancelInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CancelInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CancelInvoiceResponse.FromString,
                 _registered_method=True)
         self.DeleteInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/DeleteInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/DeleteInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.DeleteInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.DeleteInvoiceResponse.FromString,
                 _registered_method=True)
         self.PayInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/PayInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/PayInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.PayInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.PayInvoiceResponse.FromString,
                 _registered_method=True)
         self.RecordCashPayment = channel.unary_unary(
-                '/invoice.v1.InvoiceService/RecordCashPayment',
+                '/kemy.protobuf.invoice.InvoiceService/RecordCashPayment',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.RecordCashPaymentRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.RecordCashPaymentResponse.FromString,
                 _registered_method=True)
         self.StreamInvoiceEvents = channel.stream_stream(
-                '/invoice.v1.InvoiceService/StreamInvoiceEvents',
+                '/kemy.protobuf.invoice.InvoiceService/StreamInvoiceEvents',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.InvoiceEventRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.InvoiceEventResponse.FromString,
                 _registered_method=True)
         self.ListMerchantCustomers = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListMerchantCustomers',
+                '/kemy.protobuf.invoice.InvoiceService/ListMerchantCustomers',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantCustomersRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantCustomersResponse.FromString,
                 _registered_method=True)
         self.GetCustomerOverdueInvoicesForUser = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetCustomerOverdueInvoicesForUser',
+                '/kemy.protobuf.invoice.InvoiceService/GetCustomerOverdueInvoicesForUser',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetCustomerOverdueInvoicesForUserRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetCustomerOverdueInvoicesForUserResponse.FromString,
                 _registered_method=True)
         self.GetPayment = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetPayment',
+                '/kemy.protobuf.invoice.InvoiceService/GetPayment',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetPaymentRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetPaymentResponse.FromString,
                 _registered_method=True)
         self.ListPaymentsByInvoice = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListPaymentsByInvoice',
+                '/kemy.protobuf.invoice.InvoiceService/ListPaymentsByInvoice',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentsRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentsResponse.FromString,
                 _registered_method=True)
         self.ListPaymentsByInvoiceNumber = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListPaymentsByInvoiceNumber',
+                '/kemy.protobuf.invoice.InvoiceService/ListPaymentsByInvoiceNumber',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentsByNumberRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentsResponse.FromString,
                 _registered_method=True)
         self.GetPaymentMethod = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetPaymentMethod',
+                '/kemy.protobuf.invoice.InvoiceService/GetPaymentMethod',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetPaymentMethodRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetPaymentMethodResponse.FromString,
                 _registered_method=True)
         self.CreatePaymentMethod = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreatePaymentMethod',
+                '/kemy.protobuf.invoice.InvoiceService/CreatePaymentMethod',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CreatePaymentMethodRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CreatePaymentMethodResponse.FromString,
                 _registered_method=True)
         self.UpdatePaymentMethod = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdatePaymentMethod',
+                '/kemy.protobuf.invoice.InvoiceService/UpdatePaymentMethod',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.UpdatePaymentMethodRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.UpdatePaymentMethodResponse.FromString,
                 _registered_method=True)
         self.DeletePaymentMethod = channel.unary_unary(
-                '/invoice.v1.InvoiceService/DeletePaymentMethod',
+                '/kemy.protobuf.invoice.InvoiceService/DeletePaymentMethod',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.DeletePaymentMethodRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.DeletePaymentMethodResponse.FromString,
                 _registered_method=True)
         self.ListPaymentMethods = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListPaymentMethods',
+                '/kemy.protobuf.invoice.InvoiceService/ListPaymentMethods',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentMethodsRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListPaymentMethodsResponse.FromString,
                 _registered_method=True)
         self.GetMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/GetMerchant',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetMerchantResponse.FromString,
                 _registered_method=True)
         self.CreateMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/CreateMerchant',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CreateMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CreateMerchantResponse.FromString,
                 _registered_method=True)
         self.ListMerchants = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListMerchants',
+                '/kemy.protobuf.invoice.InvoiceService/ListMerchants',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantsResponse.FromString,
                 _registered_method=True)
         self.UpdateMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateMerchant',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.UpdateMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.UpdateMerchantResponse.FromString,
                 _registered_method=True)
         self.GetMerchantUser = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetMerchantUser',
+                '/kemy.protobuf.invoice.InvoiceService/GetMerchantUser',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetMerchantUserRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetMerchantUserResponse.FromString,
                 _registered_method=True)
         self.CreateMerchantUser = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateMerchantUser',
+                '/kemy.protobuf.invoice.InvoiceService/CreateMerchantUser',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CreateMerchantUserRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CreateMerchantUserResponse.FromString,
                 _registered_method=True)
         self.ListMerchantUsers = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListMerchantUsers',
+                '/kemy.protobuf.invoice.InvoiceService/ListMerchantUsers',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantUsersRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListMerchantUsersResponse.FromString,
                 _registered_method=True)
         self.GetCustomer = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetCustomer',
+                '/kemy.protobuf.invoice.InvoiceService/GetCustomer',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.GetCustomerRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.GetCustomerResponse.FromString,
                 _registered_method=True)
         self.CreateCustomer = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateCustomer',
+                '/kemy.protobuf.invoice.InvoiceService/CreateCustomer',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.CreateCustomerRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.CreateCustomerResponse.FromString,
                 _registered_method=True)
         self.UpdateCustomer = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateCustomer',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateCustomer',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.UpdateCustomerRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.UpdateCustomerResponse.FromString,
                 _registered_method=True)
         self.RegisterUserForCustomer = channel.unary_unary(
-                '/invoice.v1.InvoiceService/RegisterUserForCustomer',
+                '/kemy.protobuf.invoice.InvoiceService/RegisterUserForCustomer',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.RegisterUserForCustomerRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.RegisterUserForCustomerResponse.FromString,
                 _registered_method=True)
         self.CreateBillableEntity = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateBillableEntity',
+                '/kemy.protobuf.invoice.InvoiceService/CreateBillableEntity',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.CreateBillableEntityRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
                 _registered_method=True)
         self.GetBillableEntity = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetBillableEntity',
+                '/kemy.protobuf.invoice.InvoiceService/GetBillableEntity',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetBillableEntityRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
                 _registered_method=True)
         self.GetBillableEntitiesForMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetBillableEntitiesForMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/GetBillableEntitiesForMerchant',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetBillableEntitiesForMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.BillableEntitiesResponse.FromString,
                 _registered_method=True)
         self.GetBillableEntitiesForGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetBillableEntitiesForGroup',
+                '/kemy.protobuf.invoice.InvoiceService/GetBillableEntitiesForGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetBillableEntitiesForGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.BillableEntitiesResponse.FromString,
                 _registered_method=True)
         self.UpdateBillableEntity = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateBillableEntity',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateBillableEntity',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.UpdateBillableEntityRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
                 _registered_method=True)
         self.DeleteBillableEntity = channel.unary_unary(
-                '/invoice.v1.InvoiceService/DeleteBillableEntity',
+                '/kemy.protobuf.invoice.InvoiceService/DeleteBillableEntity',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.DeleteBillableEntityRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.CreateGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateGroup',
+                '/kemy.protobuf.invoice.InvoiceService/CreateGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.CreateGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
                 _registered_method=True)
         self.GetGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetGroup',
+                '/kemy.protobuf.invoice.InvoiceService/GetGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
                 _registered_method=True)
         self.GetGroupsForMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetGroupsForMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/GetGroupsForMerchant',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetGroupsForMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.GroupsResponse.FromString,
                 _registered_method=True)
         self.UpdateGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateGroup',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.UpdateGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
                 _registered_method=True)
         self.DeleteGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/DeleteGroup',
+                '/kemy.protobuf.invoice.InvoiceService/DeleteGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.DeleteGroupRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.AddBillableEntityToGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/AddBillableEntityToGroup',
+                '/kemy.protobuf.invoice.InvoiceService/AddBillableEntityToGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.AddBillableEntityToGroupRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.RemoveBillableEntityFromGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/RemoveBillableEntityFromGroup',
+                '/kemy.protobuf.invoice.InvoiceService/RemoveBillableEntityFromGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.RemoveBillableEntityFromGroupRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.CreateTemplate = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateTemplate',
+                '/kemy.protobuf.invoice.InvoiceService/CreateTemplate',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.CreateTemplateRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
                 _registered_method=True)
         self.GetTemplate = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetTemplate',
+                '/kemy.protobuf.invoice.InvoiceService/GetTemplate',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetTemplateRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
                 _registered_method=True)
         self.GetTemplatesForMerchant = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetTemplatesForMerchant',
+                '/kemy.protobuf.invoice.InvoiceService/GetTemplatesForMerchant',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetTemplatesForMerchantRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplatesResponse.FromString,
                 _registered_method=True)
         self.UpdateTemplate = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateTemplate',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateTemplate',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.UpdateTemplateRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
                 _registered_method=True)
         self.DeleteTemplate = channel.unary_unary(
-                '/invoice.v1.InvoiceService/DeleteTemplate',
+                '/kemy.protobuf.invoice.InvoiceService/DeleteTemplate',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.DeleteTemplateRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.CreateTemplateItem = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CreateTemplateItem',
+                '/kemy.protobuf.invoice.InvoiceService/CreateTemplateItem',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.CreateTemplateItemRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateItemResponse.FromString,
                 _registered_method=True)
         self.RemoveTemplateItem = channel.unary_unary(
-                '/invoice.v1.InvoiceService/RemoveTemplateItem',
+                '/kemy.protobuf.invoice.InvoiceService/RemoveTemplateItem',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.RemoveTemplateItemRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdateTemplateItem = channel.unary_unary(
-                '/invoice.v1.InvoiceService/UpdateTemplateItem',
+                '/kemy.protobuf.invoice.InvoiceService/UpdateTemplateItem',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.UpdateTemplateItemRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateItemResponse.FromString,
                 _registered_method=True)
         self.GetTemplateItems = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GetTemplateItems',
+                '/kemy.protobuf.invoice.InvoiceService/GetTemplateItems',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GetTemplateItemsRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.TemplateItemsResponse.FromString,
                 _registered_method=True)
         self.GenerateInvoicesForGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/GenerateInvoicesForGroup',
+                '/kemy.protobuf.invoice.InvoiceService/GenerateInvoicesForGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.GenerateInvoicesForGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.GenerateInvoicesForGroupResponse.FromString,
                 _registered_method=True)
         self.CancelInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/CancelInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/CancelInvoices',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.CancelInvoicesRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.ApplyTemplateToGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ApplyTemplateToGroup',
+                '/kemy.protobuf.invoice.InvoiceService/ApplyTemplateToGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.ApplyTemplateToGroupRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.FinalizeDraftInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/FinalizeDraftInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/FinalizeDraftInvoices',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.FinalizeDraftInvoicesRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.FinalizeDraftInvoicesResponse.FromString,
                 _registered_method=True)
         self.ListAssignmentsByGroup = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListAssignmentsByGroup',
+                '/kemy.protobuf.invoice.InvoiceService/ListAssignmentsByGroup',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.ListAssignmentsByGroupRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.ListAssignmentsResponse.FromString,
                 _registered_method=True)
         self.ListAssignmentsByTemplate = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListAssignmentsByTemplate',
+                '/kemy.protobuf.invoice.InvoiceService/ListAssignmentsByTemplate',
                 request_serializer=v1_dot_invoice_dot_templating__pb2.ListAssignmentsByTemplateRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_templating__pb2.ListAssignmentsResponse.FromString,
                 _registered_method=True)
         self.ListBillableEntityInvoices = channel.unary_unary(
-                '/invoice.v1.InvoiceService/ListBillableEntityInvoices',
+                '/kemy.protobuf.invoice.InvoiceService/ListBillableEntityInvoices',
                 request_serializer=v1_dot_invoice_dot_invoice__pb2.ListBillableEntityInvoicesRequest.SerializeToString,
                 response_deserializer=v1_dot_invoice_dot_invoice__pb2.ListBillableEntityInvoicesResponse.FromString,
                 _registered_method=True)
@@ -1116,9 +1116,9 @@ def add_InvoiceServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'invoice.v1.InvoiceService', rpc_method_handlers)
+            'kemy.protobuf.invoice.InvoiceService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('invoice.v1.InvoiceService', rpc_method_handlers)
+    server.add_registered_method_handlers('kemy.protobuf.invoice.InvoiceService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -1140,7 +1140,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/GetInvoice',
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceResponse.FromString,
             options,
@@ -1167,7 +1167,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetInvoiceByMobile',
+            '/kemy.protobuf.invoice.InvoiceService/GetInvoiceByMobile',
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceByMobileRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceResponse.FromString,
             options,
@@ -1194,7 +1194,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetInvoiceForUser',
+            '/kemy.protobuf.invoice.InvoiceService/GetInvoiceForUser',
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceForUserRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetInvoiceForUserResponse.FromString,
             options,
@@ -1221,7 +1221,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/CreateInvoice',
             v1_dot_invoice_dot_invoice__pb2.CreateInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CreateInvoiceResponse.FromString,
             options,
@@ -1248,7 +1248,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateInvoice',
             v1_dot_invoice_dot_invoice__pb2.UpdateInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.UpdateInvoiceResponse.FromString,
             options,
@@ -1275,7 +1275,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListCustomerInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoices',
             v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
             options,
@@ -1302,7 +1302,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListCustomerInvoicesByUser',
+            '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoicesByUser',
             v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesByUserRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
             options,
@@ -1329,7 +1329,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListCustomerInvoicesByCustomField',
+            '/kemy.protobuf.invoice.InvoiceService/ListCustomerInvoicesByCustomField',
             v1_dot_invoice_dot_invoice__pb2.ListCustomerInvoicesByCustomFieldRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
             options,
@@ -1356,7 +1356,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListMerchantInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/ListMerchantInvoices',
             v1_dot_invoice_dot_invoice__pb2.ListMerchantInvoicesRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListMerchantInvoicesResponse.FromString,
             options,
@@ -1383,7 +1383,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListMerchantRecentInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/ListMerchantRecentInvoices',
             v1_dot_invoice_dot_invoice__pb2.ListMerchantRecentInvoicesRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListInvoicesResponse.FromString,
             options,
@@ -1410,7 +1410,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/FinalizeInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/FinalizeInvoice',
             v1_dot_invoice_dot_invoice__pb2.FinalizeInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.FinalizeInvoiceResponse.FromString,
             options,
@@ -1437,7 +1437,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CancelInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/CancelInvoice',
             v1_dot_invoice_dot_invoice__pb2.CancelInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CancelInvoiceResponse.FromString,
             options,
@@ -1464,7 +1464,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/DeleteInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/DeleteInvoice',
             v1_dot_invoice_dot_invoice__pb2.DeleteInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.DeleteInvoiceResponse.FromString,
             options,
@@ -1491,7 +1491,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/PayInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/PayInvoice',
             v1_dot_invoice_dot_invoice__pb2.PayInvoiceRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.PayInvoiceResponse.FromString,
             options,
@@ -1518,7 +1518,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/RecordCashPayment',
+            '/kemy.protobuf.invoice.InvoiceService/RecordCashPayment',
             v1_dot_invoice_dot_invoice__pb2.RecordCashPaymentRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.RecordCashPaymentResponse.FromString,
             options,
@@ -1545,7 +1545,7 @@ class InvoiceService(object):
         return grpc.experimental.stream_stream(
             request_iterator,
             target,
-            '/invoice.v1.InvoiceService/StreamInvoiceEvents',
+            '/kemy.protobuf.invoice.InvoiceService/StreamInvoiceEvents',
             v1_dot_invoice_dot_invoice__pb2.InvoiceEventRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.InvoiceEventResponse.FromString,
             options,
@@ -1572,7 +1572,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListMerchantCustomers',
+            '/kemy.protobuf.invoice.InvoiceService/ListMerchantCustomers',
             v1_dot_invoice_dot_invoice__pb2.ListMerchantCustomersRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListMerchantCustomersResponse.FromString,
             options,
@@ -1599,7 +1599,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetCustomerOverdueInvoicesForUser',
+            '/kemy.protobuf.invoice.InvoiceService/GetCustomerOverdueInvoicesForUser',
             v1_dot_invoice_dot_invoice__pb2.GetCustomerOverdueInvoicesForUserRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetCustomerOverdueInvoicesForUserResponse.FromString,
             options,
@@ -1626,7 +1626,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetPayment',
+            '/kemy.protobuf.invoice.InvoiceService/GetPayment',
             v1_dot_invoice_dot_invoice__pb2.GetPaymentRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetPaymentResponse.FromString,
             options,
@@ -1653,7 +1653,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListPaymentsByInvoice',
+            '/kemy.protobuf.invoice.InvoiceService/ListPaymentsByInvoice',
             v1_dot_invoice_dot_invoice__pb2.ListPaymentsRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListPaymentsResponse.FromString,
             options,
@@ -1680,7 +1680,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListPaymentsByInvoiceNumber',
+            '/kemy.protobuf.invoice.InvoiceService/ListPaymentsByInvoiceNumber',
             v1_dot_invoice_dot_invoice__pb2.ListPaymentsByNumberRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListPaymentsResponse.FromString,
             options,
@@ -1707,7 +1707,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetPaymentMethod',
+            '/kemy.protobuf.invoice.InvoiceService/GetPaymentMethod',
             v1_dot_invoice_dot_invoice__pb2.GetPaymentMethodRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetPaymentMethodResponse.FromString,
             options,
@@ -1734,7 +1734,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreatePaymentMethod',
+            '/kemy.protobuf.invoice.InvoiceService/CreatePaymentMethod',
             v1_dot_invoice_dot_invoice__pb2.CreatePaymentMethodRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CreatePaymentMethodResponse.FromString,
             options,
@@ -1761,7 +1761,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdatePaymentMethod',
+            '/kemy.protobuf.invoice.InvoiceService/UpdatePaymentMethod',
             v1_dot_invoice_dot_invoice__pb2.UpdatePaymentMethodRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.UpdatePaymentMethodResponse.FromString,
             options,
@@ -1788,7 +1788,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/DeletePaymentMethod',
+            '/kemy.protobuf.invoice.InvoiceService/DeletePaymentMethod',
             v1_dot_invoice_dot_invoice__pb2.DeletePaymentMethodRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.DeletePaymentMethodResponse.FromString,
             options,
@@ -1815,7 +1815,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListPaymentMethods',
+            '/kemy.protobuf.invoice.InvoiceService/ListPaymentMethods',
             v1_dot_invoice_dot_invoice__pb2.ListPaymentMethodsRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListPaymentMethodsResponse.FromString,
             options,
@@ -1842,7 +1842,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/GetMerchant',
             v1_dot_invoice_dot_invoice__pb2.GetMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetMerchantResponse.FromString,
             options,
@@ -1869,7 +1869,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/CreateMerchant',
             v1_dot_invoice_dot_invoice__pb2.CreateMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CreateMerchantResponse.FromString,
             options,
@@ -1896,7 +1896,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListMerchants',
+            '/kemy.protobuf.invoice.InvoiceService/ListMerchants',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListMerchantsResponse.FromString,
             options,
@@ -1923,7 +1923,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateMerchant',
             v1_dot_invoice_dot_invoice__pb2.UpdateMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.UpdateMerchantResponse.FromString,
             options,
@@ -1950,7 +1950,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetMerchantUser',
+            '/kemy.protobuf.invoice.InvoiceService/GetMerchantUser',
             v1_dot_invoice_dot_invoice__pb2.GetMerchantUserRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetMerchantUserResponse.FromString,
             options,
@@ -1977,7 +1977,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateMerchantUser',
+            '/kemy.protobuf.invoice.InvoiceService/CreateMerchantUser',
             v1_dot_invoice_dot_invoice__pb2.CreateMerchantUserRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CreateMerchantUserResponse.FromString,
             options,
@@ -2004,7 +2004,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListMerchantUsers',
+            '/kemy.protobuf.invoice.InvoiceService/ListMerchantUsers',
             v1_dot_invoice_dot_invoice__pb2.ListMerchantUsersRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListMerchantUsersResponse.FromString,
             options,
@@ -2031,7 +2031,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetCustomer',
+            '/kemy.protobuf.invoice.InvoiceService/GetCustomer',
             v1_dot_invoice_dot_invoice__pb2.GetCustomerRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.GetCustomerResponse.FromString,
             options,
@@ -2058,7 +2058,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateCustomer',
+            '/kemy.protobuf.invoice.InvoiceService/CreateCustomer',
             v1_dot_invoice_dot_invoice__pb2.CreateCustomerRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.CreateCustomerResponse.FromString,
             options,
@@ -2085,7 +2085,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateCustomer',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateCustomer',
             v1_dot_invoice_dot_invoice__pb2.UpdateCustomerRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.UpdateCustomerResponse.FromString,
             options,
@@ -2112,7 +2112,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/RegisterUserForCustomer',
+            '/kemy.protobuf.invoice.InvoiceService/RegisterUserForCustomer',
             v1_dot_invoice_dot_invoice__pb2.RegisterUserForCustomerRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.RegisterUserForCustomerResponse.FromString,
             options,
@@ -2139,7 +2139,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateBillableEntity',
+            '/kemy.protobuf.invoice.InvoiceService/CreateBillableEntity',
             v1_dot_invoice_dot_templating__pb2.CreateBillableEntityRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
             options,
@@ -2166,7 +2166,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetBillableEntity',
+            '/kemy.protobuf.invoice.InvoiceService/GetBillableEntity',
             v1_dot_invoice_dot_templating__pb2.GetBillableEntityRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
             options,
@@ -2193,7 +2193,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetBillableEntitiesForMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/GetBillableEntitiesForMerchant',
             v1_dot_invoice_dot_templating__pb2.GetBillableEntitiesForMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.BillableEntitiesResponse.FromString,
             options,
@@ -2220,7 +2220,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetBillableEntitiesForGroup',
+            '/kemy.protobuf.invoice.InvoiceService/GetBillableEntitiesForGroup',
             v1_dot_invoice_dot_templating__pb2.GetBillableEntitiesForGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.BillableEntitiesResponse.FromString,
             options,
@@ -2247,7 +2247,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateBillableEntity',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateBillableEntity',
             v1_dot_invoice_dot_templating__pb2.UpdateBillableEntityRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.BillableEntityResponse.FromString,
             options,
@@ -2274,7 +2274,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/DeleteBillableEntity',
+            '/kemy.protobuf.invoice.InvoiceService/DeleteBillableEntity',
             v1_dot_invoice_dot_templating__pb2.DeleteBillableEntityRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2301,7 +2301,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateGroup',
+            '/kemy.protobuf.invoice.InvoiceService/CreateGroup',
             v1_dot_invoice_dot_templating__pb2.CreateGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
             options,
@@ -2328,7 +2328,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetGroup',
+            '/kemy.protobuf.invoice.InvoiceService/GetGroup',
             v1_dot_invoice_dot_templating__pb2.GetGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
             options,
@@ -2355,7 +2355,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetGroupsForMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/GetGroupsForMerchant',
             v1_dot_invoice_dot_templating__pb2.GetGroupsForMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.GroupsResponse.FromString,
             options,
@@ -2382,7 +2382,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateGroup',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateGroup',
             v1_dot_invoice_dot_templating__pb2.UpdateGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.GroupResponse.FromString,
             options,
@@ -2409,7 +2409,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/DeleteGroup',
+            '/kemy.protobuf.invoice.InvoiceService/DeleteGroup',
             v1_dot_invoice_dot_templating__pb2.DeleteGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2436,7 +2436,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/AddBillableEntityToGroup',
+            '/kemy.protobuf.invoice.InvoiceService/AddBillableEntityToGroup',
             v1_dot_invoice_dot_templating__pb2.AddBillableEntityToGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2463,7 +2463,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/RemoveBillableEntityFromGroup',
+            '/kemy.protobuf.invoice.InvoiceService/RemoveBillableEntityFromGroup',
             v1_dot_invoice_dot_templating__pb2.RemoveBillableEntityFromGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2490,7 +2490,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateTemplate',
+            '/kemy.protobuf.invoice.InvoiceService/CreateTemplate',
             v1_dot_invoice_dot_templating__pb2.CreateTemplateRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
             options,
@@ -2517,7 +2517,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetTemplate',
+            '/kemy.protobuf.invoice.InvoiceService/GetTemplate',
             v1_dot_invoice_dot_templating__pb2.GetTemplateRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
             options,
@@ -2544,7 +2544,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetTemplatesForMerchant',
+            '/kemy.protobuf.invoice.InvoiceService/GetTemplatesForMerchant',
             v1_dot_invoice_dot_templating__pb2.GetTemplatesForMerchantRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplatesResponse.FromString,
             options,
@@ -2571,7 +2571,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateTemplate',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateTemplate',
             v1_dot_invoice_dot_templating__pb2.UpdateTemplateRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateResponse.FromString,
             options,
@@ -2598,7 +2598,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/DeleteTemplate',
+            '/kemy.protobuf.invoice.InvoiceService/DeleteTemplate',
             v1_dot_invoice_dot_templating__pb2.DeleteTemplateRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2625,7 +2625,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CreateTemplateItem',
+            '/kemy.protobuf.invoice.InvoiceService/CreateTemplateItem',
             v1_dot_invoice_dot_templating__pb2.CreateTemplateItemRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateItemResponse.FromString,
             options,
@@ -2652,7 +2652,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/RemoveTemplateItem',
+            '/kemy.protobuf.invoice.InvoiceService/RemoveTemplateItem',
             v1_dot_invoice_dot_templating__pb2.RemoveTemplateItemRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2679,7 +2679,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/UpdateTemplateItem',
+            '/kemy.protobuf.invoice.InvoiceService/UpdateTemplateItem',
             v1_dot_invoice_dot_templating__pb2.UpdateTemplateItemRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateItemResponse.FromString,
             options,
@@ -2706,7 +2706,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GetTemplateItems',
+            '/kemy.protobuf.invoice.InvoiceService/GetTemplateItems',
             v1_dot_invoice_dot_templating__pb2.GetTemplateItemsRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.TemplateItemsResponse.FromString,
             options,
@@ -2733,7 +2733,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/GenerateInvoicesForGroup',
+            '/kemy.protobuf.invoice.InvoiceService/GenerateInvoicesForGroup',
             v1_dot_invoice_dot_templating__pb2.GenerateInvoicesForGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.GenerateInvoicesForGroupResponse.FromString,
             options,
@@ -2760,7 +2760,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/CancelInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/CancelInvoices',
             v1_dot_invoice_dot_templating__pb2.CancelInvoicesRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2787,7 +2787,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ApplyTemplateToGroup',
+            '/kemy.protobuf.invoice.InvoiceService/ApplyTemplateToGroup',
             v1_dot_invoice_dot_templating__pb2.ApplyTemplateToGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -2814,7 +2814,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/FinalizeDraftInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/FinalizeDraftInvoices',
             v1_dot_invoice_dot_templating__pb2.FinalizeDraftInvoicesRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.FinalizeDraftInvoicesResponse.FromString,
             options,
@@ -2841,7 +2841,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListAssignmentsByGroup',
+            '/kemy.protobuf.invoice.InvoiceService/ListAssignmentsByGroup',
             v1_dot_invoice_dot_templating__pb2.ListAssignmentsByGroupRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.ListAssignmentsResponse.FromString,
             options,
@@ -2868,7 +2868,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListAssignmentsByTemplate',
+            '/kemy.protobuf.invoice.InvoiceService/ListAssignmentsByTemplate',
             v1_dot_invoice_dot_templating__pb2.ListAssignmentsByTemplateRequest.SerializeToString,
             v1_dot_invoice_dot_templating__pb2.ListAssignmentsResponse.FromString,
             options,
@@ -2895,7 +2895,7 @@ class InvoiceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/invoice.v1.InvoiceService/ListBillableEntityInvoices',
+            '/kemy.protobuf.invoice.InvoiceService/ListBillableEntityInvoices',
             v1_dot_invoice_dot_invoice__pb2.ListBillableEntityInvoicesRequest.SerializeToString,
             v1_dot_invoice_dot_invoice__pb2.ListBillableEntityInvoicesResponse.FromString,
             options,

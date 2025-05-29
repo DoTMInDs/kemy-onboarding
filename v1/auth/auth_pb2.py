@@ -26,7 +26,7 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12v1/auth/auth.proto\x12\x07\x61uth.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe9\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06mobile\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12/\n\x0b\x63reate_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0bis_verified\x18\x07 \x01(\x08\x12\x10\n\x08is_admin\x18\x08 \x01(\x08\x12\x15\n\ris_super_user\x18\t \x01(\x08\"t\n\x11UpdateUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x15\n\ris_super_user\x18\x05 \x01(\x08\"k\n\x11\x43reateUserRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x0b\n\x03pin\x18\x04 \x01(\t\x12\x12\n\nverify_pin\x18\x05 \x01(\t\"%\n\x12\x43reateUserResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"!\n\x0eGetUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"l\n\x16VerifyChallengeRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x11\n\tchallenge\x18\x02 \x01(\t\x12.\n\x0e\x63hallenge_type\x18\x03 \x01(\x0e\x32\x16.auth.v1.ChallengeType\"*\n\x17VerifyChallengeResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"S\n\x10\x43hallengeRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12.\n\x0e\x63hallenge_type\x18\x02 \x01(\x0e\x32\x16.auth.v1.ChallengeType\"&\n\x11\x43hallengeResponse\x12\x11\n\tchallenge\x18\x01 \x01(\t\"(\n\x16GetUserByMobileRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\"D\n\x10\x43reatePinRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0b\n\x03pin\x18\x02 \x01(\t\x12\x12\n\nverify_pin\x18\x03 \x01(\t\"+\n\x0cLoginRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\x12\x0b\n\x03pin\x18\x02 \x01(\t\"N\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\t\x12\x15\n\rrefresh_token\x18\x03 \x01(\t\"9\n\x10ListUsersRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"J\n\x11ListUsersResponse\x12\x1c\n\x05users\x18\x01 \x03(\x0b\x32\r.auth.v1.User\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"1\n\x18GetNewAccessTokenRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x19GetNewAccessTokenResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t*h\n\rChallengeType\x12\x1e\n\x1a\x43HALLENGE_TYPE_UNSPECIFIED\x10\x00\x12\x10\n\x0cREGISTRATION\x10\x01\x12\r\n\tRESET_PIN\x10\x02\x12\x16\n\x12\x41\x44\x44_PAYMENT_METHOD\x10\x03\x32\xaf\x05\n\x04\x41uth\x12\x45\n\nCreateUser\x12\x1a.auth.v1.CreateUserRequest\x1a\x1b.auth.v1.CreateUserResponse\x12J\n\x0fVerifyChallenge\x12\x1f.auth.v1.VerifyChallengeRequest\x1a\x16.google.protobuf.Empty\x12\x41\n\x0c\x43reateNewPin\x12\x19.auth.v1.CreatePinRequest\x1a\x16.google.protobuf.Empty\x12:\n\tLoginUser\x12\x15.auth.v1.LoginRequest\x1a\x16.auth.v1.LoginResponse\x12\x31\n\x07GetUser\x12\x17.auth.v1.GetUserRequest\x1a\r.auth.v1.User\x12\x41\n\x0fGetUserByMobile\x12\x1f.auth.v1.GetUserByMobileRequest\x1a\r.auth.v1.User\x12\x37\n\nUpdateUser\x12\x1a.auth.v1.UpdateUserRequest\x1a\r.auth.v1.User\x12\x46\n\x11GenerateChallenge\x12\x19.auth.v1.ChallengeRequest\x1a\x16.google.protobuf.Empty\x12\x42\n\tListUsers\x12\x19.auth.v1.ListUsersRequest\x1a\x1a.auth.v1.ListUsersResponse\x12Z\n\x11GetNewAccessToken\x12!.auth.v1.GetNewAccessTokenRequest\x1a\".auth.v1.GetNewAccessTokenResponseB\tZ\x07go/authb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12v1/auth/auth.proto\x12\x12kemy.protobuf.auth\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe9\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06mobile\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12/\n\x0b\x63reate_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0bis_verified\x18\x07 \x01(\x08\x12\x10\n\x08is_admin\x18\x08 \x01(\x08\x12\x15\n\ris_super_user\x18\t \x01(\x08\"t\n\x11UpdateUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x15\n\ris_super_user\x18\x05 \x01(\x08\"k\n\x11\x43reateUserRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x0b\n\x03pin\x18\x04 \x01(\t\x12\x12\n\nverify_pin\x18\x05 \x01(\t\"%\n\x12\x43reateUserResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"!\n\x0eGetUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"w\n\x16VerifyChallengeRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x11\n\tchallenge\x18\x02 \x01(\t\x12\x39\n\x0e\x63hallenge_type\x18\x03 \x01(\x0e\x32!.kemy.protobuf.auth.ChallengeType\"*\n\x17VerifyChallengeResponse\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"n\n\x10\x43hallengeRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x39\n\x0e\x63hallenge_type\x18\x02 \x01(\x0e\x32!.kemy.protobuf.auth.ChallengeType\x12\x0e\n\x06mobile\x18\x03 \x01(\t\"&\n\x11\x43hallengeResponse\x12\x11\n\tchallenge\x18\x01 \x01(\t\"(\n\x16GetUserByMobileRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\"D\n\x10\x43reatePinRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0b\n\x03pin\x18\x02 \x01(\t\x12\x12\n\nverify_pin\x18\x03 \x01(\t\"+\n\x0cLoginRequest\x12\x0e\n\x06mobile\x18\x01 \x01(\t\x12\x0b\n\x03pin\x18\x02 \x01(\t\"N\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x10\n\x08id_token\x18\x02 \x01(\t\x12\x15\n\rrefresh_token\x18\x03 \x01(\t\"9\n\x10ListUsersRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"U\n\x11ListUsersResponse\x12\'\n\x05users\x18\x01 \x03(\x0b\x32\x18.kemy.protobuf.auth.User\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"1\n\x18GetNewAccessTokenRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x19GetNewAccessTokenResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t*h\n\rChallengeType\x12\x1e\n\x1a\x43HALLENGE_TYPE_UNSPECIFIED\x10\x00\x12\x10\n\x0cREGISTRATION\x10\x01\x12\r\n\tRESET_PIN\x10\x02\x12\x16\n\x12\x41\x44\x44_PAYMENT_METHOD\x10\x03\x32\xea\x06\n\x04\x41uth\x12[\n\nCreateUser\x12%.kemy.protobuf.auth.CreateUserRequest\x1a&.kemy.protobuf.auth.CreateUserResponse\x12U\n\x0fVerifyChallenge\x12*.kemy.protobuf.auth.VerifyChallengeRequest\x1a\x16.google.protobuf.Empty\x12L\n\x0c\x43reateNewPin\x12$.kemy.protobuf.auth.CreatePinRequest\x1a\x16.google.protobuf.Empty\x12P\n\tLoginUser\x12 .kemy.protobuf.auth.LoginRequest\x1a!.kemy.protobuf.auth.LoginResponse\x12G\n\x07GetUser\x12\".kemy.protobuf.auth.GetUserRequest\x1a\x18.kemy.protobuf.auth.User\x12W\n\x0fGetUserByMobile\x12*.kemy.protobuf.auth.GetUserByMobileRequest\x1a\x18.kemy.protobuf.auth.User\x12M\n\nUpdateUser\x12%.kemy.protobuf.auth.UpdateUserRequest\x1a\x18.kemy.protobuf.auth.User\x12Q\n\x11GenerateChallenge\x12$.kemy.protobuf.auth.ChallengeRequest\x1a\x16.google.protobuf.Empty\x12X\n\tListUsers\x12$.kemy.protobuf.auth.ListUsersRequest\x1a%.kemy.protobuf.auth.ListUsersResponse\x12p\n\x11GetNewAccessToken\x12,.kemy.protobuf.auth.GetNewAccessTokenRequest\x1a-.kemy.protobuf.auth.GetNewAccessTokenResponseB\tZ\x07go/authb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,42 +34,42 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'v1.auth.auth_pb2', _globals
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z\007go/auth'
-  _globals['_CHALLENGETYPE']._serialized_start=1383
-  _globals['_CHALLENGETYPE']._serialized_end=1487
-  _globals['_USER']._serialized_start=94
-  _globals['_USER']._serialized_end=327
-  _globals['_UPDATEUSERREQUEST']._serialized_start=329
-  _globals['_UPDATEUSERREQUEST']._serialized_end=445
-  _globals['_CREATEUSERREQUEST']._serialized_start=447
-  _globals['_CREATEUSERREQUEST']._serialized_end=554
-  _globals['_CREATEUSERRESPONSE']._serialized_start=556
-  _globals['_CREATEUSERRESPONSE']._serialized_end=593
-  _globals['_GETUSERREQUEST']._serialized_start=595
-  _globals['_GETUSERREQUEST']._serialized_end=628
-  _globals['_VERIFYCHALLENGEREQUEST']._serialized_start=630
-  _globals['_VERIFYCHALLENGEREQUEST']._serialized_end=738
-  _globals['_VERIFYCHALLENGERESPONSE']._serialized_start=740
-  _globals['_VERIFYCHALLENGERESPONSE']._serialized_end=782
-  _globals['_CHALLENGEREQUEST']._serialized_start=784
-  _globals['_CHALLENGEREQUEST']._serialized_end=867
-  _globals['_CHALLENGERESPONSE']._serialized_start=869
-  _globals['_CHALLENGERESPONSE']._serialized_end=907
-  _globals['_GETUSERBYMOBILEREQUEST']._serialized_start=909
-  _globals['_GETUSERBYMOBILEREQUEST']._serialized_end=949
-  _globals['_CREATEPINREQUEST']._serialized_start=951
-  _globals['_CREATEPINREQUEST']._serialized_end=1019
-  _globals['_LOGINREQUEST']._serialized_start=1021
-  _globals['_LOGINREQUEST']._serialized_end=1064
-  _globals['_LOGINRESPONSE']._serialized_start=1066
-  _globals['_LOGINRESPONSE']._serialized_end=1144
-  _globals['_LISTUSERSREQUEST']._serialized_start=1146
-  _globals['_LISTUSERSREQUEST']._serialized_end=1203
-  _globals['_LISTUSERSRESPONSE']._serialized_start=1205
-  _globals['_LISTUSERSRESPONSE']._serialized_end=1279
-  _globals['_GETNEWACCESSTOKENREQUEST']._serialized_start=1281
-  _globals['_GETNEWACCESSTOKENREQUEST']._serialized_end=1330
-  _globals['_GETNEWACCESSTOKENRESPONSE']._serialized_start=1332
-  _globals['_GETNEWACCESSTOKENRESPONSE']._serialized_end=1381
-  _globals['_AUTH']._serialized_start=1490
-  _globals['_AUTH']._serialized_end=2177
+  _globals['_CHALLENGETYPE']._serialized_start=1443
+  _globals['_CHALLENGETYPE']._serialized_end=1547
+  _globals['_USER']._serialized_start=105
+  _globals['_USER']._serialized_end=338
+  _globals['_UPDATEUSERREQUEST']._serialized_start=340
+  _globals['_UPDATEUSERREQUEST']._serialized_end=456
+  _globals['_CREATEUSERREQUEST']._serialized_start=458
+  _globals['_CREATEUSERREQUEST']._serialized_end=565
+  _globals['_CREATEUSERRESPONSE']._serialized_start=567
+  _globals['_CREATEUSERRESPONSE']._serialized_end=604
+  _globals['_GETUSERREQUEST']._serialized_start=606
+  _globals['_GETUSERREQUEST']._serialized_end=639
+  _globals['_VERIFYCHALLENGEREQUEST']._serialized_start=641
+  _globals['_VERIFYCHALLENGEREQUEST']._serialized_end=760
+  _globals['_VERIFYCHALLENGERESPONSE']._serialized_start=762
+  _globals['_VERIFYCHALLENGERESPONSE']._serialized_end=804
+  _globals['_CHALLENGEREQUEST']._serialized_start=806
+  _globals['_CHALLENGEREQUEST']._serialized_end=916
+  _globals['_CHALLENGERESPONSE']._serialized_start=918
+  _globals['_CHALLENGERESPONSE']._serialized_end=956
+  _globals['_GETUSERBYMOBILEREQUEST']._serialized_start=958
+  _globals['_GETUSERBYMOBILEREQUEST']._serialized_end=998
+  _globals['_CREATEPINREQUEST']._serialized_start=1000
+  _globals['_CREATEPINREQUEST']._serialized_end=1068
+  _globals['_LOGINREQUEST']._serialized_start=1070
+  _globals['_LOGINREQUEST']._serialized_end=1113
+  _globals['_LOGINRESPONSE']._serialized_start=1115
+  _globals['_LOGINRESPONSE']._serialized_end=1193
+  _globals['_LISTUSERSREQUEST']._serialized_start=1195
+  _globals['_LISTUSERSREQUEST']._serialized_end=1252
+  _globals['_LISTUSERSRESPONSE']._serialized_start=1254
+  _globals['_LISTUSERSRESPONSE']._serialized_end=1339
+  _globals['_GETNEWACCESSTOKENREQUEST']._serialized_start=1341
+  _globals['_GETNEWACCESSTOKENREQUEST']._serialized_end=1390
+  _globals['_GETNEWACCESSTOKENRESPONSE']._serialized_start=1392
+  _globals['_GETNEWACCESSTOKENRESPONSE']._serialized_end=1441
+  _globals['_AUTH']._serialized_start=1550
+  _globals['_AUTH']._serialized_end=2424
 # @@protoc_insertion_point(module_scope)

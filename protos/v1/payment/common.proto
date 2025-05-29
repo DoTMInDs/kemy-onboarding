@@ -1,15 +1,14 @@
 syntax = "proto3";
 import "google/protobuf/timestamp.proto";
-package payment.v1;
+package kemy.protobuf.payment;
 
 option go_package = "go/payment";
+import "v1/invoice/common.proto";
 
 // Common Messages
-message Money {
-  string value = 1;
-}
 
-message Provider {
+
+message PaymentProvider {
   string code = 1;
   string name = 2;
   string type = 3;
@@ -46,7 +45,7 @@ message MerchantProviderAccount {
 
 message MerchantInvoicePaymentDetails {
   string invoice_number = 1;
-  Money amount_payable = 2;
+  kemy.protobuf.invoice.Money amount_payable = 2;
   optional google.protobuf.Timestamp due_date = 3;
   optional google.protobuf.Timestamp invoice_date = 4;
   string invoice_url = 5;
@@ -65,10 +64,10 @@ message Transaction {
   string invoice_number = 4;
   string account_no = 5;
   optional string external_reference_id = 6;
-  Money amount = 7;
+  kemy.protobuf.invoice.Money amount = 7;
   string currency = 8;
   string type = 9;
-  string status = 10;
+  kemy.protobuf.invoice.PaymentStatus status = 10;
   bool is_completed=11;
   map<string, string> metadata = 13;
   google.protobuf.Timestamp created_at = 14;
@@ -77,20 +76,20 @@ message Transaction {
  
 }
 
-message PaymentCallback {
+message PaymentRecord {
   string reference_id = 1;
   string external_reference = 2;
-  string status = 3;
-  double amount_confirmed = 4;
-  google.protobuf.Timestamp timestamp = 5;
-  string signature = 6;
-  bytes raw_data = 7;
+  string invoice_number=3;
+  kemy.protobuf.invoice.PaymentStatus status = 4;
+  kemy.protobuf.invoice.Money amount_confirmed = 5;
+  google.protobuf.Timestamp timestamp = 6;
+  string gip_code = 7;
 }
 
 message TransactionFilter {
   int32 merchant_id = 1;
   optional string provider_id = 2;
-  string status = 3;
+  kemy.protobuf.invoice.PaymentStatus status = 3;
   string payment_method = 4;
   google.protobuf.Timestamp from = 5;
   google.protobuf.Timestamp to = 6;

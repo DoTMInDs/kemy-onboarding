@@ -36,52 +36,52 @@ class AuthStub(object):
             channel: A grpc.Channel.
         """
         self.CreateUser = channel.unary_unary(
-                '/auth.v1.Auth/CreateUser',
+                '/kemy.protobuf.auth.Auth/CreateUser',
                 request_serializer=v1_dot_auth_dot_auth__pb2.CreateUserRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.CreateUserResponse.FromString,
                 _registered_method=True)
         self.VerifyChallenge = channel.unary_unary(
-                '/auth.v1.Auth/VerifyChallenge',
+                '/kemy.protobuf.auth.Auth/VerifyChallenge',
                 request_serializer=v1_dot_auth_dot_auth__pb2.VerifyChallengeRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.CreateNewPin = channel.unary_unary(
-                '/auth.v1.Auth/CreateNewPin',
+                '/kemy.protobuf.auth.Auth/CreateNewPin',
                 request_serializer=v1_dot_auth_dot_auth__pb2.CreatePinRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.LoginUser = channel.unary_unary(
-                '/auth.v1.Auth/LoginUser',
+                '/kemy.protobuf.auth.Auth/LoginUser',
                 request_serializer=v1_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.LoginResponse.FromString,
                 _registered_method=True)
         self.GetUser = channel.unary_unary(
-                '/auth.v1.Auth/GetUser',
+                '/kemy.protobuf.auth.Auth/GetUser',
                 request_serializer=v1_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.User.FromString,
                 _registered_method=True)
         self.GetUserByMobile = channel.unary_unary(
-                '/auth.v1.Auth/GetUserByMobile',
+                '/kemy.protobuf.auth.Auth/GetUserByMobile',
                 request_serializer=v1_dot_auth_dot_auth__pb2.GetUserByMobileRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.User.FromString,
                 _registered_method=True)
         self.UpdateUser = channel.unary_unary(
-                '/auth.v1.Auth/UpdateUser',
+                '/kemy.protobuf.auth.Auth/UpdateUser',
                 request_serializer=v1_dot_auth_dot_auth__pb2.UpdateUserRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.User.FromString,
                 _registered_method=True)
         self.GenerateChallenge = channel.unary_unary(
-                '/auth.v1.Auth/GenerateChallenge',
+                '/kemy.protobuf.auth.Auth/GenerateChallenge',
                 request_serializer=v1_dot_auth_dot_auth__pb2.ChallengeRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.ListUsers = channel.unary_unary(
-                '/auth.v1.Auth/ListUsers',
+                '/kemy.protobuf.auth.Auth/ListUsers',
                 request_serializer=v1_dot_auth_dot_auth__pb2.ListUsersRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.ListUsersResponse.FromString,
                 _registered_method=True)
         self.GetNewAccessToken = channel.unary_unary(
-                '/auth.v1.Auth/GetNewAccessToken',
+                '/kemy.protobuf.auth.Auth/GetNewAccessToken',
                 request_serializer=v1_dot_auth_dot_auth__pb2.GetNewAccessTokenRequest.SerializeToString,
                 response_deserializer=v1_dot_auth_dot_auth__pb2.GetNewAccessTokenResponse.FromString,
                 _registered_method=True)
@@ -205,9 +205,9 @@ def add_AuthServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'auth.v1.Auth', rpc_method_handlers)
+            'kemy.protobuf.auth.Auth', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('auth.v1.Auth', rpc_method_handlers)
+    server.add_registered_method_handlers('kemy.protobuf.auth.Auth', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -228,7 +228,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/CreateUser',
+            '/kemy.protobuf.auth.Auth/CreateUser',
             v1_dot_auth_dot_auth__pb2.CreateUserRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.CreateUserResponse.FromString,
             options,
@@ -255,7 +255,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/VerifyChallenge',
+            '/kemy.protobuf.auth.Auth/VerifyChallenge',
             v1_dot_auth_dot_auth__pb2.VerifyChallengeRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -282,7 +282,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/CreateNewPin',
+            '/kemy.protobuf.auth.Auth/CreateNewPin',
             v1_dot_auth_dot_auth__pb2.CreatePinRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -309,7 +309,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/LoginUser',
+            '/kemy.protobuf.auth.Auth/LoginUser',
             v1_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.LoginResponse.FromString,
             options,
@@ -336,7 +336,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/GetUser',
+            '/kemy.protobuf.auth.Auth/GetUser',
             v1_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.User.FromString,
             options,
@@ -363,7 +363,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/GetUserByMobile',
+            '/kemy.protobuf.auth.Auth/GetUserByMobile',
             v1_dot_auth_dot_auth__pb2.GetUserByMobileRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.User.FromString,
             options,
@@ -390,7 +390,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/UpdateUser',
+            '/kemy.protobuf.auth.Auth/UpdateUser',
             v1_dot_auth_dot_auth__pb2.UpdateUserRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.User.FromString,
             options,
@@ -417,7 +417,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/GenerateChallenge',
+            '/kemy.protobuf.auth.Auth/GenerateChallenge',
             v1_dot_auth_dot_auth__pb2.ChallengeRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -444,7 +444,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/ListUsers',
+            '/kemy.protobuf.auth.Auth/ListUsers',
             v1_dot_auth_dot_auth__pb2.ListUsersRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.ListUsersResponse.FromString,
             options,
@@ -471,7 +471,7 @@ class Auth(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/auth.v1.Auth/GetNewAccessToken',
+            '/kemy.protobuf.auth.Auth/GetNewAccessToken',
             v1_dot_auth_dot_auth__pb2.GetNewAccessTokenRequest.SerializeToString,
             v1_dot_auth_dot_auth__pb2.GetNewAccessTokenResponse.FromString,
             options,

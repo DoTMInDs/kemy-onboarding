@@ -98,12 +98,14 @@ class VerifyChallengeResponse(_message.Message):
     def __init__(self, user_id: _Optional[int] = ...) -> None: ...
 
 class ChallengeRequest(_message.Message):
-    __slots__ = ("user_id", "challenge_type")
+    __slots__ = ("user_id", "challenge_type", "mobile")
     USER_ID_FIELD_NUMBER: _ClassVar[int]
     CHALLENGE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    MOBILE_FIELD_NUMBER: _ClassVar[int]
     user_id: int
     challenge_type: ChallengeType
-    def __init__(self, user_id: _Optional[int] = ..., challenge_type: _Optional[_Union[ChallengeType, str]] = ...) -> None: ...
+    mobile: str
+    def __init__(self, user_id: _Optional[int] = ..., challenge_type: _Optional[_Union[ChallengeType, str]] = ..., mobile: _Optional[str] = ...) -> None: ...
 
 class ChallengeResponse(_message.Message):
     __slots__ = ("challenge",)

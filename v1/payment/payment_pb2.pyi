@@ -1,5 +1,6 @@
 from google.protobuf import empty_pb2 as _empty_pb2
 from v1.payment import common_pb2 as _common_pb2
+from v1.invoice import common_pb2 as _common_pb2_1
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -10,8 +11,8 @@ DESCRIPTOR: _descriptor.FileDescriptor
 class RegisterProviderRequest(_message.Message):
     __slots__ = ("provider",)
     PROVIDER_FIELD_NUMBER: _ClassVar[int]
-    provider: _common_pb2.Provider
-    def __init__(self, provider: _Optional[_Union[_common_pb2.Provider, _Mapping]] = ...) -> None: ...
+    provider: _common_pb2.PaymentProvider
+    def __init__(self, provider: _Optional[_Union[_common_pb2.PaymentProvider, _Mapping]] = ...) -> None: ...
 
 class GetProviderRequest(_message.Message):
     __slots__ = ("provider_id",)
@@ -28,14 +29,14 @@ class ListProvidersRequest(_message.Message):
 class ListProvidersResponse(_message.Message):
     __slots__ = ("providers",)
     PROVIDERS_FIELD_NUMBER: _ClassVar[int]
-    providers: _containers.RepeatedCompositeFieldContainer[_common_pb2.Provider]
-    def __init__(self, providers: _Optional[_Iterable[_Union[_common_pb2.Provider, _Mapping]]] = ...) -> None: ...
+    providers: _containers.RepeatedCompositeFieldContainer[_common_pb2.PaymentProvider]
+    def __init__(self, providers: _Optional[_Iterable[_Union[_common_pb2.PaymentProvider, _Mapping]]] = ...) -> None: ...
 
 class UpdateProviderRequest(_message.Message):
     __slots__ = ("provider",)
     PROVIDER_FIELD_NUMBER: _ClassVar[int]
-    provider: _common_pb2.Provider
-    def __init__(self, provider: _Optional[_Union[_common_pb2.Provider, _Mapping]] = ...) -> None: ...
+    provider: _common_pb2.PaymentProvider
+    def __init__(self, provider: _Optional[_Union[_common_pb2.PaymentProvider, _Mapping]] = ...) -> None: ...
 
 class UpdateProviderStatusRequest(_message.Message):
     __slots__ = ("provider_id", "active")
@@ -96,10 +97,10 @@ class ProcessMobileMoneyPaymentRequest(_message.Message):
     PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     MERCHANT_ID_FIELD_NUMBER: _ClassVar[int]
     provider: str
-    amount: _common_pb2.Money
+    amount: _common_pb2_1.Money
     phone_number: str
     merchant_id: int
-    def __init__(self, provider: _Optional[str] = ..., amount: _Optional[_Union[_common_pb2.Money, _Mapping]] = ..., phone_number: _Optional[str] = ..., merchant_id: _Optional[int] = ...) -> None: ...
+    def __init__(self, provider: _Optional[str] = ..., amount: _Optional[_Union[_common_pb2_1.Money, _Mapping]] = ..., phone_number: _Optional[str] = ..., merchant_id: _Optional[int] = ...) -> None: ...
 
 class GetInvoiceForPaymentRequest(_message.Message):
     __slots__ = ("invoice_number",)

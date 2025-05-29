@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package invoice.v1;
+package kemy.protobuf.invoice;
 
-option go_package = "go/invoice";
+option go_package = "gitlab.com/rippletech/protos/pb/v1/go/invoice";
 
 import "v1/invoice/common.proto";
 import "google/protobuf/timestamp.proto";

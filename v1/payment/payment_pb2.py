@@ -24,9 +24,10 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from v1.payment import common_pb2 as v1_dot_payment_dot_common__pb2
+from v1.invoice import common_pb2 as v1_dot_invoice_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18v1/payment/payment.proto\x12\npayment.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17v1/payment/common.proto\"A\n\x17RegisterProviderRequest\x12&\n\x08provider\x18\x01 \x01(\x0b\x32\x14.payment.v1.Provider\")\n\x12GetProviderRequest\x12\x13\n\x0bprovider_id\x18\x01 \x01(\t\"+\n\x14ListProvidersRequest\x12\x13\n\x0b\x61\x63tive_only\x18\x01 \x01(\x08\"@\n\x15ListProvidersResponse\x12\'\n\tproviders\x18\x01 \x03(\x0b\x32\x14.payment.v1.Provider\"?\n\x15UpdateProviderRequest\x12&\n\x08provider\x18\x01 \x01(\x0b\x32\x14.payment.v1.Provider\"B\n\x1bUpdateProviderStatusRequest\x12\x13\n\x0bprovider_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"E\n\x1eSetMerchantActiveStatusRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"H\n\x1cRemoveProviderAccountRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\x12\x13\n\x0bprovider_id\x18\x02 \x01(\t\"9\n\"GetMerchantProviderAccountsRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\"\\\n#GetMerchantProviderAccountsResponse\x12\x35\n\x08\x61\x63\x63ounts\x18\x01 \x03(\x0b\x32#.payment.v1.MerchantProviderAccount\"C\n\x1aGetMerchantAccountsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"e\n\x1bGetMerchantAccountsResponse\x12-\n\x08\x61\x63\x63ounts\x18\x01 \x03(\x0b\x32\x1b.payment.v1.MerchantAccount\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\x82\x01\n ProcessMobileMoneyPaymentRequest\x12\x10\n\x08provider\x18\x01 \x01(\t\x12!\n\x06\x61mount\x18\x02 \x01(\x0b\x32\x11.payment.v1.Money\x12\x14\n\x0cphone_number\x18\x03 \x01(\t\x12\x13\n\x0bmerchant_id\x18\x04 \x01(\x05\"5\n\x1bGetInvoiceForPaymentRequest\x12\x16\n\x0einvoice_number\x18\x01 \x01(\t\"/\n\x15GetTransactionRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\"5\n GetTransactionByReferenceRequest\x12\x11\n\treference\x18\x01 \x01(\t\"5\n\x1fGetTransactionsByInvoiceRequest\x12\x12\n\ninvoice_id\x18\x01 \x01(\t\"Q\n GetTransactionsByInvoiceResponse\x12-\n\x0ctransactions\x18\x01 \x03(\x0b\x32\x17.payment.v1.Transaction\"I\n\x18\x46indTransactionsResponse\x12-\n\x0ctransactions\x18\x01 \x03(\x0b\x32\x17.payment.v1.Transaction2\xf3\r\n\x0ePaymentService\x12O\n\x10RegisterProvider\x12#.payment.v1.RegisterProviderRequest\x1a\x14.payment.v1.Provider\"\x00\x12\x45\n\x0bGetProvider\x12\x1e.payment.v1.GetProviderRequest\x1a\x14.payment.v1.Provider\"\x00\x12V\n\rListProviders\x12 .payment.v1.ListProvidersRequest\x1a!.payment.v1.ListProvidersResponse\"\x00\x12M\n\x0eUpdateProvider\x12!.payment.v1.UpdateProviderRequest\x1a\x16.google.protobuf.Empty\"\x00\x12Y\n\x14UpdateProviderStatus\x12\'.payment.v1.UpdateProviderStatusRequest\x1a\x16.google.protobuf.Empty\"\x00\x12H\n\x0fOnboardMerchant\x12\x1b.payment.v1.MerchantAccount\x1a\x16.google.protobuf.Empty\"\x00\x12G\n\x0eUpdateMerchant\x12\x1b.payment.v1.MerchantAccount\x1a\x16.google.protobuf.Empty\"\x00\x12_\n\x17SetMerchantActiveStatus\x12*.payment.v1.SetMerchantActiveStatusRequest\x1a\x16.google.protobuf.Empty\"\x00\x12]\n\x1c\x41\x64\x64ProviderAccountToMerchant\x12#.payment.v1.MerchantProviderAccount\x1a\x16.google.protobuf.Empty\"\x00\x12^\n\x1dUpdateMerchantProviderAccount\x12#.payment.v1.MerchantProviderAccount\x1a\x16.google.protobuf.Empty\"\x00\x12g\n!RemoveProviderAccountFromMerchant\x12(.payment.v1.RemoveProviderAccountRequest\x1a\x16.google.protobuf.Empty\"\x00\x12\x80\x01\n\x1bGetMerchantProviderAccounts\x12..payment.v1.GetMerchantProviderAccountsRequest\x1a/.payment.v1.GetMerchantProviderAccountsResponse\"\x00\x12h\n\x13GetMerchantAccounts\x12&.payment.v1.GetMerchantAccountsRequest\x1a\'.payment.v1.GetMerchantAccountsResponse\"\x00\x12l\n\x14GetInvoiceForPayment\x12\'.payment.v1.GetInvoiceForPaymentRequest\x1a).payment.v1.MerchantInvoicePaymentDetails\"\x00\x12N\n\x0eGetTransaction\x12!.payment.v1.GetTransactionRequest\x1a\x17.payment.v1.Transaction\"\x00\x12\x64\n\x19GetTransactionByReference\x12,.payment.v1.GetTransactionByReferenceRequest\x1a\x17.payment.v1.Transaction\"\x00\x12w\n\x18GetTransactionsByInvoice\x12+.payment.v1.GetTransactionsByInvoiceRequest\x1a,.payment.v1.GetTransactionsByInvoiceResponse\"\x00\x12\x46\n\x11UpdateTransaction\x12\x17.payment.v1.Transaction\x1a\x16.google.protobuf.Empty\"\x00\x12Y\n\x10\x46indTransactions\x12\x1d.payment.v1.TransactionFilter\x1a$.payment.v1.FindTransactionsResponse\"\x00\x42\x0cZ\ngo/paymentb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18v1/payment/payment.proto\x12\x15kemy.protobuf.payment\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17v1/payment/common.proto\x1a\x17v1/invoice/common.proto\"S\n\x17RegisterProviderRequest\x12\x38\n\x08provider\x18\x01 \x01(\x0b\x32&.kemy.protobuf.payment.PaymentProvider\")\n\x12GetProviderRequest\x12\x13\n\x0bprovider_id\x18\x01 \x01(\t\"+\n\x14ListProvidersRequest\x12\x13\n\x0b\x61\x63tive_only\x18\x01 \x01(\x08\"R\n\x15ListProvidersResponse\x12\x39\n\tproviders\x18\x01 \x03(\x0b\x32&.kemy.protobuf.payment.PaymentProvider\"Q\n\x15UpdateProviderRequest\x12\x38\n\x08provider\x18\x01 \x01(\x0b\x32&.kemy.protobuf.payment.PaymentProvider\"B\n\x1bUpdateProviderStatusRequest\x12\x13\n\x0bprovider_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"E\n\x1eSetMerchantActiveStatusRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"H\n\x1cRemoveProviderAccountRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\x12\x13\n\x0bprovider_id\x18\x02 \x01(\t\"9\n\"GetMerchantProviderAccountsRequest\x12\x13\n\x0bmerchant_id\x18\x01 \x01(\x05\"g\n#GetMerchantProviderAccountsResponse\x12@\n\x08\x61\x63\x63ounts\x18\x01 \x03(\x0b\x32..kemy.protobuf.payment.MerchantProviderAccount\"C\n\x1aGetMerchantAccountsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"p\n\x1bGetMerchantAccountsResponse\x12\x38\n\x08\x61\x63\x63ounts\x18\x01 \x03(\x0b\x32&.kemy.protobuf.payment.MerchantAccount\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\x8d\x01\n ProcessMobileMoneyPaymentRequest\x12\x10\n\x08provider\x18\x01 \x01(\t\x12,\n\x06\x61mount\x18\x02 \x01(\x0b\x32\x1c.kemy.protobuf.invoice.Money\x12\x14\n\x0cphone_number\x18\x03 \x01(\t\x12\x13\n\x0bmerchant_id\x18\x04 \x01(\x05\"5\n\x1bGetInvoiceForPaymentRequest\x12\x16\n\x0einvoice_number\x18\x01 \x01(\t\"/\n\x15GetTransactionRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\"5\n GetTransactionByReferenceRequest\x12\x11\n\treference\x18\x01 \x01(\t\"5\n\x1fGetTransactionsByInvoiceRequest\x12\x12\n\ninvoice_id\x18\x01 \x01(\t\"\\\n GetTransactionsByInvoiceResponse\x12\x38\n\x0ctransactions\x18\x01 \x03(\x0b\x32\".kemy.protobuf.payment.Transaction\"T\n\x18\x46indTransactionsResponse\x12\x38\n\x0ctransactions\x18\x01 \x03(\x0b\x32\".kemy.protobuf.payment.Transaction2\xc2\x10\n\x0ePaymentService\x12l\n\x10RegisterProvider\x12..kemy.protobuf.payment.RegisterProviderRequest\x1a&.kemy.protobuf.payment.PaymentProvider\"\x00\x12\x62\n\x0bGetProvider\x12).kemy.protobuf.payment.GetProviderRequest\x1a&.kemy.protobuf.payment.PaymentProvider\"\x00\x12l\n\rListProviders\x12+.kemy.protobuf.payment.ListProvidersRequest\x1a,.kemy.protobuf.payment.ListProvidersResponse\"\x00\x12X\n\x0eUpdateProvider\x12,.kemy.protobuf.payment.UpdateProviderRequest\x1a\x16.google.protobuf.Empty\"\x00\x12\x64\n\x14UpdateProviderStatus\x12\x32.kemy.protobuf.payment.UpdateProviderStatusRequest\x1a\x16.google.protobuf.Empty\"\x00\x12S\n\x0fOnboardMerchant\x12&.kemy.protobuf.payment.MerchantAccount\x1a\x16.google.protobuf.Empty\"\x00\x12R\n\x0eUpdateMerchant\x12&.kemy.protobuf.payment.MerchantAccount\x1a\x16.google.protobuf.Empty\"\x00\x12j\n\x17SetMerchantActiveStatus\x12\x35.kemy.protobuf.payment.SetMerchantActiveStatusRequest\x1a\x16.google.protobuf.Empty\"\x00\x12h\n\x1c\x41\x64\x64ProviderAccountToMerchant\x12..kemy.protobuf.payment.MerchantProviderAccount\x1a\x16.google.protobuf.Empty\"\x00\x12i\n\x1dUpdateMerchantProviderAccount\x12..kemy.protobuf.payment.MerchantProviderAccount\x1a\x16.google.protobuf.Empty\"\x00\x12r\n!RemoveProviderAccountFromMerchant\x12\x33.kemy.protobuf.payment.RemoveProviderAccountRequest\x1a\x16.google.protobuf.Empty\"\x00\x12\x96\x01\n\x1bGetMerchantProviderAccounts\x12\x39.kemy.protobuf.payment.GetMerchantProviderAccountsRequest\x1a:.kemy.protobuf.payment.GetMerchantProviderAccountsResponse\"\x00\x12~\n\x13GetMerchantAccounts\x12\x31.kemy.protobuf.payment.GetMerchantAccountsRequest\x1a\x32.kemy.protobuf.payment.GetMerchantAccountsResponse\"\x00\x12\x82\x01\n\x14GetInvoiceForPayment\x12\x32.kemy.protobuf.payment.GetInvoiceForPaymentRequest\x1a\x34.kemy.protobuf.payment.MerchantInvoicePaymentDetails\"\x00\x12\x64\n\x0eGetTransaction\x12,.kemy.protobuf.payment.GetTransactionRequest\x1a\".kemy.protobuf.payment.Transaction\"\x00\x12z\n\x19GetTransactionByReference\x12\x37.kemy.protobuf.payment.GetTransactionByReferenceRequest\x1a\".kemy.protobuf.payment.Transaction\"\x00\x12\x8d\x01\n\x18GetTransactionsByInvoice\x12\x36.kemy.protobuf.payment.GetTransactionsByInvoiceRequest\x1a\x37.kemy.protobuf.payment.GetTransactionsByInvoiceResponse\"\x00\x12Q\n\x11UpdateTransaction\x12\".kemy.protobuf.payment.Transaction\x1a\x16.google.protobuf.Empty\"\x00\x12o\n\x10\x46indTransactions\x12(.kemy.protobuf.payment.TransactionFilter\x1a/.kemy.protobuf.payment.FindTransactionsResponse\"\x00\x42\x0cZ\ngo/paymentb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,44 +35,44 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'v1.payment.payment_pb2', _g
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z\ngo/payment'
-  _globals['_REGISTERPROVIDERREQUEST']._serialized_start=94
-  _globals['_REGISTERPROVIDERREQUEST']._serialized_end=159
-  _globals['_GETPROVIDERREQUEST']._serialized_start=161
-  _globals['_GETPROVIDERREQUEST']._serialized_end=202
-  _globals['_LISTPROVIDERSREQUEST']._serialized_start=204
-  _globals['_LISTPROVIDERSREQUEST']._serialized_end=247
-  _globals['_LISTPROVIDERSRESPONSE']._serialized_start=249
-  _globals['_LISTPROVIDERSRESPONSE']._serialized_end=313
-  _globals['_UPDATEPROVIDERREQUEST']._serialized_start=315
-  _globals['_UPDATEPROVIDERREQUEST']._serialized_end=378
-  _globals['_UPDATEPROVIDERSTATUSREQUEST']._serialized_start=380
-  _globals['_UPDATEPROVIDERSTATUSREQUEST']._serialized_end=446
-  _globals['_SETMERCHANTACTIVESTATUSREQUEST']._serialized_start=448
-  _globals['_SETMERCHANTACTIVESTATUSREQUEST']._serialized_end=517
-  _globals['_REMOVEPROVIDERACCOUNTREQUEST']._serialized_start=519
-  _globals['_REMOVEPROVIDERACCOUNTREQUEST']._serialized_end=591
-  _globals['_GETMERCHANTPROVIDERACCOUNTSREQUEST']._serialized_start=593
-  _globals['_GETMERCHANTPROVIDERACCOUNTSREQUEST']._serialized_end=650
-  _globals['_GETMERCHANTPROVIDERACCOUNTSRESPONSE']._serialized_start=652
-  _globals['_GETMERCHANTPROVIDERACCOUNTSRESPONSE']._serialized_end=744
-  _globals['_GETMERCHANTACCOUNTSREQUEST']._serialized_start=746
-  _globals['_GETMERCHANTACCOUNTSREQUEST']._serialized_end=813
-  _globals['_GETMERCHANTACCOUNTSRESPONSE']._serialized_start=815
-  _globals['_GETMERCHANTACCOUNTSRESPONSE']._serialized_end=916
-  _globals['_PROCESSMOBILEMONEYPAYMENTREQUEST']._serialized_start=919
-  _globals['_PROCESSMOBILEMONEYPAYMENTREQUEST']._serialized_end=1049
-  _globals['_GETINVOICEFORPAYMENTREQUEST']._serialized_start=1051
-  _globals['_GETINVOICEFORPAYMENTREQUEST']._serialized_end=1104
-  _globals['_GETTRANSACTIONREQUEST']._serialized_start=1106
-  _globals['_GETTRANSACTIONREQUEST']._serialized_end=1153
-  _globals['_GETTRANSACTIONBYREFERENCEREQUEST']._serialized_start=1155
-  _globals['_GETTRANSACTIONBYREFERENCEREQUEST']._serialized_end=1208
-  _globals['_GETTRANSACTIONSBYINVOICEREQUEST']._serialized_start=1210
-  _globals['_GETTRANSACTIONSBYINVOICEREQUEST']._serialized_end=1263
-  _globals['_GETTRANSACTIONSBYINVOICERESPONSE']._serialized_start=1265
-  _globals['_GETTRANSACTIONSBYINVOICERESPONSE']._serialized_end=1346
-  _globals['_FINDTRANSACTIONSRESPONSE']._serialized_start=1348
-  _globals['_FINDTRANSACTIONSRESPONSE']._serialized_end=1421
-  _globals['_PAYMENTSERVICE']._serialized_start=1424
-  _globals['_PAYMENTSERVICE']._serialized_end=3203
+  _globals['_REGISTERPROVIDERREQUEST']._serialized_start=130
+  _globals['_REGISTERPROVIDERREQUEST']._serialized_end=213
+  _globals['_GETPROVIDERREQUEST']._serialized_start=215
+  _globals['_GETPROVIDERREQUEST']._serialized_end=256
+  _globals['_LISTPROVIDERSREQUEST']._serialized_start=258
+  _globals['_LISTPROVIDERSREQUEST']._serialized_end=301
+  _globals['_LISTPROVIDERSRESPONSE']._serialized_start=303
+  _globals['_LISTPROVIDERSRESPONSE']._serialized_end=385
+  _globals['_UPDATEPROVIDERREQUEST']._serialized_start=387
+  _globals['_UPDATEPROVIDERREQUEST']._serialized_end=468
+  _globals['_UPDATEPROVIDERSTATUSREQUEST']._serialized_start=470
+  _globals['_UPDATEPROVIDERSTATUSREQUEST']._serialized_end=536
+  _globals['_SETMERCHANTACTIVESTATUSREQUEST']._serialized_start=538
+  _globals['_SETMERCHANTACTIVESTATUSREQUEST']._serialized_end=607
+  _globals['_REMOVEPROVIDERACCOUNTREQUEST']._serialized_start=609
+  _globals['_REMOVEPROVIDERACCOUNTREQUEST']._serialized_end=681
+  _globals['_GETMERCHANTPROVIDERACCOUNTSREQUEST']._serialized_start=683
+  _globals['_GETMERCHANTPROVIDERACCOUNTSREQUEST']._serialized_end=740
+  _globals['_GETMERCHANTPROVIDERACCOUNTSRESPONSE']._serialized_start=742
+  _globals['_GETMERCHANTPROVIDERACCOUNTSRESPONSE']._serialized_end=845
+  _globals['_GETMERCHANTACCOUNTSREQUEST']._serialized_start=847
+  _globals['_GETMERCHANTACCOUNTSREQUEST']._serialized_end=914
+  _globals['_GETMERCHANTACCOUNTSRESPONSE']._serialized_start=916
+  _globals['_GETMERCHANTACCOUNTSRESPONSE']._serialized_end=1028
+  _globals['_PROCESSMOBILEMONEYPAYMENTREQUEST']._serialized_start=1031
+  _globals['_PROCESSMOBILEMONEYPAYMENTREQUEST']._serialized_end=1172
+  _globals['_GETINVOICEFORPAYMENTREQUEST']._serialized_start=1174
+  _globals['_GETINVOICEFORPAYMENTREQUEST']._serialized_end=1227
+  _globals['_GETTRANSACTIONREQUEST']._serialized_start=1229
+  _globals['_GETTRANSACTIONREQUEST']._serialized_end=1276
+  _globals['_GETTRANSACTIONBYREFERENCEREQUEST']._serialized_start=1278
+  _globals['_GETTRANSACTIONBYREFERENCEREQUEST']._serialized_end=1331
+  _globals['_GETTRANSACTIONSBYINVOICEREQUEST']._serialized_start=1333
+  _globals['_GETTRANSACTIONSBYINVOICEREQUEST']._serialized_end=1386
+  _globals['_GETTRANSACTIONSBYINVOICERESPONSE']._serialized_start=1388
+  _globals['_GETTRANSACTIONSBYINVOICERESPONSE']._serialized_end=1480
+  _globals['_FINDTRANSACTIONSRESPONSE']._serialized_start=1482
+  _globals['_FINDTRANSACTIONSRESPONSE']._serialized_end=1566
+  _globals['_PAYMENTSERVICE']._serialized_start=1569
+  _globals['_PAYMENTSERVICE']._serialized_end=3683
 # @@protoc_insertion_point(module_scope)

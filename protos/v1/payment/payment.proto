@@ -3,16 +3,17 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
-package payment.v1;
+package kemy.protobuf.payment;
 
 option go_package = "go/payment";
 
 import "v1/payment/common.proto";
+import "v1/invoice/common.proto";
 
 service PaymentService {
   // Provider Management
-  rpc RegisterProvider (RegisterProviderRequest) returns (Provider) {}
-  rpc GetProvider (GetProviderRequest) returns (Provider) {}
+  rpc RegisterProvider (RegisterProviderRequest) returns (PaymentProvider) {}
+  rpc GetProvider (GetProviderRequest) returns (PaymentProvider) {}
   rpc ListProviders (ListProvidersRequest) returns (ListProvidersResponse) {}
   rpc UpdateProvider (UpdateProviderRequest) returns (google.protobuf.Empty) {}
   rpc UpdateProviderStatus (UpdateProviderStatusRequest) returns (google.protobuf.Empty) {}
@@ -40,7 +41,7 @@ service PaymentService {
 
 // Request/Response Messages
 message RegisterProviderRequest {
-  Provider provider = 1;
+  PaymentProvider provider = 1;
 }
 
 message GetProviderRequest {
@@ -52,11 +53,11 @@ message ListProvidersRequest {
 }
 
 message ListProvidersResponse {
-  repeated Provider providers = 1;
+  repeated PaymentProvider providers = 1;
 }
 
 message UpdateProviderRequest {
-  Provider provider = 1;
+  PaymentProvider provider = 1;
 }
 
 message UpdateProviderStatusRequest {
@@ -94,7 +95,7 @@ message GetMerchantAccountsResponse {
 
 message ProcessMobileMoneyPaymentRequest {
   string provider = 1;
-  Money amount = 2;
+  kemy.protobuf.invoice.Money amount = 2;
   string phone_number = 3;
   int32 merchant_id = 4;
 }

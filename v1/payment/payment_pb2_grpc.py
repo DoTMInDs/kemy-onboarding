@@ -37,97 +37,97 @@ class PaymentServiceStub(object):
             channel: A grpc.Channel.
         """
         self.RegisterProvider = channel.unary_unary(
-                '/payment.v1.PaymentService/RegisterProvider',
+                '/kemy.protobuf.payment.PaymentService/RegisterProvider',
                 request_serializer=v1_dot_payment_dot_payment__pb2.RegisterProviderRequest.SerializeToString,
-                response_deserializer=v1_dot_payment_dot_common__pb2.Provider.FromString,
+                response_deserializer=v1_dot_payment_dot_common__pb2.PaymentProvider.FromString,
                 _registered_method=True)
         self.GetProvider = channel.unary_unary(
-                '/payment.v1.PaymentService/GetProvider',
+                '/kemy.protobuf.payment.PaymentService/GetProvider',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetProviderRequest.SerializeToString,
-                response_deserializer=v1_dot_payment_dot_common__pb2.Provider.FromString,
+                response_deserializer=v1_dot_payment_dot_common__pb2.PaymentProvider.FromString,
                 _registered_method=True)
         self.ListProviders = channel.unary_unary(
-                '/payment.v1.PaymentService/ListProviders',
+                '/kemy.protobuf.payment.PaymentService/ListProviders',
                 request_serializer=v1_dot_payment_dot_payment__pb2.ListProvidersRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_payment__pb2.ListProvidersResponse.FromString,
                 _registered_method=True)
         self.UpdateProvider = channel.unary_unary(
-                '/payment.v1.PaymentService/UpdateProvider',
+                '/kemy.protobuf.payment.PaymentService/UpdateProvider',
                 request_serializer=v1_dot_payment_dot_payment__pb2.UpdateProviderRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdateProviderStatus = channel.unary_unary(
-                '/payment.v1.PaymentService/UpdateProviderStatus',
+                '/kemy.protobuf.payment.PaymentService/UpdateProviderStatus',
                 request_serializer=v1_dot_payment_dot_payment__pb2.UpdateProviderStatusRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.OnboardMerchant = channel.unary_unary(
-                '/payment.v1.PaymentService/OnboardMerchant',
+                '/kemy.protobuf.payment.PaymentService/OnboardMerchant',
                 request_serializer=v1_dot_payment_dot_common__pb2.MerchantAccount.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdateMerchant = channel.unary_unary(
-                '/payment.v1.PaymentService/UpdateMerchant',
+                '/kemy.protobuf.payment.PaymentService/UpdateMerchant',
                 request_serializer=v1_dot_payment_dot_common__pb2.MerchantAccount.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.SetMerchantActiveStatus = channel.unary_unary(
-                '/payment.v1.PaymentService/SetMerchantActiveStatus',
+                '/kemy.protobuf.payment.PaymentService/SetMerchantActiveStatus',
                 request_serializer=v1_dot_payment_dot_payment__pb2.SetMerchantActiveStatusRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.AddProviderAccountToMerchant = channel.unary_unary(
-                '/payment.v1.PaymentService/AddProviderAccountToMerchant',
+                '/kemy.protobuf.payment.PaymentService/AddProviderAccountToMerchant',
                 request_serializer=v1_dot_payment_dot_common__pb2.MerchantProviderAccount.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.UpdateMerchantProviderAccount = channel.unary_unary(
-                '/payment.v1.PaymentService/UpdateMerchantProviderAccount',
+                '/kemy.protobuf.payment.PaymentService/UpdateMerchantProviderAccount',
                 request_serializer=v1_dot_payment_dot_common__pb2.MerchantProviderAccount.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.RemoveProviderAccountFromMerchant = channel.unary_unary(
-                '/payment.v1.PaymentService/RemoveProviderAccountFromMerchant',
+                '/kemy.protobuf.payment.PaymentService/RemoveProviderAccountFromMerchant',
                 request_serializer=v1_dot_payment_dot_payment__pb2.RemoveProviderAccountRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.GetMerchantProviderAccounts = channel.unary_unary(
-                '/payment.v1.PaymentService/GetMerchantProviderAccounts',
+                '/kemy.protobuf.payment.PaymentService/GetMerchantProviderAccounts',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetMerchantProviderAccountsRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_payment__pb2.GetMerchantProviderAccountsResponse.FromString,
                 _registered_method=True)
         self.GetMerchantAccounts = channel.unary_unary(
-                '/payment.v1.PaymentService/GetMerchantAccounts',
+                '/kemy.protobuf.payment.PaymentService/GetMerchantAccounts',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetMerchantAccountsRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_payment__pb2.GetMerchantAccountsResponse.FromString,
                 _registered_method=True)
         self.GetInvoiceForPayment = channel.unary_unary(
-                '/payment.v1.PaymentService/GetInvoiceForPayment',
+                '/kemy.protobuf.payment.PaymentService/GetInvoiceForPayment',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetInvoiceForPaymentRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_common__pb2.MerchantInvoicePaymentDetails.FromString,
                 _registered_method=True)
         self.GetTransaction = channel.unary_unary(
-                '/payment.v1.PaymentService/GetTransaction',
+                '/kemy.protobuf.payment.PaymentService/GetTransaction',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetTransactionRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_common__pb2.Transaction.FromString,
                 _registered_method=True)
         self.GetTransactionByReference = channel.unary_unary(
-                '/payment.v1.PaymentService/GetTransactionByReference',
+                '/kemy.protobuf.payment.PaymentService/GetTransactionByReference',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetTransactionByReferenceRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_common__pb2.Transaction.FromString,
                 _registered_method=True)
         self.GetTransactionsByInvoice = channel.unary_unary(
-                '/payment.v1.PaymentService/GetTransactionsByInvoice',
+                '/kemy.protobuf.payment.PaymentService/GetTransactionsByInvoice',
                 request_serializer=v1_dot_payment_dot_payment__pb2.GetTransactionsByInvoiceRequest.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_payment__pb2.GetTransactionsByInvoiceResponse.FromString,
                 _registered_method=True)
         self.UpdateTransaction = channel.unary_unary(
-                '/payment.v1.PaymentService/UpdateTransaction',
+                '/kemy.protobuf.payment.PaymentService/UpdateTransaction',
                 request_serializer=v1_dot_payment_dot_common__pb2.Transaction.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
         self.FindTransactions = channel.unary_unary(
-                '/payment.v1.PaymentService/FindTransactions',
+                '/kemy.protobuf.payment.PaymentService/FindTransactions',
                 request_serializer=v1_dot_payment_dot_common__pb2.TransactionFilter.SerializeToString,
                 response_deserializer=v1_dot_payment_dot_payment__pb2.FindTransactionsResponse.FromString,
                 _registered_method=True)
@@ -259,12 +259,12 @@ def add_PaymentServiceServicer_to_server(servicer, server):
             'RegisterProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.RegisterProvider,
                     request_deserializer=v1_dot_payment_dot_payment__pb2.RegisterProviderRequest.FromString,
-                    response_serializer=v1_dot_payment_dot_common__pb2.Provider.SerializeToString,
+                    response_serializer=v1_dot_payment_dot_common__pb2.PaymentProvider.SerializeToString,
             ),
             'GetProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProvider,
                     request_deserializer=v1_dot_payment_dot_payment__pb2.GetProviderRequest.FromString,
-                    response_serializer=v1_dot_payment_dot_common__pb2.Provider.SerializeToString,
+                    response_serializer=v1_dot_payment_dot_common__pb2.PaymentProvider.SerializeToString,
             ),
             'ListProviders': grpc.unary_unary_rpc_method_handler(
                     servicer.ListProviders,
@@ -353,9 +353,9 @@ def add_PaymentServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'payment.v1.PaymentService', rpc_method_handlers)
+            'kemy.protobuf.payment.PaymentService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('payment.v1.PaymentService', rpc_method_handlers)
+    server.add_registered_method_handlers('kemy.protobuf.payment.PaymentService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -376,9 +376,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/RegisterProvider',
+            '/kemy.protobuf.payment.PaymentService/RegisterProvider',
             v1_dot_payment_dot_payment__pb2.RegisterProviderRequest.SerializeToString,
-            v1_dot_payment_dot_common__pb2.Provider.FromString,
+            v1_dot_payment_dot_common__pb2.PaymentProvider.FromString,
             options,
             channel_credentials,
             insecure,
@@ -403,9 +403,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetProvider',
+            '/kemy.protobuf.payment.PaymentService/GetProvider',
             v1_dot_payment_dot_payment__pb2.GetProviderRequest.SerializeToString,
-            v1_dot_payment_dot_common__pb2.Provider.FromString,
+            v1_dot_payment_dot_common__pb2.PaymentProvider.FromString,
             options,
             channel_credentials,
             insecure,
@@ -430,7 +430,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/ListProviders',
+            '/kemy.protobuf.payment.PaymentService/ListProviders',
             v1_dot_payment_dot_payment__pb2.ListProvidersRequest.SerializeToString,
             v1_dot_payment_dot_payment__pb2.ListProvidersResponse.FromString,
             options,
@@ -457,7 +457,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/UpdateProvider',
+            '/kemy.protobuf.payment.PaymentService/UpdateProvider',
             v1_dot_payment_dot_payment__pb2.UpdateProviderRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -484,7 +484,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/UpdateProviderStatus',
+            '/kemy.protobuf.payment.PaymentService/UpdateProviderStatus',
             v1_dot_payment_dot_payment__pb2.UpdateProviderStatusRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -511,7 +511,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/OnboardMerchant',
+            '/kemy.protobuf.payment.PaymentService/OnboardMerchant',
             v1_dot_payment_dot_common__pb2.MerchantAccount.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -538,7 +538,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/UpdateMerchant',
+            '/kemy.protobuf.payment.PaymentService/UpdateMerchant',
             v1_dot_payment_dot_common__pb2.MerchantAccount.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -565,7 +565,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/SetMerchantActiveStatus',
+            '/kemy.protobuf.payment.PaymentService/SetMerchantActiveStatus',
             v1_dot_payment_dot_payment__pb2.SetMerchantActiveStatusRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -592,7 +592,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/AddProviderAccountToMerchant',
+            '/kemy.protobuf.payment.PaymentService/AddProviderAccountToMerchant',
             v1_dot_payment_dot_common__pb2.MerchantProviderAccount.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -619,7 +619,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/UpdateMerchantProviderAccount',
+            '/kemy.protobuf.payment.PaymentService/UpdateMerchantProviderAccount',
             v1_dot_payment_dot_common__pb2.MerchantProviderAccount.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -646,7 +646,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/RemoveProviderAccountFromMerchant',
+            '/kemy.protobuf.payment.PaymentService/RemoveProviderAccountFromMerchant',
             v1_dot_payment_dot_payment__pb2.RemoveProviderAccountRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -673,7 +673,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetMerchantProviderAccounts',
+            '/kemy.protobuf.payment.PaymentService/GetMerchantProviderAccounts',
             v1_dot_payment_dot_payment__pb2.GetMerchantProviderAccountsRequest.SerializeToString,
             v1_dot_payment_dot_payment__pb2.GetMerchantProviderAccountsResponse.FromString,
             options,
@@ -700,7 +700,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetMerchantAccounts',
+            '/kemy.protobuf.payment.PaymentService/GetMerchantAccounts',
             v1_dot_payment_dot_payment__pb2.GetMerchantAccountsRequest.SerializeToString,
             v1_dot_payment_dot_payment__pb2.GetMerchantAccountsResponse.FromString,
             options,
@@ -727,7 +727,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetInvoiceForPayment',
+            '/kemy.protobuf.payment.PaymentService/GetInvoiceForPayment',
             v1_dot_payment_dot_payment__pb2.GetInvoiceForPaymentRequest.SerializeToString,
             v1_dot_payment_dot_common__pb2.MerchantInvoicePaymentDetails.FromString,
             options,
@@ -754,7 +754,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetTransaction',
+            '/kemy.protobuf.payment.PaymentService/GetTransaction',
             v1_dot_payment_dot_payment__pb2.GetTransactionRequest.SerializeToString,
             v1_dot_payment_dot_common__pb2.Transaction.FromString,
             options,
@@ -781,7 +781,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetTransactionByReference',
+            '/kemy.protobuf.payment.PaymentService/GetTransactionByReference',
             v1_dot_payment_dot_payment__pb2.GetTransactionByReferenceRequest.SerializeToString,
             v1_dot_payment_dot_common__pb2.Transaction.FromString,
             options,
@@ -808,7 +808,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/GetTransactionsByInvoice',
+            '/kemy.protobuf.payment.PaymentService/GetTransactionsByInvoice',
             v1_dot_payment_dot_payment__pb2.GetTransactionsByInvoiceRequest.SerializeToString,
             v1_dot_payment_dot_payment__pb2.GetTransactionsByInvoiceResponse.FromString,
             options,
@@ -835,7 +835,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/UpdateTransaction',
+            '/kemy.protobuf.payment.PaymentService/UpdateTransaction',
             v1_dot_payment_dot_common__pb2.Transaction.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
@@ -862,7 +862,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/payment.v1.PaymentService/FindTransactions',
+            '/kemy.protobuf.payment.PaymentService/FindTransactions',
             v1_dot_payment_dot_common__pb2.TransactionFilter.SerializeToString,
             v1_dot_payment_dot_payment__pb2.FindTransactionsResponse.FromString,
             options,
