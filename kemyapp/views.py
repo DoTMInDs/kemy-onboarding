@@ -691,7 +691,7 @@ def provider(request):
         if request.method == 'POST':
             try:
                 provider_request = payment_pb2.RegisterProviderRequest(
-                    provider=payment_common.Provider(
+                    provider=payment_common.PaymentProvider(
                         code=request.POST.get('code'),
                         name=request.POST.get('name'),
                         type=request.POST.get('type'),
@@ -746,7 +746,7 @@ def edit_provider(request, provider_code):
         if request.method == 'POST':
             try:
                 update_request = payment_pb2.UpdateProviderRequest(
-                  provider=payment_common.Provider(
+                  provider=payment_common.PaymentProvider(
                         code=provider_code,
                         name=request.POST.get('name'),
                         type=request.POST.get('type'),
