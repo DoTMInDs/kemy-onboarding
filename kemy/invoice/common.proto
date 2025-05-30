@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+package kemy.invoice;
+
+option go_package = "gitlab.com/rippletech/protos/gen/go/kemy/invoice";
+import "google/protobuf/timestamp.proto";
+
+enum PaymentMethodType {
+  PAYMENT_METHOD_TYPE_UNSPECIFIED = 0;
+  CREDIT_CARD = 1;
+  MOBILE_MONEY = 2;
+  CASH = 3;
+  ACH = 4;
+}
+
+enum Provider {
+  PROVIDER_UNSPECIFIED = 0;
+  MTN_MOMO = 1;
+  TELECEL_CASH = 2;
+  AIRTELTIGO_MONEY = 3;
+}
+
+message Money {
+  string value = 1;
+}
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+  PAYMENT_STARTED = 1;
+  PAYMENT_PENDING = 2;
+  PAYMENT_PAID = 3;
+  PAYMENT_FAILED = 4;
+  PAYMENT_CANCELLED = 5;
+}
+// EntityType defines the possible types for billable entities
+enum EntityType {
+  ENTITY_TYPE_UNSPECIFIED = 0;
+  ENTITY_TYPE_STUDENT = 1;
+  ENTITY_TYPE_PROPERTY = 2;
+  ENTITY_TYPE_OTHER = 3;
+}
+enum InvoiceStatus {
+  INVOICE_STATUS_UNSPECIFIED = 0;
+  DRAFT = 1;
+  OPEN = 2;
+  PAID = 3;
+  VOID = 4;
+  PARTIAL = 5;
+}
+
+enum Category {
+  CATEGORY_UNSPECIFIED = 0;
+  SCHOOL = 1;
+  HOTEL = 2;
+  GENERAL = 3;
+}
+message PaymentMethod {
+  int32 id = 1;
+  string name = 2;
+  PaymentMethodType payment_method_type = 3;
+  Provider provider = 4;
+  string account_no = 5;
+  int32 customer_id = 6;
+  google.protobuf.Timestamp create_time = 7;
+  google.protobuf.Timestamp update_time = 8;
+}
+
+message InvoiceLineItem {
+  int64 id = 1;
+  int32 qty = 2;
+  Money unit_price = 3;
+  Money amount = 4;
+  google.protobuf.Timestamp create_time = 5;
+  google.protobuf.Timestamp update_time = 6;
+  string description = 7;
+}
+
+message Invoice {
+  string number = 1;
+  int32 customer_id = 2;
+  int32 merchant_id = 3;
+  string reference_id = 4;
+  string description = 5;
+  google.protobuf.Timestamp due_date = 6;
+  Money total_amount = 7;
+  Money amount_paid = 8;
+  InvoiceStatus status = 10;
+  Money amount_remaining = 11;
+  bool is_paid = 12;
+  Money tax_amount = 13;
+  Money sub_total_amount = 14;
+  string currency = 15;
+  google.protobuf.Timestamp create_time = 16;
+  google.protobuf.Timestamp update_time = 17;
+  repeated InvoiceLineItem line_items = 18;
+  string merchant_name = 19;
+  string merchant_address = 20;
+  string customer_name = 21;
+  map<string, string> custom_fields = 22;
+  google.protobuf.Timestamp finalize_time = 23;
+  google.protobuf.Timestamp cancel_time = 24;
+  int32 billable_entity_id = 25;
+}
+
+message Merchant {
+  int32 id = 1;// Ignored during create
+  string name = 2;
+  string address = 3;
+  string contact_info = 4;
+  google.protobuf.Timestamp create_time = 5;
+  google.protobuf.Timestamp update_time = 6;
+  Category category = 7;
+  string logo_url = 8;
+}
+
+message MerchantUser {
+  int32 id = 1;
+  int64 user_id = 2;
+  int32 merchant_id = 3;
+  google.protobuf.Timestamp create_time = 4;
+}
+
+message Customer {
+  int32 id = 1;
+  int64 user_id = 2;
+  string national_id_no = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string email = 6;
+  string mobile = 7;
+  string invoice_prefix = 8;
+  int32 next_invoice_sequence = 9;
+  google.protobuf.Timestamp create_time = 10;
+  google.protobuf.Timestamp update_time = 11;
+}
+
+message InvoicePayment {
+  int64 id = 1;
+  int64 invoice_id = 2;
+  string invoice_number = 3;
+  int32 payment_method_id = 4;
+  string transaction_id = 5;
+  bool is_cash = 6;
+  PaymentStatus status = 7;
+  string amount = 8;
+  google.protobuf.Timestamp start_time = 9;
+  google.protobuf.Timestamp cancel_time = 10;
+  google.protobuf.Timestamp fail_time = 11;
+  google.protobuf.Timestamp paid_time = 12;
+}
+message BillableEntity {
+  int32 id = 1;
+  int32 merchant_id = 2;
+  int32 customer_id = 3;
+  EntityType entity_type = 4;
+  string ref_id = 5;
+  string name = 6;
+  string attr1 = 7;
+  string attr2 = 8;
+  string attr3 = 9;
+  string attr4 = 10;
+  string attr5 = 11;
+  google.protobuf.Timestamp create_time = 12;
+  google.protobuf.Timestamp update_time = 13;
+}
+
+message Group {
+  int32 id = 1;
+  int32 merchant_id = 2;
+  string name = 3;
+  string description = 4;
+  google.protobuf.Timestamp create_time = 6;
+  google.protobuf.Timestamp update_time = 7;
+}
+
+message InvoiceTemplate {
+  int32 id = 1;
+  int32 merchant_id = 2;
+  string name = 3;
+  string description = 4;
+  google.protobuf.Timestamp due_date = 5;
+  bool is_active = 6;
+  Money tax = 7;
+  string currency = 8;
+  google.protobuf.Timestamp create_time = 9;
+  google.protobuf.Timestamp update_time = 10;
+}
+
+message InvoiceTemplateLineItem {
+  int32 id = 1;
+  int32 template_id = 2;
+  string description = 3;
+  int32 quantity = 4;
+  Money unit_price = 5;
+  google.protobuf.Timestamp create_time = 6;
+  google.protobuf.Timestamp update_time = 7;
+}
+message GroupTemplateAssignment {
+  int32 id = 1;
+  int32 group_id = 2;
+  int32 template_id = 3;
+  google.protobuf.Timestamp due_date = 4;
+  google.protobuf.Timestamp create_time = 5;
+}
+message InvoiceFilters {
+  InvoiceStatus status = 1;
+  optional bool paid = 2;
+  google.protobuf.Timestamp create_time_after = 3;
+  google.protobuf.Timestamp create_time_before = 4;
+  google.protobuf.Timestamp due_date_after = 5;
+  google.protobuf.Timestamp due_date_before = 6;
+  Money min_amount = 7;
+  Money max_amount = 8;
+}

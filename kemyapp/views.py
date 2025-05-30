@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.apps import apps
 from google.protobuf.empty_pb2 import Empty
 from django.core.paginator import Paginator
-from v1.auth import auth_pb2_grpc,auth_pb2
-from v1.invoice import invoice_pb2_grpc,invoice_pb2,common_pb2 as invoice_common
-from v1.payment import payment_pb2, payment_pb2_grpc,common_pb2 as payment_common
+from kemy.auth import auth_pb2_grpc,auth_pb2
+from kemy.invoice import invoice_pb2_grpc,invoice_pb2,common_pb2 as invoice_common
+from kemy.payment import payment_pb2, payment_pb2_grpc,common_pb2 as payment_common
 import grpc
 from django.core.files.storage import default_storage
 from django.conf import settings
@@ -691,7 +691,7 @@ def provider(request):
         if request.method == 'POST':
             try:
                 provider_request = payment_pb2.RegisterProviderRequest(
-                    provider=payment_common.PaymentProvider(
+                    provider=payment_common.Provider(
                         code=request.POST.get('code'),
                         name=request.POST.get('name'),
                         type=request.POST.get('type'),
@@ -746,7 +746,7 @@ def edit_provider(request, provider_code):
         if request.method == 'POST':
             try:
                 update_request = payment_pb2.UpdateProviderRequest(
-                  provider=payment_common.PaymentProvider(
+                  provider=payment_common.Provider(
                         code=provider_code,
                         name=request.POST.get('name'),
                         type=request.POST.get('type'),

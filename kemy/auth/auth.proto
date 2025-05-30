@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package kemy.auth;
+option go_package = "gitlab.com/rippletech/protos/gen/go/kemy/auth";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+// Auth models
+message User {
+  int64 id = 1;
+  string mobile = 2;
+  string first_name = 3;
+  string last_name = 4;
+  google.protobuf.Timestamp create_time = 5;
+  google.protobuf.Timestamp update_time = 6;
+  bool is_verified = 7;
+  bool is_admin = 8;
+  bool is_super_user = 9;
+
+}
+message UpdateUserRequest {
+  int64 user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  bool is_admin = 4;
+  bool is_super_user = 5;
+}
+enum ChallengeType {
+  CHALLENGE_TYPE_UNSPECIFIED = 0;
+  REGISTRATION = 1;
+  RESET_PIN = 2;
+  ADD_PAYMENT_METHOD = 3;
+}
+message CreateUserRequest {
+  string mobile = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string pin = 4;
+  string verify_pin = 5;
+}
+message CreateUserResponse {
+  int64 user_id = 1;
+}
+message GetUserRequest {
+  int64 user_id = 1;
+}
+message VerifyChallengeRequest {
+  int64 user_id = 1;
+  string challenge = 2;
+  ChallengeType challenge_type = 3;
+}
+message VerifyChallengeResponse {
+  int64 user_id = 1;
+}
+message ChallengeRequest {
+  int64 user_id = 1;
+  ChallengeType challenge_type = 2;
+  string mobile = 3;
+}
+message ChallengeResponse {
+  string challenge = 1;
+}
+message GetUserByMobileRequest {
+  string mobile = 1;
+}
+message CreatePinRequest {
+  int64 user_id = 1;
+  string pin = 2;
+  string verify_pin = 3;
+}
+message LoginRequest {
+  string mobile = 1;
+  string pin = 2;
+}
+message LoginResponse {
+  string access_token = 1;
+  string id_token = 2;
+  string refresh_token = 3;
+}
+message ListUsersRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+message ListUsersResponse {
+  repeated User users = 1;
+  string next_page_token = 2;
+}
+message GetNewAccessTokenRequest {
+  string refresh_token = 1;
+}
+message GetNewAccessTokenResponse {
+  string access_token = 1;
+}
+service Auth {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc VerifyChallenge(VerifyChallengeRequest) returns (google.protobuf.Empty);
+  rpc CreateNewPin(CreatePinRequest) returns (google.protobuf.Empty);
+  rpc LoginUser(LoginRequest) returns (LoginResponse);
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc GetUserByMobile(GetUserByMobileRequest) returns (User);
+  rpc UpdateUser(UpdateUserRequest) returns (User);
+  rpc GenerateChallenge(ChallengeRequest) returns (google.protobuf.Empty);
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+  rpc GetNewAccessToken(GetNewAccessTokenRequest) returns (GetNewAccessTokenResponse);
+}

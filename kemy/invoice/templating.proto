@@ -1,0 +1,171 @@
+syntax = "proto3";
+
+package kemy.invoice;
+
+option go_package = "gitlab.com/rippletech/protos/gen/go/kemy/invoice";
+
+import "kemy/invoice/common.proto";
+import "google/protobuf/timestamp.proto";
+
+// Request and response types for BillableEntityManager
+message CreateBillableEntityRequest {
+  BillableEntity entity = 1;
+}
+
+message GetBillableEntityRequest {
+  int32 id = 1;
+}
+
+message GetBillableEntitiesForMerchantRequest {
+  int32 merchant_id = 1;
+}
+
+message GetBillableEntitiesForGroupRequest {
+  int32 group_id = 1;
+}
+
+message UpdateBillableEntityRequest {
+  BillableEntity entity = 1;
+}
+
+message DeleteBillableEntityRequest {
+  int32 id = 1;
+}
+
+message BillableEntityResponse {
+  BillableEntity entity = 1;
+}
+
+message BillableEntitiesResponse {
+  repeated BillableEntity entities = 1;
+}
+
+// Request and response types for GroupManger
+message CreateGroupRequest {
+  Group group = 1;
+}
+
+message GetGroupRequest {
+  int32 id = 1;
+}
+
+message GetGroupsForMerchantRequest {
+  int32 merchant_id = 1;
+}
+
+message UpdateGroupRequest {
+  Group group = 1;
+}
+
+message DeleteGroupRequest {
+  int32 id = 1;
+}
+
+message AddBillableEntityToGroupRequest {
+  int32 group_id = 1;
+  BillableEntity item = 2;
+}
+
+message RemoveBillableEntityFromGroupRequest {
+  int32 group_id = 1;
+  int32 item_id = 2;
+}
+
+message GroupResponse {
+  Group group = 1;
+}
+
+message GroupsResponse {
+  repeated Group groups = 1;
+}
+
+// Request and response types for TemplateManager
+message CreateTemplateRequest {
+  InvoiceTemplate template = 1;
+}
+
+message GetTemplateRequest {
+  int32 id = 1;
+}
+
+message GetTemplatesForMerchantRequest {
+  int32 merchant_id = 1;
+}
+
+message UpdateTemplateRequest {
+  InvoiceTemplate template = 1;
+}
+
+message DeleteTemplateRequest {
+  int32 id = 1;
+}
+
+message CreateTemplateItemRequest {
+  InvoiceTemplateLineItem item = 1;
+}
+
+message RemoveTemplateItemRequest {
+  int32 id = 1;
+}
+
+message UpdateTemplateItemRequest {
+  InvoiceTemplateLineItem item = 1;
+}
+
+message GetTemplateItemsRequest {
+  int32 template_id = 1;
+}
+
+message TemplateResponse {
+  InvoiceTemplate template = 1;
+}
+
+message TemplatesResponse {
+  repeated InvoiceTemplate templates = 1;
+}
+
+message TemplateItemResponse {
+  InvoiceTemplateLineItem item = 1;
+}
+
+message TemplateItemsResponse {
+  repeated InvoiceTemplateLineItem items = 1;
+}
+
+// Request and response types for InvoiceGenerator
+message GenerateInvoicesForGroupRequest {
+  int32 group_id = 1;
+  int32 template_id = 2;
+}
+
+message GenerateInvoicesForGroupResponse {
+  int32 count = 1;
+}
+
+message CancelInvoicesRequest {
+  repeated string invoice_numbers = 1;
+}
+
+message ApplyTemplateToGroupRequest {
+  int32 template_id = 1;
+  int32 group_id = 2;
+  google.protobuf.Timestamp due_date = 3;
+}
+
+message FinalizeDraftInvoicesRequest {
+  repeated string invoice_numbers = 1;
+}
+
+message FinalizeDraftInvoicesResponse {
+  repeated Invoice invoices = 1;
+}
+message ListAssignmentsByGroupRequest {
+  int32 group_id = 1;
+}
+
+message ListAssignmentsByTemplateRequest {
+  int32 template_id = 1;
+}
+message ListAssignmentsResponse {
+  repeated GroupTemplateAssignment assignments = 1;
+}
